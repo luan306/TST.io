@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+            </div>
+            
+            <!-- Right side items -->
+            <div class="d-flex align-items-center">
+                <!-- Search Icon -->
+                <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
+                
+                <!-- Toggle button for mobile -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-ellipsis-v text-light"></i>
+                </button>
+                
+                <!-- Navigation items -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar__nav navbar-nav ms-auto">
+                        <li class="nav-item me-2">
+                            <a class="nav-link navbar__btn" href="#">SIGN IN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar__btn" href="#">CREATE ACCOUNT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner__background"></div>
+        <div class="banner__image"></div>
+        <div class="container">
+            <div class="banner__content">
+                <h1 class="banner__title">Welcome to HentaiBlaze</h1>
+                <p class="banner__subtitle">Your ultimate destination for premium hentai content.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Footer Content Section -->
+    <section class="additional-footer">
+        <div class="container">
+            <div class="additional-footer__content">
+                <h2 class="additional-footer__title">There are many variations</h2>
+                <p class="additional-footer__description">
+                    Lorem Ipsum dolor sit amet, cons ectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt. 
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered 
+                    alteration in form.
+                </p>
+            
+                <div class="additional-footer__columns">
+                    <div class="additional-footer__column">
+                        <h4 class="additional-footer__column-title">First</h4>
+                        <p class="additional-footer__column-text">There are many variations of passages</p>
+                    </div>
+                    <div class="additional-footer__column">
+                        <h4 class="additional-footer__column-title">Second</h4>
+                        <p class="additional-footer__column-text">Lorem Ipsum available, but the majority</p>
+                    </div>
+                    <div class="additional-footer__column">
+                        <h4 class="additional-footer__column-title">Third</h4>
+                        <p class="additional-footer__column-text">There are many variations of passages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Releases Section -->
+    <section class="section section--bordered">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">New Releases</h2>
+                <button class="section__btn">ALL</button>
+            </div>
+            
+            <div class="carousel">
+                <button class="carousel__nav carousel__nav--prev" onclick="moveCarousel('newReleases', -1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel__track" id="newReleasesCarousel">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                        <div class="card__content">
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24:52</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>123,456</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 1 day ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📅</div>
+                                    <span>UPLOADED</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>17 total</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>100 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>18:30</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>89,234</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 2 days ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📅</div>
+                                    <span>UPLOADED</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>25 total</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>85 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>32:15</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>156,789</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 3 days ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📅</div>
+                                    <span>UPLOADED</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>12 total</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>120 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>27:45</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>98,765</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 1 week ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📅</div>
+                                    <span>UPLOADED</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>8 total</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>95 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('newReleases', 1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel__indicators" id="newReleasesIndicators">
+                <span class="carousel__indicator carousel__indicator--active" onclick="goToSlide('newReleases', 0)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('newReleases', 1)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('newReleases', 2)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('newReleases', 3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="section section--bordered">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Trending</h2>
+                <button class="section__btn">ALL</button>
+            </div>
+            
+            <div class="carousel">
+                <button class="carousel__nav carousel__nav--prev" onclick="moveCarousel('trending', -1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel__track" id="trendingCarousel">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                        <div class="card__content">
+                            <h3 class="card__title">Trending Content 1: Popular Series Episode</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>22:30</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>500,123</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                            </div>
+                            <p class="card__stats">Trending #1</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Trending Content 1: Popular Series Episode</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🔥</div>
+                                    <span>TRENDING</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>500K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Episode 5</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Trending Content 2: Hot New Release</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>19:45</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>345,678</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Trending #2</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Trending Content 2: Hot New Release</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🔥</div>
+                                    <span>TRENDING</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>345K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>New Release</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Trending Content 3: Fan Favorite Series</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>25:12</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>289,456</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                            </div>
+                            <p class="card__stats">Trending #3</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Trending Content 3: Fan Favorite Series</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🔥</div>
+                                    <span>TRENDING</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>289K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Episode 12</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Trending Content 4: Rising Star Series</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>21:33</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>198,234</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Trending #4</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Trending Content 4: Rising Star Series</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🔥</div>
+                                    <span>TRENDING</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>198K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Episode 3</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('trending', 1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel__indicators" id="trendingIndicators">
+                <span class="carousel__indicator carousel__indicator--active" onclick="goToSlide('trending', 0)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('trending', 1)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('trending', 2)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('trending', 3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Uploads Section -->
+    <section class="section section--bordered">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Recent Uploads</h2>
+                <button class="section__btn">ALL</button>
+            </div>
+            
+            <div class="carousel">
+                <button class="carousel__nav carousel__nav--prev" onclick="moveCarousel('recentUploads', -1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel__track" id="recentUploadsCarousel">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                        <div class="card__content">
+                            <h3 class="card__title">Recent Upload 1: Fresh Content Just Added</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>15:20</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>12,345</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 2 hours ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Recent Upload 1: Fresh Content Just Added</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🆕</div>
+                                    <span>NEW</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>12K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Episode 1</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Recent Upload 2: Latest Episode Release</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>28:45</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>8,976</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 5 hours ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Recent Upload 2: Latest Episode Release</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🆕</div>
+                                    <span>NEW</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>8K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Episode 7</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Recent Upload 3: Brand New Series Premiere</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>23:10</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>15,432</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 8 hours ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Recent Upload 3: Brand New Series Premiere</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🆕</div>
+                                    <span>NEW</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>15K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Premiere</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card__image">16:9 Placeholder</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Recent Upload 4: Special Edition Content</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>31:55</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>6,789</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 12 hours ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Recent Upload 4: Special Edition Content</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">🆕</div>
+                                    <span>NEW</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">👁</div>
+                                    <span>6K views</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon">📄</div>
+                                    <span>Special</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star">★</span>
+                                <span class="card__overlay-star card__overlay-star--empty">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('recentUploads', 1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel__indicators" id="recentUploadsIndicators">
+                <span class="carousel__indicator carousel__indicator--active" onclick="goToSlide('recentUploads', 0)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('recentUploads', 1)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('recentUploads', 2)"></span>
+                <span class="carousel__indicator" onclick="goToSlide('recentUploads', 3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Image Uploads Section -->
+    <section class="section section--bordered">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Recent Image Uploads</h2>
+                <button class="section__btn">ALL</button>
+            </div>
+            
+            <div class="carousel">
+                <button class="carousel__nav carousel__nav--prev" onclick="moveImageGallery(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="image-gallery" id="imageGallery">
+                    <!-- Slide 1 -->
+                    <div class="image-gallery__slide">
+                        <div class="image-gallery__layout">
+                            <div class="image-gallery__featured">
+                                <div class="image-gallery__featured-placeholder">
+                                    <span>Featured Image</span>
+                                </div>
+                                <div class="image-gallery__credit">
+                                    Credit: Artist Name - Featured Gallery Set 1
+                                </div>
+                            </div>
+                            <div class="image-gallery__grid">
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 1</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 2</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 3</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 4</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 5</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="image-gallery__slide">
+                        <div class="image-gallery__layout">
+                            <div class="image-gallery__featured">
+                                <div class="image-gallery__featured-placeholder">
+                                    <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                </div>
+                                <div class="image-gallery__credit">
+                                    Credit: Artist Name - Featured Gallery Set 2
+                                </div>
+                            </div>
+                            <div class="image-gallery__grid">
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 2</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 3</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 4</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 5</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="image-gallery__slide">
+                        <div class="image-gallery__layout">
+                            <div class="image-gallery__featured">
+                                <div class="image-gallery__featured-placeholder">
+                                    <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                </div>
+                                <div class="image-gallery__credit">
+                                    Credit: Artist Name - Featured Gallery Set 3
+                                </div>
+                            </div>
+                            <div class="image-gallery__grid">
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 2</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 3</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 4</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 5</span>
+                                    </div>
+                                </div>
+                                <div class="image-gallery__grid-item">
+                                    <div class="image-gallery__grid-placeholder">
+                                        <span>Grid 6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel__nav carousel__nav--next" onclick="moveImageGallery(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel__indicators" id="imageGalleryIndicators">
+                <span class="carousel__indicator carousel__indicator--active" onclick="goToImageSlide(0)"></span>
+                <span class="carousel__indicator" onclick="goToImageSlide(1)"></span>
+                <span class="carousel__indicator" onclick="goToImageSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer Hero -->
+            <div class="footer__hero">
+                <h2 class="footer__hero-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, commodo consequat.</h2>
+            </div>
+
+            <!-- Footer Columns -->
+            <div class="footer__columns">
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Nunc aliquet bibendum</h4>
+                    <p class="footer__column-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Ipsum suspendisse</h4>
+                    <p class="footer__column-text">Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Duis aute irure</h4>
+                    <p class="footer__column-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                </div>
+            </div>
+
+            <!-- Footer Featured Content -->
+            <div class="footer__featured">
+                <div class="footer__featured-placeholder"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                <div class="footer__featured-info">
+                    Abandon:<br>
+                    100 Nuki Shinai to Dorarenal<br>
+                    Fushigi na Kyoushitsu 1
+                </div>
+            </div>
+
+          
+        </div>
+    </footer>
+
+    <!-- Red Footer Bar -->
+    <section class="red-footer">
+        <div class="container">
+            <div class="red-footer__content">
+                <div class="red-footer__logo">
+                    <i class="fas fa-cube red-footer__logo-icon"></i>
+                    <span>LOGO</span>
+                </div>
+                <nav class="red-footer__nav">
+                    <a href="#" class="red-footer__nav-link">First link</a>
+                    <a href="#" class="red-footer__nav-link">Second link</a>
+                    <a href="#" class="red-footer__nav-link">Third link</a>
+                    <a href="#" class="red-footer__nav-link">Fourth link</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal__content">
+            <button class="search-modal__close" onclick="closeSearchModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="search-modal__header">
+                <input type="text" class="search-modal__search-bar" placeholder="HENTAI" id="searchInput">
+            </div>
+            
+            <div class="search-modal__filters">
+                <button class="search-modal__filter-btn search-modal__filter-btn--active">Tags</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Blacklist</button>
+                <button class="search-modal__filter-btn" onclick="resetAllFilters()">Reset all</button>
+                <button class="search-modal__filter-btn">Sort</button>
+            </div>
+            
+            <div class="search-modal__section">
+                <h3 class="search-modal__section-title">Include Tags</h3>
+                <p class="search-modal__section-subtitle">Find things that have all of these tags</p>
+                
+                <div class="search-modal__tags" id="tagsList">
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COSPLAY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANIME</button>
+                    <button class="search-modal__tag search-modal__tag--active" onclick="toggleTag(this)">MANGA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GAMES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">3D</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">AMATEUR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">PROFESSIONAL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">LOLI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MILF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YURI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YAOI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TENTACLES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BUKKAKE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GURO</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ROMANCE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COMEDY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DRAMA</button>
+                    <button class="search-modal__tag search-modal__tag--excluded" onclick="toggleTag(this)">INCEST</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FANTASY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SCHOOL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OFFICE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OUTDOOR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SWIMSUIT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">UNIFORM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MAID</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">NURSE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TEACHER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">STUDENT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MONSTER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DEMON</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANGEL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ELF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">CATGIRL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FUTANARI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TRAP</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FEMDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MALEDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BONDAGE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BDSM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VANILLA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">HARDCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SOFTCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ECCHI</button>
+                </div>
+            </div>
+            
+            <div class="search-modal__broad-matches">
+                <div>
+                    <div class="search-modal__broad-matches-text">Broad Matches</div>
+                    <div class="search-modal__broad-matches-subtitle">Show results that also contain related tags if they contain most of the selected tags</div>
+                </div>
+                <div class="search-modal__toggle" id="broadMatchesToggle" onclick="toggleBroadMatches()">
+                    <div class="search-modal__toggle-slider"></div>
+                </div>
+            </div>
+            
+            <div class="search-modal__actions">
+                <button class="search-modal__btn" onclick="resetAllFilters()">Reset All</button>
+                <button class="search-modal__btn" onclick="closeSearchModal()">Cancel</button>
+                <button class="search-modal__btn search-modal__btn--primary" onclick="applySearch()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+       
+</body>
+</html>
