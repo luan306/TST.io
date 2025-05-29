@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze - User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+</head>
+<body>
+
+     <!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+                <nav class="header__breadcrumb">
+                        <a href="index.html">User</a> > Public Account
+                    </nav>
+            </div>
+            
+            <!-- Right side items -->
+            <div class="d-flex align-items-center">
+                <!-- Search Icon -->
+                <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
+                
+                <!-- Toggle button for mobile -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-ellipsis-v text-light"></i>
+                </button>
+                
+                <!-- Navigation items -->
+                <div class="header__right">
+       
+                    <div class="header__icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="header__notification-badge">1</span>
+                    </div>
+                    <div class="header__avatar"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal__content">
+            <button class="search-modal__close" onclick="closeSearchModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="search-modal__header">
+                <input type="text" class="search-modal__search-bar" placeholder="HENTAI" id="searchInput">
+            </div>
+            
+            <div class="search-modal__filters">
+                <button class="search-modal__filter-btn search-modal__filter-btn--active">Tags</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Blacklist</button>
+                <button class="search-modal__filter-btn" onclick="resetAllFilters()">Reset all</button>
+                <button class="search-modal__filter-btn">Sort</button>
+            </div>
+            
+            <div class="search-modal__section">
+                <h3 class="search-modal__section-title">Include Tags</h3>
+                <p class="search-modal__section-subtitle">Find things that have all of these tags</p>
+                
+                <div class="search-modal__tags" id="tagsList">
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COSPLAY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANIME</button>
+                    <button class="search-modal__tag search-modal__tag--active" onclick="toggleTag(this)">MANGA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GAMES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">3D</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">AMATEUR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">PROFESSIONAL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">LOLI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MILF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YURI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YAOI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TENTACLES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BUKKAKE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GURO</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ROMANCE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COMEDY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DRAMA</button>
+                    <button class="search-modal__tag search-modal__tag--excluded" onclick="toggleTag(this)">INCEST</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FANTASY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SCHOOL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OFFICE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OUTDOOR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SWIMSUIT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">UNIFORM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MAID</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">NURSE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TEACHER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">STUDENT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MONSTER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DEMON</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANGEL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ELF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">CATGIRL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FUTANARI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TRAP</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FEMDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MALEDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BONDAGE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BDSM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VANILLA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">HARDCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SOFTCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ECCHI</button>
+                </div>
+            </div>
+            
+            <div class="search-modal__broad-matches">
+                <div>
+                    <div class="search-modal__broad-matches-text">Broad Matches</div>
+                    <div class="search-modal__broad-matches-subtitle">Show results that also contain related tags if they contain most of the selected tags</div>
+                </div>
+                <div class="search-modal__toggle" id="broadMatchesToggle" onclick="toggleBroadMatches()">
+                    <div class="search-modal__toggle-slider"></div>
+                </div>
+            </div>
+            
+            <div class="search-modal__actions">
+                <button class="search-modal__btn" onclick="resetAllFilters()">Reset All</button>
+                <button class="search-modal__btn" onclick="closeSearchModal()">Cancel</button>
+                <button class="search-modal__btn search-modal__btn--primary" onclick="applySearch()">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container-fluid">
+            <!-- User Profile Section -->
+            <section class="profile">
+                <div class="profile__header">
+                    <div class="profile__avatar">
+                        <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="JohnDoe7563" class="profile__avatar-img">
+                    </div>
+                    <div class="profile__info">
+                        <h1 class="profile__username">JohnDoe7563</h1>
+                        <span class="profile__status">Member</span>
+                    </div>
+                    <div class="profile__actions">
+                        <button class="profile__action-btn profile__action-btn--heart">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="profile__action-btn profile__action-btn--message">
+                            <i class="far fa-comment"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Grid -->
+            <section class="achievements">
+                <div class="row g-2">
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Blast Reader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Hardcore Reader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Innocent Reader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Pervert Reader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Immoral Reader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Uploader</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Tagger</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Tagger</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Tagger</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <div class="achievement">
+                            <div class="achievement__badge">1</div>
+                            <span class="achievement__label">Tagger</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Sections -->
+            <div class="row mt-4">
+                <!-- Achievements Unlocked -->
+                <div class="col-md-6">
+                    <section class="content-section">
+                        <h2 class="content-section__title">Achievements Unlocked</h2>
+                        <div class="achievement-list">
+                            <div class="achievement-list__item">
+                                <span class="achievement-list__number">#2</span>
+                                <span class="achievement-list__text">Abandon: 100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I (English)</span>
+                            </div>
+                            <div class="achievement-list__item">
+                                <span class="achievement-list__number">#3</span>
+                                <span class="achievement-list__text">Abandon: 100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I (English)</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Recent Comments -->
+                <div class="col-md-6">
+                    <section class="content-section">
+                        <h2 class="content-section__title">Recent comments</h2>
+                        <div class="comment-list">
+                            <div class="comment-list__item">
+                                <span class="comment-list__hash">#</span>
+                                <span class="comment-list__text">message</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Public Gallery -->
+            <section class="gallery">
+                <div class="gallery__header">
+                    <h2 class="gallery__title">
+                        <span class="gallery__indicator"></span>
+                        Public
+                    </h2>
+                    <button class="gallery__mood-btn">Mood viewer</button>
+                </div>
+                
+                <div class="gallery__container">
+                    <button class="gallery__nav gallery__nav--prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="gallery__grid" id="galleryGrid">
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery__item">
+                            <img src="https://cdn-imgix.headout.com/media/images/c9db3cea62133b6a6bb70597326b4a34-388-dubai-img-worlds-of-adventure-tickets-01.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&fit=crop&ar=16%3A9&crop=faces" alt="Gallery Item" class="gallery__image">
+                            <div class="gallery__overlay">
+                                <h3 class="gallery__item-title">Abandon:</h3>
+                                <p class="gallery__item-subtitle">100 Nuki Shinai to Derarenai Futatsu na Kyoushitsu I</p>
+                                <div class="gallery__item-meta">
+                                    <span class="gallery__item-pages">26 pages</span>
+                                    <span class="gallery__item-lang">English</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="gallery__nav gallery__nav--next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Gallery Navigation
+        class GalleryNavigator {
+            constructor() {
+                this.galleryGrid = document.getElementById('galleryGrid');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.scrollAmount = 220; // Width of one item plus gap
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.prevBtn && this.nextBtn && this.galleryGrid) {
+                    this.prevBtn.addEventListener('click', () => this.scrollPrev());
+                    this.nextBtn.addEventListener('click', () => this.scrollNext());
+                    
+                    // Update button states on scroll
+                    this.galleryGrid.addEventListener('scroll', () => this.updateButtonStates());
+                    this.updateButtonStates();
+                }
+            }
+            
+            scrollPrev() {
+                this.galleryGrid.scrollBy({
+                    left: -this.scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+            
+            scrollNext() {
+                this.galleryGrid.scrollBy({
+                    left: this.scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+            
+            updateButtonStates() {
+                const { scrollLeft, scrollWidth, clientWidth } = this.galleryGrid;
+                
+                // Disable prev button if at start
+                this.prevBtn.style.opacity = scrollLeft <= 0 ? '0.5' : '1';
+                this.prevBtn.style.cursor = scrollLeft <= 0 ? 'not-allowed' : 'pointer';
+                
+                // Disable next button if at end
+                const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 1;
+                this.nextBtn.style.opacity = isAtEnd ? '0.5' : '1';
+                this.nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
+            }
+        }
+
+        // Profile Actions
+        class ProfileController {
+            constructor() {
+                this.heartBtn = document.querySelector('.profile__action-btn--heart');
+                this.messageBtn = document.querySelector('.profile__action-btn--message');
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.heartBtn) {
+                    this.heartBtn.addEventListener('click', this.handleLike);
+                }
+                
+                if (this.messageBtn) {
+                    this.messageBtn.addEventListener('click', this.handleMessage);
+                }
+            }
+            
+            handleLike(e) {
+                const icon = e.currentTarget.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    e.currentTarget.style.color = '#e53e3e';
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    e.currentTarget.style.color = '#a0aec0';
+                }
+            }
+            
+            handleMessage() {
+                console.log('Message user clicked');
+                alert('Message functionality would be implemented here');
+            }
+        }
+
+        // Header Interactions
+        class HeaderController {
+            constructor() {
+                this.searchBtn = document.querySelector('.header__search-btn');
+                this.messageBtn = document.querySelector('.header__message-btn');
+                this.menuToggle = document.querySelector('.header__menu-toggle');
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.searchBtn) {
+                    this.searchBtn.addEventListener('click', this.handleSearch);
+                }
+                
+                if (this.messageBtn) {
+                    this.messageBtn.addEventListener('click', this.handleMessages);
+                }
+                
+                if (this.menuToggle) {
+                    this.menuToggle.addEventListener('click', this.handleMenuToggle);
+                }
+            }
+            
+            handleSearch() {
+                console.log('Search clicked');
+                alert('Search functionality would be implemented here');
+            }
+            
+            handleMessages() {
+                console.log('Messages clicked');
+                alert('Messages functionality would be implemented here');
+            }
+            
+            handleMenuToggle() {
+                console.log('Menu toggle clicked');
+                alert('Mobile menu would be implemented here');
+            }
+        }
+
+        // Gallery Item Interactions
+        class GalleryController {
+            constructor() {
+                this.galleryItems = document.querySelectorAll('.gallery__item');
+                this.moodBtn = document.querySelector('.gallery__mood-btn');
+                
+                this.init();
+            }
+            
+            init() {
+                this.galleryItems.forEach(item => {
+                    item.addEventListener('click', this.handleItemClick);
+                });
+                
+                if (this.moodBtn) {
+                    this.moodBtn.addEventListener('click', this.handleMoodViewer);
+                }
+            }
+            
+            handleItemClick(e) {
+                const item = e.currentTarget;
+                const title = item.querySelector('.gallery__item-title')?.textContent;
+                console.log(`Gallery item clicked: ${title}`);
+                alert(`Viewing: ${title}`);
+            }
+            
+            handleMoodViewer() {
+                console.log('Mood viewer clicked');
+                alert('Mood viewer functionality would be implemented here');
+            }
+        }
+
+        // Achievement Hover Effects
+        class AchievementAnimator {
+            constructor() {
+                this.achievements = document.querySelectorAll('.achievement');
+                this.init();
+            }
+            
+            init() {
+                this.achievements.forEach((achievement, index) => {
+                    // Add stagger animation delay
+                    achievement.style.animationDelay = `${index * 0.1}s`;
+                    
+                    // Add click handler
+                    achievement.addEventListener('click', (e) => {
+                        const label = e.currentTarget.querySelector('.achievement__label').textContent;
+                        alert(`Achievement: ${label}`);
+                    });
+                });
+            }
+        }
+
+        // Initialize all components when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new GalleryNavigator();
+            new ProfileController();
+            new HeaderController();
+            new GalleryController();
+            new AchievementAnimator();
+            
+            // Add loading animation
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+        });
+
+        // Add keyboard navigation for gallery
+        document.addEventListener('keydown', (e) => {
+            const galleryGrid = document.getElementById('galleryGrid');
+            if (!galleryGrid) return;
+            
+            if (e.key === 'ArrowLeft') {
+                galleryGrid.scrollBy({ left: -220, behavior: 'smooth' });
+            } else if (e.key === 'ArrowRight') {
+                galleryGrid.scrollBy({ left: 220, behavior: 'smooth' });
+            }
+        });
+
+        // Handle window resize for responsive gallery
+        window.addEventListener('resize', () => {
+            const galleryNavigator = new GalleryNavigator();
+        });
+    </script>
+</body>
+</html>

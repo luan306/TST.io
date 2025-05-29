@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+            </div>
+            
+            
+        </div>
+    </nav>
+     <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Banner Text -->
+            <div class="banner-text">
+                <h1 class="banner-text__title">Banner</h1>
+                <p class="banner-text__subtitle">1920 x 1080</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="login-form">
+                <div class="login-form__header">
+                    <h2 class="login-form__title">Log in</h2>
+                    <p class="login-form__subtitle">Please enter your credentials to log in.</p>
+                </div>
+
+                <form>
+                    <!-- Username Field -->
+                    <div class="login-form__field">
+                        <i class="fas fa-user login-form__icon"></i>
+                        <input 
+                            type="text" 
+                            class="login-form__input" 
+                            placeholder="Username or Email"
+                            required
+                        >
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="login-form__field">
+                        <i class="fas fa-lock login-form__icon"></i>
+                        <input 
+                            type="password" 
+                            class="login-form__input" 
+                            placeholder="Password"
+                            required
+                        >
+                    </div>
+
+                    <!-- Options -->
+                    <div class="login-form__options">
+                        <label class="login-form__checkbox">
+                            <input type="checkbox" id="remember">
+                            <span>Remember</span>
+                        </label>
+                        <a href="#" class="login-form__forgot">Forgot your password</a>
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <button type="submit" class="login-form__btn">Sign in</button>
+                </form>
+
+                <!-- Social Login Divider -->
+                <div class="login-form__divider">
+                    <span>Or</span>
+                </div>
+
+                <!-- Social Login Buttons -->
+                <div class="login-form__social">
+                    <button class="login-form__social-btn login-form__social-btn--facebook" title="Login with Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="login-form__social-btn login-form__social-btn--telegram" title="Login with Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </button>
+                    <button class="login-form__social-btn login-form__social-btn--instagram" title="Login with Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </button>
+                </div>
+
+                <!-- Sign Up Divider -->
+                <div class="login-form__divider">
+                    <span>Or</span>
+                </div>
+
+                <!-- Sign Up Link -->
+                <div class="login-form__signup">
+                    <a href="#" class="login-form__signup-btn">+ Sign up</a>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="login-form__terms">
+                    By continuing you confirming that you have read our<br>
+                    <a href="#">Terms & Conditions</a> and <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+     <script>
+        // Form validation and submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = this.querySelector('input[type="text"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            
+            if (username && password) {
+                // Simulate login process
+                console.log('Login attempt:', { username, password });
+                alert('Login functionality would be implemented here');
+                
+                // Redirect to main page after successful login
+                // window.location.href = 'index.html';
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Social login handlers
+        document.querySelectorAll('.login-form__social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const platform = this.classList.contains('login-form__social-btn--facebook') ? 'Facebook' :
+                               this.classList.contains('login-form__social-btn--telegram') ? 'Telegram' : 'Instagram';
+                
+                console.log(`${platform} login clicked`);
+                alert(`${platform} login would be implemented here`);
+            });
+        });
+
+        // Forgot password handler
+        document.querySelector('.login-form__forgot').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Forgot password functionality would be implemented here');
+        });
+
+        // Sign up handler
+        document.querySelector('.login-form__signup-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Sign up page would be implemented here');
+        });
+
+        // Header brand click handler
+        
+    </script> 
+</body>
+</html>

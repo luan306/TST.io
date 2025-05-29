@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #2d3748;
+            border-bottom: 1px solid #4a5568;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .navbar {
+            padding: 0.5rem 1rem;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header__menu-toggle {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .header__logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .header__subtitle {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .header__actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header__search-btn,
+        .header__message-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .header__notification-badges {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e53e3e;
+            color: #ffffff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header__avatar-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Layout Styles */
+        /* .layout {
+            display: flex;
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+        } */
+
+        
+    </style>
+</head>
+<body>
+ 
+
+<!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+ <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal__content">
+            <button class="search-modal__close" onclick="closeSearchModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="search-modal__header">
+                <input type="text" class="search-modal__search-bar" placeholder="HENTAI" id="searchInput">
+            </div>
+            
+            <div class="search-modal__filters">
+                <button class="search-modal__filter-btn search-modal__filter-btn--active">Tags</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Gender</button>
+                <button class="search-modal__filter-btn">Blacklist</button>
+                <button class="search-modal__filter-btn" onclick="resetAllFilters()">Reset all</button>
+                <button class="search-modal__filter-btn">Sort</button>
+            </div>
+            
+            <div class="search-modal__section">
+                <h3 class="search-modal__section-title">Include Tags</h3>
+                <p class="search-modal__section-subtitle">Find things that have all of these tags</p>
+                
+                <div class="search-modal__tags" id="tagsList">
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COSPLAY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANIME</button>
+                    <button class="search-modal__tag search-modal__tag--active" onclick="toggleTag(this)">MANGA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GAMES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">3D</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">AMATEUR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">PROFESSIONAL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">LOLI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MILF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YURI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">YAOI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TENTACLES</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BUKKAKE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">GURO</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ROMANCE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">COMEDY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DRAMA</button>
+                    <button class="search-modal__tag search-modal__tag--excluded" onclick="toggleTag(this)">INCEST</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FANTASY</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SCHOOL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OFFICE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">OUTDOOR</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SWIMSUIT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">UNIFORM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MAID</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">NURSE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TEACHER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">STUDENT</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MONSTER</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">DEMON</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ANGEL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ELF</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">CATGIRL</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FUTANARI</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">TRAP</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">FEMDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">MALEDOM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BONDAGE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">BDSM</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">VANILLA</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">HARDCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">SOFTCORE</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">ECCHI</button>
+                </div>
+            </div>
+            
+            <div class="search-modal__broad-matches">
+                <div>
+                    <div class="search-modal__broad-matches-text">Broad Matches</div>
+                    <div class="search-modal__broad-matches-subtitle">Show results that also contain related tags if they contain most of the selected tags</div>
+                </div>
+                <div class="search-modal__toggle" id="broadMatchesToggle" onclick="toggleBroadMatches()">
+                    <div class="search-modal__toggle-slider"></div>
+                </div>
+            </div>
+            
+            <div class="search-modal__actions">
+                <button class="search-modal__btn" onclick="resetAllFilters()">Reset All</button>
+                <button class="search-modal__btn" onclick="closeSearchModal()">Cancel</button>
+                <button class="search-modal__btn search-modal__btn--primary" onclick="applySearch()">Apply</button>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+                <nav class="header__breadcrumb">
+                        <span class="header__subtitle" id="headerSubtitle">User • Transaction</span>
+                    </nav>
+            </div>
+            
+            <!-- Right side items -->
+            <div class="d-flex align-items-center">
+                <!-- Search Icon -->
+                <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
+                
+                <!-- Toggle button for mobile -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-ellipsis-v text-light"></i>
+                </button>
+                
+                <!-- Navigation items -->
+                <div class="header__right">
+       
+                    <div class="header__icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="header__notification-badge">1</span>
+                    </div>
+                    <div class="header__avatar"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Layout Container -->
+    <div class="layout">
+        <!-- sidebars -->
+        <aside class="sidebars" id="sidebars">
+            <nav class="sidebars__nav">
+                <ul class="sidebars__menu">
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="overview">Account overview</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link sidebars__link--active" data-page="transaction">Transaction</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="list">List</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="tags">Tags</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="recommendations">Recommendations</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="notifications">Notifications</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="message">Message</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="preferences">Preferences</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="setting">Setting</button>
+                    </li>
+                    <li class="sidebars__item">
+                        <button class="sidebars__link" data-page="logout">Logout</button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-contents">
+            <!-- Transaction Page (Default) -->
+            <div class="page-content page-content--active" id="transactionPage">
+                
+                <!-- Page Header -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Price table
+                    </h1>
+                </header>
+
+                <!-- Pricing Section -->
+                <section class="pricing">
+                    <!-- Free Plan -->
+                    <div class="pricing-card pricing-card--free">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">0</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--excluded">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Basic Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-money-bag"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">19</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Premium Plan (Featured) -->
+                    <div class="pricing-card pricing-card--featured">
+                        <div class="pricing-card__badges">BEST</div>
+                        
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">28</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">39</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+                </section>
+                <!-- <div class="text-center mt-4">
+                    <button class="btn btn-outline-light" id="viewPaymentHistory">
+                        <i class="fas fa-chart-line me-2"></i>
+                        View Payment History
+                    </button>
+                </div> -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Overview Your Payment
+                    </h1>
+                    <p class="page-header__subtitle">All Transaction</p>
+                </header>
+                <!-- Chart Section -->
+                <section class="chart-sections">
+                    <div class="chart-containers">
+                        <canvas id="paymentChart" class="chart-canvas"></canvas>
+                    </div>
+                </section>
+
+                <!-- Transaction List -->
+                <section class="transaction-lists">
+                    <div class="transaction-lists__header">
+                        <h2 class="transaction-lists__title">Recent Transactions</h2>
+                    </div>
+                    
+                    <div id="transactionContainer">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Overview Page -->
+            <div class="page-content" id="overviewPage">
+                  <!-- Profile Header -->
+            <div class="profile-headers">
+                <div class="profile-headers__info">
+                    <h1>JohnDoe7563</h1>
+                    <p>Member</p>
+                </div>
+                <button class="profile-headers__btn"><a class="profile-headers__item" href="acc_public.html">Public Account</a></button>
+            </div>
+
+            <!-- badgess Section -->
+            <section class="badgess">
+                <div class="badgess__grid">
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Blaze Newbie</h3>
+                            <p class="badges__subtitle">Welcome to the community</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Innocent Reader</h3>
+                            <p class="badges__subtitle">First content viewed</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Innocent Reader</h3>
+                            <p class="badges__subtitle">Regular content consumer</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Innocent Reader</h3>
+                            <p class="badges__subtitle">Active community member</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Uploader</h3>
+                            <p class="badges__subtitle">First content uploaded</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Tagger</h3>
+                            <p class="badges__subtitle">Content organization helper</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Tagger</h3>
+                            <p class="badges__subtitle">Tag contributor</p>
+                        </div>
+                    </div>
+                    <div class="badges">
+                        <div class="badges__icon">1</div>
+                        <div class="badges__info">
+                            <h3 class="badges__title">Tagger</h3>
+                            <p class="badges__subtitle">Expert tagger</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="statistics">
+                <div class="statistics__header">
+                    <h2 class="statistics__title">Your Statistics</h2>
+                </div>
+                <div class="statistics__chart-containers">
+                    <canvas id="statisticsChart"></canvas>
+                </div>
+                <div class="statistics__legend">
+                    <div class="statistics__legend-item">
+                        <div class="statistics__legend-color statistics__legend-color--view"></div>
+                        <span>View</span>
+                    </div>
+                    <div class="statistics__legend-item">
+                        <div class="statistics__legend-color statistics__legend-color--favorite"></div>
+                        <span>Favorite</span>
+                    </div>
+                    <div class="statistics__legend-item">
+                        <div class="statistics__legend-color statistics__legend-color--download"></div>
+                        <span>Download</span>
+                    </div>
+                </div>
+            </section>
+
+
+            </div>
+
+            <!-- Other Pages Placeholder -->
+            <div class="page-content" id="listPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Public Account
+                    </h1>
+                </header>
+                       <!-- Main Content -->
+        
+          
+            </div>
+
+            <div class="page-content" id="tagsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Tags Management
+                    </h1>
+                </header>
+                <p>Tags page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="recommendationsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Recommendations
+                    </h1>
+                </header>
+                <p>Recommendations page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="notificationsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Notifications
+                    </h1>
+                </header>
+                <p>Notifications page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="messagePage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Messages
+                    </h1>
+                </header>
+                <p>Messages page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="preferencesPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Preferences
+                    </h1>
+                </header>
+                <p>Preferences page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="settingPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Settings
+                    </h1>
+                </header>
+                <p>Settings page content would go here...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Page Manager
+        class PageManager {
+            constructor() {
+                this.currentPage = 'transaction';
+                this.pages = {
+                    'overview': { title: 'Overview Your Payment', subtitle: 'User • Overview' },
+                    'transaction': { title: 'Price table', subtitle: 'User • Transaction' },
+                    'list': { title: 'List Management', subtitle: 'User • List' },
+                    'tags': { title: 'Tags Management', subtitle: 'User • Tags' },
+                    'recommendations': { title: 'Recommendations', subtitle: 'User • Recommendations' },
+                    'notifications': { title: 'Notifications', subtitle: 'User • Notifications' },
+                    'message': { title: 'Messages', subtitle: 'User • Messages' },
+                    'preferences': { title: 'Preferences', subtitle: 'User • Preferences' },
+                    'setting': { title: 'Settings', subtitle: 'User • Settings' }
+                };
+                this.headerSubtitle = document.getElementById('headerSubtitle');
+            }
+            
+            showPage(pageId) {
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('page-content--active');
+                });
+                
+                // Show target page
+                const targetPage = document.getElementById(pageId + 'Page');
+                if (targetPage) {
+                    targetPage.classList.add('page-content--active');
+                    this.currentPage = pageId;
+                    
+                    // Update header subtitle
+                    if (this.pages[pageId] && this.headerSubtitle) {
+                        this.headerSubtitle.textContent = this.pages[pageId].subtitle;
+                    }
+                    
+                    // Initialize page-specific functionality
+                    this.initializePage(pageId);
+                }
+            }
+            
+            initializePage(pageId) {
+                switch(pageId) {
+                    case 'overview':
+                        // Initialize chart and transactions
+                        setTimeout(() => {
+                            if (!window.chartController) {
+                                window.chartController = new ChartController();
+                            }
+                            if (!window.transactionController) {
+                                window.transactionController = new TransactionController();
+                            }
+                        }, 100);
+                        break;
+                    case 'transaction':
+                        // Initialize pricing functionality
+                        if (!window.pricingController) {
+                            window.pricingController = new PricingController();
+                        }
+                        break;
+                }
+            }
+        }
+
+        // Chart Controller
+        class ChartController {
+            constructor() {
+                this.canvas = document.getElementById('paymentChart');
+                this.chart = null;
+                this.init();
+            }
+            
+            init() {
+                if (this.canvas) {
+                    this.createChart();
+                }
+            }
+            
+            createChart() {
+                const ctx = this.canvas.getContext('2d');
+                
+                const data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Payment Amount',
+                        data: [25, 30, 28, 35, 39, 42, 38, 45, 40, 35, 38, 42],
+                        borderColor: '#e53e3e',
+                        backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.4,
+                        pointBackgroundColor: '#e53e3e',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                    }]
+                };
+                
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: '#2d3748',
+                                titleColor: '#ffffff',
+                                bodyColor: '#ffffff',
+                                borderColor: '#e53e3e',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `$${context.parsed.y}.00`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: '#4a5568',
+                                    borderColor: '#4a5568'
+                                },
+                                ticks: {
+                                    color: '#a0aec0',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: '#4a5568',
+                                    borderColor: '#4a5568'
+                                },
+                                ticks: {
+                                    color: '#a0aec0',
+                                    font: {
+                                        size: 12
+                                    },
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        }
+                    }
+                };
+                
+                this.chart = new Chart(ctx, config);
+            }
+        }
+
+        // Transaction Controller
+        class TransactionController {
+            constructor() {
+                this.container = document.getElementById('transactionContainer');
+                this.transactions = [
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Premium subscription',
+                        amount: 28.00,
+                        date: '3 Aug 14:30 pm'
+                    },
+                    {
+                        type: 'Basic plan',
+                        amount: 19.00,
+                        date: '2 Aug 11:45 am'
+                    }
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.container) {
+                    setTimeout(() => {
+                        this.renderTransactions();
+                    }, 1500);
+                }
+            }
+            
+            renderTransactions() {
+                this.container.innerHTML = '';
+                
+                this.transactions.forEach((transaction, index) => {
+                    const transactionElement = this.createTransactionElement(transaction, index);
+                    this.container.appendChild(transactionElement);
+                });
+                
+                const items = this.container.querySelectorAll('.transaction-item');
+                items.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(-20px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, index * 100);
+                });
+            }
+            
+            createTransactionElement(transaction, index) {
+                const item = document.createElement('div');
+                item.className = 'transaction-item';
+                item.innerHTML = `
+                    <div class="transaction-item__info">
+                        <div class="transaction-item__type">${transaction.type}</div>
+                        <div class="transaction-item__label">Date</div>
+                    </div>
+                    <div class="transaction-item__details">
+                        <div class="transaction-item__amount">$ ${transaction.amount.toFixed(2)}</div>
+                        <div class="transaction-item__date">${transaction.date}</div>
+                    </div>
+                `;
+                
+                item.addEventListener('click', () => {
+                    alert(`Transaction Details:\nType: ${transaction.type}\nAmount: $${transaction.amount.toFixed(2)}\nDate: ${transaction.date}`);
+                });
+                
+                return item;
+            }
+        }
+
+        // Pricing Controller
+        class PricingController {
+            constructor() {
+                this.pricingCards = document.querySelectorAll('.pricing-card');
+                this.buyButtons = document.querySelectorAll('.pricing-card__button');
+                
+                this.init();
+            }
+            
+            init() {
+                this.buyButtons.forEach((button, index) => {
+                    button.addEventListener('click', (e) => this.handlePurchase(e, index));
+                });
+                
+                this.pricingCards.forEach(card => {
+                    card.addEventListener('mouseenter', this.handleCardHover);
+                    card.addEventListener('mouseleave', this.handleCardLeave);
+                });
+                
+                // Add payment history button handler
+                const historyBtn = document.getElementById('viewPaymentHistory');
+                if (historyBtn) {
+                    historyBtn.addEventListener('click', () => {
+                        window.sidebarsController.sidebarsLinks.forEach(link => {
+                            link.classList.remove('sidebars__link--active');
+                            if (link.dataset.page === 'overview') {
+                                link.classList.add('sidebars__link--active');
+                            }
+                        });
+                        window.sidebarsController.pageManager.showPage('overview');
+                    });
+                }
+            }
+            
+            handlePurchase(e, index) {
+                const card = e.currentTarget.closest('.pricing-card');
+                const plan = card.querySelector('.pricing-card__plan').textContent;
+                const price = card.querySelector('.pricing-card__amount').textContent;
+                
+                e.currentTarget.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                e.currentTarget.disabled = true;
+                
+                setTimeout(() => {
+                    e.currentTarget.innerHTML = 'BUY NOW';
+                    e.currentTarget.disabled = false;
+                    
+                    // Show success message and redirect to overview
+                    alert(`Payment successful for ${plan} plan ($${price}/mo)!\nRedirecting to payment overview...`);
+                    
+                    // Navigate to overview page
+                    window.sidebarsController.sidebarsLinks.forEach(link => {
+                        link.classList.remove('sidebars__link--active');
+                        if (link.dataset.page === 'overview') {
+                            link.classList.add('sidebars__link--active');
+                        }
+                    });
+                    window.sidebarsController.pageManager.showPage('overview');
+                    
+                }, 2000);
+            }
+            
+            handleCardHover(e) {
+                const card = e.currentTarget;
+                if (!card.classList.contains('pricing-card--featured')) {
+                    card.style.borderColor = '#b83280';
+                }
+            }
+            
+            handleCardLeave(e) {
+                const card = e.currentTarget;
+                if (!card.classList.contains('pricing-card--featured')) {
+                    card.style.borderColor = '#4a5568';
+                }
+            }
+        }
+
+        // sidebars Navigation Controller
+        class sidebarsController {
+            constructor() {
+                this.sidebars = document.getElementById('sidebars');
+                this.menuToggle = document.getElementById('menuToggle');
+                this.sidebarsOverlay = document.getElementById('sidebarsOverlay');
+                this.sidebarsLinks = document.querySelectorAll('.sidebars__link');
+                this.pageManager = new PageManager();
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.menuToggle) {
+                    this.menuToggle.addEventListener('click', () => this.togglesidebars());
+                }
+                
+                if (this.sidebarsOverlay) {
+                    this.sidebarsOverlay.addEventListener('click', () => this.closesidebars());
+                }
+                
+                this.sidebarsLinks.forEach(link => {
+                    link.addEventListener('click', (e) => this.handleNavigation(e));
+                });
+                
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        this.closesidebars();
+                    }
+                });
+            }
+            
+            togglesidebars() {
+                this.sidebars.classList.toggle('sidebars--open');
+                this.sidebarsOverlay.classList.toggle('sidebars-overlay--visible');
+                document.body.style.overflow = this.sidebars.classList.contains('sidebars--open') ? 'hidden' : '';
+            }
+            
+            closesidebars() {
+                this.sidebars.classList.remove('sidebars--open');
+                this.sidebarsOverlay.classList.remove('sidebars-overlay--visible');
+                document.body.style.overflow = '';
+            }
+            
+            handleNavigation(e) {
+                const clickedLink = e.currentTarget;
+                const page = clickedLink.dataset.page;
+                
+                // Handle logout
+                if (page === 'logout') {
+                    if (confirm('Are you sure you want to logout?')) {
+                        alert('Logout functionality would be implemented here');
+                    }
+                    return;
+                }
+                
+                // Remove active class from all links
+                this.sidebarsLinks.forEach(link => {
+                    link.classList.remove('sidebars__link--active');
+                });
+                
+                // Add active class to clicked link
+                clickedLink.classList.add('sidebars__link--active');
+                
+                // Show the page
+                this.pageManager.showPage(page);
+                
+                // Close sidebars on mobile after navigation
+                if (window.innerWidth <= 768) {
+                    this.closesidebars();
+                }
+            }
+        }
+
+        // Header Controller
+        class HeaderController {
+            constructor() {
+                this.searchBtn = document.querySelector('.header__search-btn');
+                this.messageBtn = document.querySelector('.header__message-btn');
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.searchBtn) {
+                    this.searchBtn.addEventListener('click', this.handleSearch);
+                }
+                
+                if (this.messageBtn) {
+                    this.messageBtn.addEventListener('click', this.handleMessages);
+                }
+            }
+            
+            handleSearch() {
+                alert('Search functionality would be implemented here');
+            }
+            
+            handleMessages() {
+                alert('Messages functionality would be implemented here');
+            }
+        }
+
+        // Initialize all controllers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.sidebarsController = new sidebarsController();
+            window.headerController = new HeaderController();
+            window.pricingController = new PricingController();
+            
+            // Add loading animation
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Show overview page by default
+            window.sidebarsController.sidebarsLinks[0].classList.add('sidebars__link--active');
+            window.sidebarsController.pageManager.showPage('overview');
+        });
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const sidebars = document.getElementById('sidebars');
+                if (sidebars.classList.contains('sidebars--open')) {
+                    window.sidebarsController.closesidebars();
+                }
+            }
+        });
+
+
+        // account overview
+          // Statistics Chart
+        const ctx = document.getElementById('statisticsChart').getContext('2d');
+        
+        // Generate sample data for the last 12 months
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        const viewData = [120, 150, 180, 200, 170, 190, 220, 250, 230, 210, 240, 260];
+        const favoriteData = [20, 35, 45, 60, 55, 70, 65, 80, 75, 85, 90, 95];
+        const downloadData = [10, 15, 25, 30, 28, 35, 40, 45, 42, 48, 50, 55];
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'View',
+                        data: viewData,
+                        borderColor: '#38b2ac',
+                        backgroundColor: 'rgba(56, 178, 172, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Favorite',
+                        data: favoriteData,
+                        borderColor: '#e53e3e',
+                        backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Download',
+                        data: downloadData,
+                        borderColor: '#ed8936',
+                        backgroundColor: 'rgba(237, 137, 54, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: '#4a5568',
+                            borderColor: '#4a5568'
+                        },
+                        ticks: {
+                            color: '#a0aec0'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#4a5568',
+                            borderColor: '#4a5568'
+                        },
+                        ticks: {
+                            color: '#a0aec0'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 4,
+                        hoverRadius: 6
+                    }
+                }
+            }
+        });
+
+        // sidebars navigation
+        document.querySelectorAll('.sidebars__nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.textContent.trim() === 'Logout') {
+                    return; // Allow normal navigation for logout
+                }
+                
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.sidebars__nav-link').forEach(l => {
+                    l.classList.remove('sidebars__nav-link--active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('sidebars__nav-link--active');
+                
+                console.log('Navigate to:', this.textContent.trim());
+            });
+        });
+
+        // Header icons functionality
+        document.querySelector('.fa-search').addEventListener('click', function() {
+            console.log('Search clicked');
+        });
+
+        document.querySelector('.fa-envelope').addEventListener('click', function() {
+            console.log('Messages clicked');
+        });
+
+        document.querySelector('.header__avatar').addEventListener('click', function() {
+            console.log('Avatar clicked - show user menu');
+        });
+
+        // Public Account button
+        document.querySelector('.profile-headers__btn').addEventListener('click', function() {
+            if (this.textContent === 'Public Account') {
+                this.textContent = 'Private Account';
+                this.style.backgroundColor = '#e53e3e';
+                this.style.borderColor = '#e53e3e';
+                this.style.color = '#ffffff';
+            } else {
+                this.textContent = 'Public Account';
+                this.style.backgroundColor = 'transparent';
+                this.style.borderColor = '#4a5568';
+                this.style.color = '#e2e8f0';
+            }
+        });
+
+        // badges click handlers
+        document.querySelectorAll('.badges').forEach(badges => {
+            badges.addEventListener('click', function() {
+                const title = this.querySelector('.badges__title').textContent;
+                console.log('badges clicked:', title);
+            });
+        });
+
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

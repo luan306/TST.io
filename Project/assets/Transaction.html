@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #2d3748;
+            border-bottom: 1px solid #4a5568;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .navbar {
+            padding: 0.5rem 1rem;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header__menu-toggle {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .header__logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .header__subtitle {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .header__actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header__search-btn,
+        .header__message-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .header__notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e53e3e;
+            color: #ffffff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header__avatar-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Layout Styles */
+        .layout {
+            display: flex;
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #2d3748;
+            border-right: 1px solid #4a5568;
+            padding: 0;
+            position: fixed;
+            left: 0;
+            top: 70px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .sidebar__menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar__item {
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .sidebar__link {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar__link:hover {
+            background-color: #4a5568;
+            color: #ffffff;
+        }
+
+        .sidebar__link--active {
+            background-color: #b83280;
+            color: #ffffff;
+        }
+
+        .sidebar__link--active:hover {
+            background-color: #97266d;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 200px;
+            padding: 2rem;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-header__title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .page-header__indicator {
+            width: 4px;
+            height: 25px;
+            background-color: #e53e3e;
+            border-radius: 2px;
+        }
+
+        .page-header__subtitle {
+            color: #a0aec0;
+            font-size: 1rem;
+            margin-left: 1rem;
+        }
+
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+        }
+
+        .page-content--active {
+            display: block;
+        }
+
+        /* Pricing Cards Styles */
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .pricing-card {
+            background-color: #2d3748;
+            border: 2px solid #4a5568;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card--featured {
+            border-color: #b83280;
+            background: linear-gradient(135deg, #2d3748 0%, #3a4a5c 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-card--featured:hover {
+            transform: scale(1.05) translateY(-4px);
+        }
+
+        .pricing-card__badge {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 0 12px 0 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .pricing-card__header {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card__plan {
+            background-color: #4a5568;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        .pricing-card--featured .pricing-card__icon {
+            background-color: #b83280;
+        }
+
+        .pricing-card__price {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card__amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .pricing-card__currency {
+            font-size: 2rem;
+            vertical-align: top;
+        }
+
+        .pricing-card__period {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            vertical-align: bottom;
+        }
+
+        .pricing-card__divider {
+            width: 60px;
+            height: 2px;
+            background-color: #4a5568;
+            margin: 1.5rem auto;
+        }
+
+        .pricing-card--featured .pricing-card__divider {
+            background-color: #b83280;
+        }
+
+        .pricing-card__status {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card__status-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1rem;
+        }
+
+        .pricing-card__status-icon--included {
+            background-color: #48bb78;
+            color: #ffffff;
+        }
+
+        .pricing-card__status-icon--excluded {
+            background-color: #f56565;
+            color: #ffffff;
+        }
+
+        .pricing-card__description {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card__button {
+            background-color: #b83280;
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .pricing-card__button:hover {
+            background-color: #97266d;
+        }
+
+        .pricing-card--free .pricing-card__button {
+            background-color: #4a5568;
+        }
+
+        .pricing-card--free .pricing-card__button:hover {
+            background-color: #2d3748;
+        }
+
+        /* Chart Section Styles */
+        .chart-section {
+            background-color: #2d3748;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #4a5568;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-canvas {
+            background-color: transparent;
+        }
+
+        /* Transaction List Styles */
+        .transaction-list {
+            background-color: #2d3748;
+            border-radius: 12px;
+            border: 1px solid #4a5568;
+            overflow: hidden;
+        }
+
+        .transaction-list__header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #4a5568;
+            background-color: #374151;
+        }
+
+        .transaction-list__title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .transaction-item {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-item:hover {
+            background-color: #374151;
+        }
+
+        .transaction-item__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .transaction-item__type {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .transaction-item__label {
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .transaction-item__details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.3rem;
+        }
+
+        .transaction-item__amount {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #e53e3e;
+        }
+
+        .transaction-item__date {
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #4a5568;
+            border-top: 4px solid #e53e3e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar--open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .pricing {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pricing-card--featured {
+                transform: none;
+            }
+
+            .pricing-card--featured:hover {
+                transform: translateY(-4px);
+            }
+
+            .chart-section,
+            .transaction-list {
+                padding: 1rem;
+            }
+
+            .transaction-item {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .transaction-item__details {
+                align-items: flex-start;
+            }
+
+            .header__subtitle {
+                display: none;
+            }
+        }
+
+        /* Mobile Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .sidebar-overlay--visible {
+            display: block;
+        }
+
+        /* Loading Animation */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Page Transition */
+        .page-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .page-content--active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="header__brand">
+                    <button class="header__menu-toggle" type="button" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a class="header__logo" href="#">HENTAIBLAZE</a>
+                    <span class="header__subtitle" id="headerSubtitle">User • Transaction</span>
+                </div>
+                
+                <div class="header__actions">
+                    <button class="header__search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="header__message-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span class="header__notification-badge">4</span>
+                    </button>
+                    <div class="header__user-avatar">
+                        <img src="https://via.placeholder.com/40x40/6c757d/ffffff?text=U" alt="User Avatar" class="header__avatar-img">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Layout Container -->
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar__nav">
+                <ul class="sidebar__menu">
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="overview">Account overview</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link sidebar__link--active" data-page="transaction">Transaction</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="list">List</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="tags">Tags</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="recommendations">Recommendations</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="notifications">Notifications</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="message">Message</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="preferences">Preferences</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="setting">Setting</button>
+                    </li>
+                    <li class="sidebar__item">
+                        <button class="sidebar__link" data-page="logout">Logout</button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Transaction Page (Default) -->
+            <div class="page-content page-content--active" id="transactionPage">
+                <!-- Page Header -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Price table
+                    </h1>
+                </header>
+
+                <!-- Pricing Section -->
+                <section class="pricing">
+                    <!-- Free Plan -->
+                    <div class="pricing-card pricing-card--free">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">0</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--excluded">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Basic Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-money-bag"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">19</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Premium Plan (Featured) -->
+                    <div class="pricing-card pricing-card--featured">
+                        <div class="pricing-card__badge">BEST</div>
+                        
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">28</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="pricing-card">
+                        <div class="pricing-card__header">
+                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card__price">
+                            <span class="pricing-card__currency">$</span>
+                            <span class="pricing-card__amount">39</span>
+                            <span class="pricing-card__period">/mo</span>
+                        </div>
+                        
+                        <div class="pricing-card__divider"></div>
+                        
+                        <div class="pricing-card__status">
+                            <div class="pricing-card__status-icon pricing-card__status-icon--included">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="pricing-card__description">
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
+                        </p>
+                        
+                        <button class="pricing-card__button">BUY NOW</button>
+                    </div>
+                </section>
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-light" id="viewPaymentHistory">
+                        <i class="fas fa-chart-line me-2"></i>
+                        View Payment History
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overview Page -->
+            <div class="page-content" id="overviewPage">
+                <!-- Page Header -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Overview Your Payment
+                    </h1>
+                    <p class="page-header__subtitle">All Transaction</p>
+                </header>
+
+                <!-- Chart Section -->
+                <section class="chart-section">
+                    <div class="chart-container">
+                        <canvas id="paymentChart" class="chart-canvas"></canvas>
+                    </div>
+                </section>
+
+                <!-- Transaction List -->
+                <section class="transaction-list">
+                    <div class="transaction-list__header">
+                        <h2 class="transaction-list__title">Recent Transactions</h2>
+                    </div>
+                    
+                    <div id="transactionContainer">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Other Pages Placeholder -->
+            <div class="page-content" id="listPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        List Management
+                    </h1>
+                </header>
+                <p>List page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="tagsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Tags Management
+                    </h1>
+                </header>
+                <p>Tags page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="recommendationsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Recommendations
+                    </h1>
+                </header>
+                <p>Recommendations page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="notificationsPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Notifications
+                    </h1>
+                </header>
+                <p>Notifications page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="messagePage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Messages
+                    </h1>
+                </header>
+                <p>Messages page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="preferencesPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Preferences
+                    </h1>
+                </header>
+                <p>Preferences page content would go here...</p>
+            </div>
+
+            <div class="page-content" id="settingPage">
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Settings
+                    </h1>
+                </header>
+                <p>Settings page content would go here...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Page Manager
+        class PageManager {
+            constructor() {
+                this.currentPage = 'transaction';
+                this.pages = {
+                    'overview': { title: 'Overview Your Payment', subtitle: 'User • Overview' },
+                    'transaction': { title: 'Price table', subtitle: 'User • Transaction' },
+                    'list': { title: 'List Management', subtitle: 'User • List' },
+                    'tags': { title: 'Tags Management', subtitle: 'User • Tags' },
+                    'recommendations': { title: 'Recommendations', subtitle: 'User • Recommendations' },
+                    'notifications': { title: 'Notifications', subtitle: 'User • Notifications' },
+                    'message': { title: 'Messages', subtitle: 'User • Messages' },
+                    'preferences': { title: 'Preferences', subtitle: 'User • Preferences' },
+                    'setting': { title: 'Settings', subtitle: 'User • Settings' }
+                };
+                this.headerSubtitle = document.getElementById('headerSubtitle');
+            }
+            
+            showPage(pageId) {
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('page-content--active');
+                });
+                
+                // Show target page
+                const targetPage = document.getElementById(pageId + 'Page');
+                if (targetPage) {
+                    targetPage.classList.add('page-content--active');
+                    this.currentPage = pageId;
+                    
+                    // Update header subtitle
+                    if (this.pages[pageId] && this.headerSubtitle) {
+                        this.headerSubtitle.textContent = this.pages[pageId].subtitle;
+                    }
+                    
+                    // Initialize page-specific functionality
+                    this.initializePage(pageId);
+                }
+            }
+            
+            initializePage(pageId) {
+                switch(pageId) {
+                    case 'overview':
+                        // Initialize chart and transactions
+                        setTimeout(() => {
+                            if (!window.chartController) {
+                                window.chartController = new ChartController();
+                            }
+                            if (!window.transactionController) {
+                                window.transactionController = new TransactionController();
+                            }
+                        }, 100);
+                        break;
+                    case 'transaction':
+                        // Initialize pricing functionality
+                        if (!window.pricingController) {
+                            window.pricingController = new PricingController();
+                        }
+                        break;
+                }
+            }
+        }
+
+        // Chart Controller
+        class ChartController {
+            constructor() {
+                this.canvas = document.getElementById('paymentChart');
+                this.chart = null;
+                this.init();
+            }
+            
+            init() {
+                if (this.canvas) {
+                    this.createChart();
+                }
+            }
+            
+            createChart() {
+                const ctx = this.canvas.getContext('2d');
+                
+                const data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Payment Amount',
+                        data: [25, 30, 28, 35, 39, 42, 38, 45, 40, 35, 38, 42],
+                        borderColor: '#e53e3e',
+                        backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.4,
+                        pointBackgroundColor: '#e53e3e',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 8,
+                    }]
+                };
+                
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: '#2d3748',
+                                titleColor: '#ffffff',
+                                bodyColor: '#ffffff',
+                                borderColor: '#e53e3e',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(context) {
+                                        return `$${context.parsed.y}.00`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: '#4a5568',
+                                    borderColor: '#4a5568'
+                                },
+                                ticks: {
+                                    color: '#a0aec0',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: '#4a5568',
+                                    borderColor: '#4a5568'
+                                },
+                                ticks: {
+                                    color: '#a0aec0',
+                                    font: {
+                                        size: 12
+                                    },
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        }
+                    }
+                };
+                
+                this.chart = new Chart(ctx, config);
+            }
+        }
+
+        // Transaction Controller
+        class TransactionController {
+            constructor() {
+                this.container = document.getElementById('transactionContainer');
+                this.transactions = [
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Vip member',
+                        amount: 39.00,
+                        date: '4 Aug 9:15 am'
+                    },
+                    {
+                        type: 'Premium subscription',
+                        amount: 28.00,
+                        date: '3 Aug 14:30 pm'
+                    },
+                    {
+                        type: 'Basic plan',
+                        amount: 19.00,
+                        date: '2 Aug 11:45 am'
+                    }
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.container) {
+                    setTimeout(() => {
+                        this.renderTransactions();
+                    }, 1500);
+                }
+            }
+            
+            renderTransactions() {
+                this.container.innerHTML = '';
+                
+                this.transactions.forEach((transaction, index) => {
+                    const transactionElement = this.createTransactionElement(transaction, index);
+                    this.container.appendChild(transactionElement);
+                });
+                
+                const items = this.container.querySelectorAll('.transaction-item');
+                items.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(-20px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, index * 100);
+                });
+            }
+            
+            createTransactionElement(transaction, index) {
+                const item = document.createElement('div');
+                item.className = 'transaction-item';
+                item.innerHTML = `
+                    <div class="transaction-item__info">
+                        <div class="transaction-item__type">${transaction.type}</div>
+                        <div class="transaction-item__label">Date</div>
+                    </div>
+                    <div class="transaction-item__details">
+                        <div class="transaction-item__amount">$ ${transaction.amount.toFixed(2)}</div>
+                        <div class="transaction-item__date">${transaction.date}</div>
+                    </div>
+                `;
+                
+                item.addEventListener('click', () => {
+                    alert(`Transaction Details:\nType: ${transaction.type}\nAmount: $${transaction.amount.toFixed(2)}\nDate: ${transaction.date}`);
+                });
+                
+                return item;
+            }
+        }
+
+        // Pricing Controller
+        class PricingController {
+            constructor() {
+                this.pricingCards = document.querySelectorAll('.pricing-card');
+                this.buyButtons = document.querySelectorAll('.pricing-card__button');
+                
+                this.init();
+            }
+            
+            init() {
+                this.buyButtons.forEach((button, index) => {
+                    button.addEventListener('click', (e) => this.handlePurchase(e, index));
+                });
+                
+                this.pricingCards.forEach(card => {
+                    card.addEventListener('mouseenter', this.handleCardHover);
+                    card.addEventListener('mouseleave', this.handleCardLeave);
+                });
+                
+                // Add payment history button handler
+                const historyBtn = document.getElementById('viewPaymentHistory');
+                if (historyBtn) {
+                    historyBtn.addEventListener('click', () => {
+                        window.sidebarController.sidebarLinks.forEach(link => {
+                            link.classList.remove('sidebar__link--active');
+                            if (link.dataset.page === 'overview') {
+                                link.classList.add('sidebar__link--active');
+                            }
+                        });
+                        window.sidebarController.pageManager.showPage('overview');
+                    });
+                }
+            }
+            
+            handlePurchase(e, index) {
+                const card = e.currentTarget.closest('.pricing-card');
+                const plan = card.querySelector('.pricing-card__plan').textContent;
+                const price = card.querySelector('.pricing-card__amount').textContent;
+                
+                e.currentTarget.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                e.currentTarget.disabled = true;
+                
+                setTimeout(() => {
+                    e.currentTarget.innerHTML = 'BUY NOW';
+                    e.currentTarget.disabled = false;
+                    
+                    // Show success message and redirect to overview
+                    alert(`Payment successful for ${plan} plan ($${price}/mo)!\nRedirecting to payment overview...`);
+                    
+                    // Navigate to overview page
+                    window.sidebarController.sidebarLinks.forEach(link => {
+                        link.classList.remove('sidebar__link--active');
+                        if (link.dataset.page === 'overview') {
+                            link.classList.add('sidebar__link--active');
+                        }
+                    });
+                    window.sidebarController.pageManager.showPage('overview');
+                    
+                }, 2000);
+            }
+            
+            handleCardHover(e) {
+                const card = e.currentTarget;
+                if (!card.classList.contains('pricing-card--featured')) {
+                    card.style.borderColor = '#b83280';
+                }
+            }
+            
+            handleCardLeave(e) {
+                const card = e.currentTarget;
+                if (!card.classList.contains('pricing-card--featured')) {
+                    card.style.borderColor = '#4a5568';
+                }
+            }
+        }
+
+        // Sidebar Navigation Controller
+        class SidebarController {
+            constructor() {
+                this.sidebar = document.getElementById('sidebar');
+                this.menuToggle = document.getElementById('menuToggle');
+                this.sidebarOverlay = document.getElementById('sidebarOverlay');
+                this.sidebarLinks = document.querySelectorAll('.sidebar__link');
+                this.pageManager = new PageManager();
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.menuToggle) {
+                    this.menuToggle.addEventListener('click', () => this.toggleSidebar());
+                }
+                
+                if (this.sidebarOverlay) {
+                    this.sidebarOverlay.addEventListener('click', () => this.closeSidebar());
+                }
+                
+                this.sidebarLinks.forEach(link => {
+                    link.addEventListener('click', (e) => this.handleNavigation(e));
+                });
+                
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        this.closeSidebar();
+                    }
+                });
+            }
+            
+            toggleSidebar() {
+                this.sidebar.classList.toggle('sidebar--open');
+                this.sidebarOverlay.classList.toggle('sidebar-overlay--visible');
+                document.body.style.overflow = this.sidebar.classList.contains('sidebar--open') ? 'hidden' : '';
+            }
+            
+            closeSidebar() {
+                this.sidebar.classList.remove('sidebar--open');
+                this.sidebarOverlay.classList.remove('sidebar-overlay--visible');
+                document.body.style.overflow = '';
+            }
+            
+            handleNavigation(e) {
+                const clickedLink = e.currentTarget;
+                const page = clickedLink.dataset.page;
+                
+                // Handle logout
+                if (page === 'logout') {
+                    if (confirm('Are you sure you want to logout?')) {
+                        alert('Logout functionality would be implemented here');
+                    }
+                    return;
+                }
+                
+                // Remove active class from all links
+                this.sidebarLinks.forEach(link => {
+                    link.classList.remove('sidebar__link--active');
+                });
+                
+                // Add active class to clicked link
+                clickedLink.classList.add('sidebar__link--active');
+                
+                // Show the page
+                this.pageManager.showPage(page);
+                
+                // Close sidebar on mobile after navigation
+                if (window.innerWidth <= 768) {
+                    this.closeSidebar();
+                }
+            }
+        }
+
+        // Header Controller
+        class HeaderController {
+            constructor() {
+                this.searchBtn = document.querySelector('.header__search-btn');
+                this.messageBtn = document.querySelector('.header__message-btn');
+                
+                this.init();
+            }
+            
+            init() {
+                if (this.searchBtn) {
+                    this.searchBtn.addEventListener('click', this.handleSearch);
+                }
+                
+                if (this.messageBtn) {
+                    this.messageBtn.addEventListener('click', this.handleMessages);
+                }
+            }
+            
+            handleSearch() {
+                alert('Search functionality would be implemented here');
+            }
+            
+            handleMessages() {
+                alert('Messages functionality would be implemented here');
+            }
+        }
+
+        // Initialize all controllers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.sidebarController = new SidebarController();
+            window.headerController = new HeaderController();
+            window.pricingController = new PricingController();
+            
+            // Add loading animation
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Show overview page by default
+            window.sidebarController.sidebarLinks[0].classList.add('sidebar__link--active');
+            window.sidebarController.pageManager.showPage('overview');
+        });
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar.classList.contains('sidebar--open')) {
+                    window.sidebarController.closeSidebar();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

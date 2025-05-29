@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze - Create Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            background-color: #4a5568;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Block */
+        .header {
+            background-color: #4a5568;
+            padding: 1rem 0;
+            border-bottom: 1px solid #5a6578;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header__brand:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .header__menu-icon {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .header__menu-icon:hover {
+            background-color: #5a6578;
+            color: #ffffff;
+        }
+
+        /* Main Content Block */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #4a5568;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 4rem;
+        }
+
+        /* Banner Block */
+        .banner-text {
+            flex: 1;
+            color: #ffffff;
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .banner-text__title {
+            margin: 0;
+            font-size: 4rem;
+            font-weight: 300;
+        }
+
+        .banner-text__subtitle {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #e2e8f0;
+        }
+
+        /* Signup Form Block */
+        .signup-form {
+            flex: 0 0 450px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .signup-form__header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-form__title {
+            color: #2d3748;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-form__login-link {
+            color: #718096;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .signup-form__login-link a {
+            color: #e53e3e;
+            text-decoration: none;
+        }
+
+        .signup-form__login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-form__field {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .signup-form__field--half {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .signup-form__field--half > div {
+            flex: 1;
+            position: relative;
+        }
+
+        .signup-form__label {
+            display: block;
+            color: #4a5568;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-form__label--required::after {
+            content: '*';
+            color: #e53e3e;
+            margin-left: 0.25rem;
+        }
+
+        .signup-form__input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            background-color: #f7fafc;
+            font-size: 1rem;
+            color: #2d3748;
+            transition: all 0.2s ease;
+        }
+
+        .signup-form__input:focus {
+            outline: none;
+            border-color: #e53e3e;
+            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+            background-color: #ffffff;
+        }
+
+        .signup-form__input::placeholder {
+            color: #a0aec0;
+        }
+
+        .signup-form__select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            background-color: #f7fafc;
+            font-size: 1rem;
+            color: #2d3748;
+            transition: all 0.2s ease;
+        }
+
+        .signup-form__select:focus {
+            outline: none;
+            border-color: #e53e3e;
+            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+            background-color: #ffffff;
+        }
+
+        .signup-form__description {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.75rem;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .signup-form__checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.75rem;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .signup-form__checkbox input[type="checkbox"] {
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        .signup-form__checkbox a {
+            color: #e53e3e;
+            text-decoration: none;
+        }
+
+        .signup-form__checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-form__divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: #a0aec0;
+            font-size: 0.875rem;
+        }
+
+        .signup-form__divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e2e8f0;
+            z-index: 1;
+        }
+
+        .signup-form__divider span {
+            background-color: #ffffff;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .signup-form__social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-form__social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .signup-form__social-btn--facebook {
+            background-color: #1877f2;
+            color: #ffffff;
+        }
+
+        .signup-form__social-btn--facebook:hover {
+            background-color: #166fe5;
+        }
+
+        .signup-form__social-btn--telegram {
+            background-color: #0088cc;
+            color: #ffffff;
+        }
+
+        .signup-form__social-btn--telegram:hover {
+            background-color: #0077b5;
+        }
+
+        .signup-form__social-btn--instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #ffffff;
+        }
+
+        .signup-form__social-btn--instagram:hover {
+            opacity: 0.9;
+        }
+
+        .signup-form__btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #e53e3e;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .signup-form__btn:hover {
+            background-color: #c53030;
+        }
+
+        .signup-form__btn:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .banner-text {
+                flex: none;
+            }
+
+            .banner-text__title {
+                font-size: 2.5rem;
+            }
+
+            .banner-text__subtitle {
+                font-size: 2rem;
+            }
+
+            .signup-form {
+                flex: none;
+                width: 100%;
+                max-width: 450px;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .signup-form__field--half {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-text__title {
+                font-size: 2rem;
+            }
+
+            .banner-text__subtitle {
+                font-size: 1.5rem;
+            }
+
+            .signup-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+            </div>
+            
+            
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Banner Text -->
+            <div class="banner-text">
+                <h1 class="banner-text__title">Banner</h1>
+                <p class="banner-text__subtitle">1920 x 1080</p>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="signup-form">
+                <div class="signup-form__header">
+                    <h2 class="signup-form__title">Create an account</h2>
+                    <p class="signup-form__login-link">Already have an account? <a href="login.html">Log in</a></p>
+                </div>
+
+                <form id="signupForm">
+                    <!-- Username -->
+                    <div class="signup-form__field">
+                        <label class="signup-form__label signup-form__label--required" for="username">Username</label>
+                        <input 
+                            type="text" 
+                            id="username"
+                            name="username"
+                            class="signup-form__input" 
+                            placeholder="Enter your username"
+                            required
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div class="signup-form__field">
+                        <label class="signup-form__label signup-form__label--required" for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email"
+                            name="email"
+                            class="signup-form__input" 
+                            placeholder="Enter your email address"
+                            required
+                        >
+                    </div>
+
+                    <!-- First Name and Last Name -->
+                    <div class="signup-form__field signup-form__field--half">
+                        <div>
+                            <label class="signup-form__label signup-form__label--required" for="firstName">First Name</label>
+                            <input 
+                                type="text" 
+                                id="firstName"
+                                name="firstName"
+                                class="signup-form__input" 
+                                placeholder="First name"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <label class="signup-form__label signup-form__label--required" for="lastName">Last Name</label>
+                            <input 
+                                type="text" 
+                                id="lastName"
+                                name="lastName"
+                                class="signup-form__input" 
+                                placeholder="Last name"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="signup-form__field">
+                        <label class="signup-form__label signup-form__label--required" for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password"
+                            name="password"
+                            class="signup-form__input" 
+                            placeholder="Create a password"
+                            required
+                            minlength="8"
+                        >
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="signup-form__field">
+                        <label class="signup-form__label signup-form__label--required" for="confirmPassword">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            class="signup-form__input" 
+                            placeholder="Confirm your password"
+                            required
+                        >
+                    </div>
+
+                    <!-- Date of Birth and Gender -->
+                    <div class="signup-form__field signup-form__field--half">
+                        <div>
+                            <label class="signup-form__label" for="dateOfBirth">Date of Birth</label>
+                            <input 
+                                type="date" 
+                                id="dateOfBirth"
+                                name="dateOfBirth"
+                                class="signup-form__input"
+                            >
+                        </div>
+                        <div>
+                            <label class="signup-form__label" for="gender">Gender</label>
+                            <select 
+                                id="gender"
+                                name="gender"
+                                class="signup-form__select"
+                            >
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="signup-form__description">
+                        Create your account to access exclusive content and join our community. 
+                        By signing up, you'll get access to premium features, personalized recommendations, 
+                        and the ability to save your favorite content. Our platform provides a safe and 
+                        secure environment for adult content consumption. Please ensure you are of legal 
+                        age in your jurisdiction before proceeding.
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="signup-form__checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            By continuing you confirming that you have read our 
+                            <a href="#" target="_blank">Terms & Conditions</a> and 
+                            <a href="#" target="_blank">Cookie Policy</a>. You must be 18+ to use this service.
+                        </label>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="signup-form__checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">
+                            I would like to receive promotional emails and updates about new content.
+                        </label>
+                    </div>
+
+                    <!-- Social Signup Divider -->
+                    <div class="signup-form__divider">
+                        <span>Sign up with social</span>
+                    </div>
+
+                    <!-- Social Signup Buttons -->
+                    <div class="signup-form__social">
+                        <button type="button" class="signup-form__social-btn signup-form__social-btn--facebook" title="Sign up with Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="signup-form__social-btn signup-form__social-btn--telegram" title="Sign up with Telegram">
+                            <i class="fab fa-telegram-plane"></i>
+                        </button>
+                        <button type="button" class="signup-form__social-btn signup-form__social-btn--instagram" title="Sign up with Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                    </div>
+
+                    <!-- Create Account Button -->
+                    <button type="submit" class="signup-form__btn" id="createAccountBtn">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Form validation and submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Validate required fields
+            const requiredFields = ['username', 'email', 'firstName', 'lastName', 'password', 'confirmPassword'];
+            const missingFields = requiredFields.filter(field => !data[field]);
+            
+            if (missingFields.length > 0) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Validate password length
+            if (data.password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+            
+            // Validate password confirmation
+            if (data.password !== data.confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            // Check terms acceptance
+            if (!data.terms) {
+                alert('You must accept the Terms & Conditions to continue');
+                return;
+            }
+            
+            // Simulate account creation
+            console.log('Account creation data:', data);
+            alert('Account created successfully! You can now log in.');
+            
+            // Redirect to login page
+            window.location.href = 'login.html';
+        });
+
+        // Password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.setCustomValidity('Passwords do not match');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        // Social signup handlers
+        document.querySelectorAll('.signup-form__social-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const platform = this.classList.contains('signup-form__social-btn--facebook') ? 'Facebook' :
+                               this.classList.contains('signup-form__social-btn--telegram') ? 'Telegram' : 'Instagram';
+                
+                console.log(`${platform} signup clicked`);
+                alert(`${platform} signup would be implemented here`);
+            });
+        });
+
+        // Real-time form validation
+        document.querySelectorAll('.signup-form__input, .signup-form__select').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value) {
+                    this.style.borderColor = '#e53e3e';
+                } else {
+                    this.style.borderColor = '#e2e8f0';
+                }
+            });
+        });
+
+        // Header brand click handler
+        document.querySelector('.header__brand').addEventListener('click', function(e) {
+            if (this.getAttribute('href') === 'index.html') {
+                return;
+            }
+            e.preventDefault();
+            console.log('Navigate to main page');
+        });
+    </script>
+</body>
+</html>
