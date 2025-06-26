@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <style>
+        /* Sidebar */
+        .ranking-sidebar {
+            background-color: transparent;
+            min-height: 100vh;
+            padding-top: 1rem;
+        }
+        .text-danger{
+            color: #b02846 !important;
+        }
+
+        .ranking-sidebar__menu {
+            padding-left: 1rem;
+        }
+
+        .ranking-sidebar__item {
+            margin-bottom: 0.75rem;
+        }
+
+        .ranking-sidebar__link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .ranking-sidebar__item--active .ranking-sidebar__link,
+        .ranking-sidebar__link:hover {
+            background-color: #b02846;
+            color: #fff;
+        }
+
+        .ranking-tabs .ranking-tab__button {
+            border-radius: 0;
+        }
+
+        .ranking-tabs .ranking-tab__button.active {
+            background-color: #ffffff;
+            color: #000;
+            font-weight: bold;
+            border-color: #fff;
+            border-radius: 0;
+        }
+
+        .ranking-card__image {
+            border-radius: 4px;
+            min-width: 100px;
+        }
+
+        .ranking-card__title {
+            margin-bottom: 0.5rem;
+        }
+
+        .ranking-card__meta {
+            margin-top: 0.5rem;
+        }
+
+        .ranking-card__actions button {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+
+            <!-- Sidebar -->
+            <nav class="col-md-2 bg-dark ranking-sidebar d-flex flex-column">
+                <ul class="ranking-sidebar__menu list-unstyled mt-3">
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POWER</a></li>
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POPULAR</a></li>
+                    <li class="ranking-sidebar__item ranking-sidebar__item--active"><a href="#"
+                            class="ranking-sidebar__link">UPLOAD</a></li>
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">UPLOAD</a></li>
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POPULAR</a></li>
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">UPLOAD</a></li>
+                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POWER</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-10 p-4 ranking-main">
+                <!-- Tabs -->
+                <div class="ranking-tabs mb-3">
+                    <button class="btn btn-outline-light btn-sm me-2 ranking-tab__button active"
+                        data-tab="yesterday">YESTERDAY RANKING</button>
+                    <button class="btn btn-outline-light btn-sm me-2 ranking-tab__button" data-tab="weekly">WEEKLY
+                        RANKING</button>
+                    <button class="btn btn-outline-light btn-sm me-2 ranking-tab__button" data-tab="monthly">MONTHLY
+                        RANKING</button>
+                    <button class="btn btn-outline-light btn-sm ranking-tab__button" data-tab="alltime">ALLTIME
+                        RANKING</button>
+                </div>
+
+                <!-- Tab contents -->
+                <div class="ranking-list">
+                    <!-- Yesterday -->
+                    <div class="ranking-tab__content" data-content="yesterday">
+                        <!-- CARD 1 -->
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-danger fw-bold fs-2 me-3">1ST</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags small mb-1">
+                                        #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
+                                    </div>
+                                    <h5 class="ranking-card__title text-white">
+                                        Abandon: 100 Nuki Shinai to Derarenai Fushigi
+                                    </h5>
+                                    <p class="ranking-card__description small text-secondary">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut
+                                        labore et dolore magna aliqua. Ut enim ad minim veniam...
+                                    </p>
+                                    <div class="ranking-card__meta text-muted small">
+                                        By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
+                                        1,875,898
+                                    </div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+
+                        <!-- CARD 2 -->
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-danger fw-bold fs-2 me-3">2ND</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags text-muted small mb-1">
+                                        #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
+                                    </div>
+                                    <h5 class="ranking-card__title text-white">
+                                        Abandon: 100 Nuki Shinai to Derarenai Fushigi
+                                    </h5>
+                                    <p class="ranking-card__description small text-secondary">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut
+                                        labore et dolore magna aliqua. Ut enim ad minim veniam...
+                                    </p>
+                                    <div class="ranking-card__meta text-muted small">
+                                        By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
+                                        1,875,898
+                                    </div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+
+                        <!-- CARD 3 -->
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-danger fw-bold fs-2 me-3">3RD</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags text-muted small mb-1">
+                                        #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
+                                    </div>
+                                    <h5 class="ranking-card__title text-white">
+                                        Abandon: 100 Nuki Shinai to Derarenai Fushigi
+                                    </h5>
+                                    <p class="ranking-card__description small text-secondary">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut
+                                        labore et dolore magna aliqua. Ut enim ad minim veniam...
+                                    </p>
+                                    <div class="ranking-card__meta text-muted small">
+                                        By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
+                                        1,875,898
+                                    </div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+                    </div>
+
+
+                    <!-- Weekly -->
+                    <div class="ranking-tab__content d-none" data-content="weekly">
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-warning fw-bold fs-2 me-3">1ST</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags text-muted small mb-1">#Weekly #Action #Adventure
+                                    </div>
+                                    <h5 class="ranking-card__title text-white">Title B</h5>
+                                    <p class="ranking-card__description small text-secondary">Description for weekly
+                                        ranking...</p>
+                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                            B</span> • <i class="bi bi-eye"></i> 654,321</div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+                    </div>
+
+                    <!-- Monthly -->
+                    <div class="ranking-tab__content d-none" data-content="monthly">
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-success fw-bold fs-2 me-3">1ST</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags text-muted small mb-1">#Monthly #Romance</div>
+                                    <h5 class="ranking-card__title text-white">Title C</h5>
+                                    <p class="ranking-card__description small text-secondary">Description for monthly
+                                        ranking...</p>
+                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                            C</span> • <i class="bi bi-eye"></i> 987,654</div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+                    </div>
+
+                    <!-- Alltime -->
+                    <div class="ranking-tab__content d-none" data-content="alltime">
+                        <div class="ranking-card mb-5">
+                            <div class="d-flex">
+                                <div class="ranking-card__position text-primary fw-bold fs-2 me-3">1ST</div>
+                                <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
+                                </div>
+                                <div class="ranking-card__body flex-grow-1">
+                                    <div class="ranking-card__tags text-muted small mb-1">#Alltime #Classic</div>
+                                    <h5 class="ranking-card__title text-white">Title D</h5>
+                                    <p class="ranking-card__description small text-secondary">Description for all time
+                                        ranking...</p>
+                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                            D</span> • <i class="bi bi-eye"></i> 2,000,000</div>
+                                </div>
+                                <div class="ranking-card__actions ms-auto">
+                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                </div>
+                            </div>
+                            <hr class="bg-light mt-4" />
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Tab Switching -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.ranking-tab__button');
+            const tabContents = document.querySelectorAll('.ranking-tab__content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.getAttribute('data-tab');
+
+                    // Toggle active button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Toggle content
+                    tabContents.forEach(content => {
+                        content.classList.toggle('d-none', content.getAttribute('data-content') !== target);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

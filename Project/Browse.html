@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiBlaze - Browse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<style>
+    @media (max-width: 767.98px) {
+  .sidebars {
+    display: none !important;
+  }
+  .sidebars-mobile {
+    display: block;
+    width: 100%;
+    background: #1a232c;
+    margin: 1.5rem 0 0 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 1rem 0.5rem;
+  }
+  .sidebars-mobile__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .sidebars-mobile__link {
+    width: 100%;
+    background: #16202a;
+    color: #e2e8f0;
+    border: 1.5px solid #374151;
+    border-radius: 6px;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    outline: none;
+    cursor: pointer;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .sidebars-mobile__link:not(.sidebars-mobile__link--active):hover {
+    background: #1e293b;
+    border-color: #64748b;
+    color: #fff;
+  }
+  .sidebars-mobile__link--active {
+    background: #232f3e;
+    border: 2px solid #e53e3e;
+    color: #e53e3e;
+    box-shadow: 0 2px 8px rgba(229,62,62,0.08);
+    z-index: 1;
+  }
+  .sidebars-mobile__link::after {
+    content: '\f054';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1rem;
+    color: #a0aec0;
+    margin-left: auto;
+    transition: color 0.2s;
+  }
+  .sidebars-mobile__link--active::after,
+  .sidebars-mobile__link:focus::after,
+  .sidebars-mobile__link:hover::after {
+    color: #e53e3e;
+  }
+}
+@media (min-width: 768px) {
+  .sidebars-mobile {
+    display: none !important;
+  }
+}
+</style>
+
+<!-- filter trending mobile -->
+ <style>
+    @media (max-width: 575.98px) {
+    .trending__filters-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-bottom: 1.5rem;
+    }
+    .trending__filter-mobile {
+        width: 100%;
+        background: #16202a;
+        color: #e2e8f0;
+        border: 1.5px solid #374151;
+        border-radius: 6px;
+        padding: 0.9rem 1.2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        outline: none;
+        cursor: pointer;
+        white-space: normal;
+        word-break: break-word;
+    }
+    .trending__filter-mobile:not(.trending__filter-mobile--active):hover {
+        background: #1e293b;
+        border-color: #64748b;
+        color: #fff;
+    }
+    .trending__filter-mobile--active {
+        background: #232f3e;
+        border: 2px solid #e53e3e;
+        color: #e53e3e;
+        box-shadow: 0 2px 8px rgba(229,62,62,0.08);
+        z-index: 1;
+    }
+    }
+ </style>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+                <nav class="header__breadcrumb">
+                    <span class="header__subtitle" id="headerSubtitle">Browse</span>
+                </nav>
+            </div>
+
+            <!-- Right side items -->
+            <div class="d-flex align-items-center">
+                <!-- Search Icon -->
+                <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
+
+                <!-- Toggle button for mobile -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                    <i class="fas fa-ellipsis-v text-light"></i>
+                </button>
+
+                <!-- Navigation items -->
+                <div class="header__right">
+
+                    <div class="header__icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="header__notification-badge">1</span>
+                    </div>
+                    <div class="header__avatar"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Layout Container -->
+    <!-- sidebars -->
+    <aside class="sidebars" id="sidebars">
+        <nav class="sidebars__nav">
+            <ul class="sidebars__menu">
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="overview">Overview</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="treding">Treding</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link sidebars__link--active" data-page="random">Random</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="image">Image</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="season">Season</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="unlisted">Unlisted</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="tags">Tags</button>
+                </li>
+                <li class="sidebars__item">
+                    <button class="sidebars__link" data-page="logout">Logout</button>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-contents">
+         <!-- Sidebar Mobile (chỉ hiện trên mobile) -->
+        <nav class="sidebars-mobile" id="sidebarsMobile">
+            <ul class="sidebars-mobile__menu">
+                <li><button class="sidebars-mobile__link" data-page="overview">Overview</button></li>
+                <li><button class="sidebars-mobile__link" data-page="treding">Treding</button></li>
+                <li><button class="sidebars-mobile__link sidebars-mobile__link--active" data-page="random">Random</button></li>
+                <li><button class="sidebars-mobile__link" data-page="image">Image</button></li>
+                <li><button class="sidebars-mobile__link" data-page="season">Season</button></li>
+                <li><button class="sidebars-mobile__link" data-page="unlisted">Unlisted</button></li>
+                <li><button class="sidebars-mobile__link" data-page="tags">Tags</button></li>
+                <li><button class="sidebars-mobile__link" data-page="logout">Logout</button></li>
+            </ul>
+        </nav>
+        <div class="page-content page-content--active" id="overviewPage">
+            <section class="overview">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-3">
+                        <div class="card-custom">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
+                                alt="Card Image" />
+                            <div class="card-custom__overlay">
+                                <div class="card-custom__content">
+                                    <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
+                                    <div class="card-custom__title">TRENDING</div>
+                                    <div class="card-custom__text">Find videos by season</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card-custom">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
+                                alt="Card Image" />
+                            <div class="card-custom__overlay">
+                                <div class="card-custom__content">
+                                    <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
+                                    <div class="card-custom__title">TRENDING</div>
+                                    <div class="card-custom__text">Find videos by season</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card-custom">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
+                                alt="Card Image" />
+                            <div class="card-custom__overlay">
+                                <div class="card-custom__content">
+                                    <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
+                                    <div class="card-custom__title">TRENDING</div>
+                                    <div class="card-custom__text">Find videos by season</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="card-custom">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
+                                alt="Card Image" />
+                            <div class="card-custom__overlay">
+                                <div class="card-custom__content">
+                                    <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
+                                    <div class="card-custom__title">TRENDING</div>
+                                    <div class="card-custom__text">Find videos by season</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Category
+                    </h1>
+                </header>
+                <!-- Category Section -->
+                <div class="category">
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-4 category__grid" id="cardGrid"></div>
+                </div>
+
+                <!-- Brand Section -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Animation Studio Brand
+                    </h1>
+                </header>
+                <div class="anime-brand-list" id="animeBrandList"></div>
+            </section>
+        </div>
+        <div class="page-content" id="tredingPage">
+            <section class="trending container py-4">
+                <!-- Filter nút cho PC -->
+                <div class="trending__filters d-none d-sm-flex gap-2 justify-content-center flex-wrap">
+                    <button class="btn btn-danger trending__filter">Daily</button>
+                    <button class="btn btn-outline-light trending__filter">Weekly</button>
+                    <button class="btn btn-outline-light trending__filter">Monthly</button>
+                    <button class="btn btn-outline-light trending__filter">Yearly</button>
+                    <button class="btn btn-outline-light trending__filter">Semi-Annually</button>
+                </div>
+        
+                <div class="row trending__list d-none d-sm-flex" id="trendingList"></div>
+        
+                <!-- Filter Trending cho mobile -->
+                <div class="trending__filters-mobile d-block d-sm-none">
+                    <div class="trending__filters-mobile">
+                        <button class="trending__filter-mobile trending__filter-mobile--active"
+                            data-category="daily">Daily</button>
+                        <div class="trending__content-mobile" data-category="daily"></div>
+                        <button class="trending__filter-mobile" data-category="weekly">Weekly</button>
+                        <div class="trending__content-mobile" data-category="weekly"></div>
+                        <button class="trending__filter-mobile" data-category="monthly">Monthly</button>
+                        <div class="trending__content-mobile" data-category="monthly"></div>
+                        <button class="trending__filter-mobile" data-category="yearly">Yearly</button>
+                        <div class="trending__content-mobile" data-category="yearly"></div>
+                        <button class="trending__filter-mobile" data-category="semiannually">Semi-Annually</button>
+                        <div class="trending__content-mobile" data-category="semiannually"></div>
+                    </div>
+                </div>
+                <!-- Nội dung trending -->
+                <div id="trendingListMobile" class="trending__content-mobile d-block d-sm-none"></div>
+            </section>
+        
+        </div>
+        <div class="page-content" id="randomPage">
+            <section class="random container py-4">
+                <div class="d-flex justify-content-center mb-5">
+                    <button id="btnRandomize" class="btn btn-primary" type="button">
+                        Randomize
+                    </button>
+                </div>
+                <!-- Carousel HTML: 6 card, chia 3-3 -->
+                <div id="randomCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                        <!-- Slide 1: 3 card -->
+                        <div class="carousel-item active">
+                            <div class="carousel__item-wrapper">
+                                <!-- Card 1 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 1</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 2</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 3</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2: 3 card -->
+                        <div class="carousel-item">
+                            <div class="carousel__item-wrapper">
+                                <!-- Card 4 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 4</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 5 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 5</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 6 -->
+                                <div class="card-custom">
+                                    <div class="card-custom__thumbnail">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
+                                            alt="Background">
+                                    </div>
+                                    <div class="card-custom__body">
+                                        <div class="card-custom__top">
+                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                            <div class="card-custom__stats">
+                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 6</h6>
+                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Nút Previous -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#randomCarousel" data-bs-slide="prev">
+                        <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <!-- Nút Next -->
+                    <button class="carousel-control-next" type="button" data-bs-target="#randomCarousel" data-bs-slide="next">
+                        <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#randomCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#randomCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="page-content" id="seasonPage">
+            <section class="season container py-4">
+                <button id="btnYear" class="btn btn-outline-secondary">2022</button>
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Spring
+                    </h1>
+                </header>
+                <div id="seasonSpringCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#seasonSpringCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#seasonSpringCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <!-- JS sẽ tự động render các indicator vào đây -->
+                    </div>
+                </div>
+
+                <!-- Summer -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Summer
+                    </h1>
+                </header>
+                <div id="seasonSummerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#seasonSummerCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#seasonSummerCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <!-- JS sẽ tự động render các indicator vào đây -->
+                    </div>
+                </div>
+
+                <!-- Fall -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Fall
+                    </h1>
+                </header>
+                <div id="seasonFallCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#seasonFallCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#seasonFallCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <!-- JS sẽ tự động render các indicator vào đây -->
+                    </div>
+                </div>
+                <!-- Winter -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Winter
+                    </h1>
+                </header>
+                <div id="seasonWinterCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#seasonWinterCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#seasonWinterCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <!-- JS sẽ tự động render các indicator vào đây -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Image -->
+        <div class="page-content" id="imagePage">
+            <div class="image-page container py-5">
+                <!-- Filter Tags -->
+                <div class="image-page__filters mb-4 d-none d-flex flex-wrap">
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-1">
+                        <label class="form-check-label" for="tag-kcompany-1">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-2">
+                        <label class="form-check-label" for="tag-kcompany-2">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-3">
+                        <label class="form-check-label" for="tag-kcompany-3">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-4">
+                        <label class="form-check-label" for="tag-kcompany-4">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-5">
+                        <label class="form-check-label" for="tag-kcompany-5">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-6">
+                        <label class="form-check-label" for="tag-kcompany-6">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-kcompany-7">
+                        <label class="form-check-label" for="tag-kcompany-7">#KCompany</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-1">
+                        <label class="form-check-label" for="tag-xxteam-1">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-2">
+                        <label class="form-check-label" for="tag-xxteam-2">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-3">
+                        <label class="form-check-label" for="tag-xxteam-3">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-4">
+                        <label class="form-check-label" for="tag-xxteam-4">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-5">
+                        <label class="form-check-label" for="tag-xxteam-5">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-6">
+                        <label class="form-check-label" for="tag-xxteam-6">#xxteam</label>
+                    </div>
+                    <div class="image-page__filter form-check">
+                        <input class="form-check-input" type="checkbox" id="tag-xxteam-7">
+                        <label class="form-check-label" for="tag-xxteam-7">#xxteam</label>
+                    </div>
+                </div>
+        
+                <!-- Pagination -->
+                <div class="image-page__pagination d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                    <button class="btn btn-outline-light btn-sm">PREV PAGE</button>
+                    <div class="text-white">23/100</div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-white">Jump to</span>
+                        <input type="number" class="form-control form-control-sm" placeholder="Page #">
+                    </div>
+                    <button class="btn btn-outline-light btn-sm">NEXT PAGE</button>
+                </div>
+        
+                <!-- Image Grid -->
+                <div class="image-page__grid row g-3">
+                    <!-- 10 Placeholder Images -->
+                    <!-- First row: wide images -->
+                    <div class="row g-3 mb-3">
+                        <!-- Wide 16:9 -->
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--wide"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+        
+                        <!-- Square 1:1 -->
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by AikoK
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Tall 3:4 -->
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--tall"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by NoriM
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- UltraWide 21:9 -->
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--ultrawide"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by SatoQ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--wide"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by KeiTan
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by Haru
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--tall"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by MinaT
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-6 col-md-4 col-lg-2-4">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--ultrawide"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by Ryuu
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second row: square images -->
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+                        <!-- Lặp lại 4 lần nữa -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="image-card position-relative">
+                                <div class="image-card__thumb image-card__thumb--square"></div>
+                                <div class="image-card__credit position-absolute bottom-0 start-0 text-white small">by
+                                    Takashi666</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+        <!-- Unlisted -->
+        <div class="page-content" id="unlistedPage">
+            <header class="page-header d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-header__title d-flex align-items-center mb-0">
+                    <span class="page-header__indicator me-2" style="display: inline-block;"></span>
+                    Unlisted
+                </h1>
+
+                <div class="gallery__sort">
+                    <select class="form-select form-select-sm bg-dark text-white border-secondary" id="sortSelect"
+                        style="width: 150px;">
+                        <option value="most-view">Most view</option>
+                        <option value="least-view">Least view</option>
+                        <option value="a-z">A → Z</option>
+                        <option value="z-a">Z → A</option>
+                    </select>
+                </div>
+            </header>
+            <div class="unlisted">
+                <div class="d-flex justify-content-between align-items-center mt-4 mb-3 gallery__pagination gallery__pagination--top d-flex d-sm-none">
+                    <button class="btn btn-outline-light gallery__btn" onclick="prevPage()">PREV PAGE</button>
+                    <div class="gallery__page-info" id="page-info">1/10</div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Jump to</span>
+                        <input type="number" class="form-control form-control-sm gallery__input" id="jumpPage"
+                            placeholder="Page #" onchange="jumpToPage(this.value)">
+                    </div>
+                    <button class="btn btn-outline-light gallery__btn" onclick="nextPage()">NEXT PAGE</button>
+                </div>
+                <!-- Render film -->
+                <div class="gallery__grid" id="movie-list"></div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center mt-4 gallery__pagination d-none d-sm-flex">
+                    <button class="btn btn-outline-light gallery__btn" onclick="prevPage()">PREV PAGE</button>
+                    <div class="gallery__page-info" id="page-info">1/10</div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Jump to</span>
+                        <input type="number" class="form-control form-control-sm gallery__input" id="jumpPage"
+                            placeholder="Page #" onchange="jumpToPage(this.value)">
+                    </div>
+                    <button class="btn btn-outline-light gallery__btn" onclick="nextPage()">NEXT PAGE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="page-content" id="tagsPage">
+            <header class="page-header d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-header__title d-flex align-items-center mb-0">
+                    <span class="page-header__indicator me-2" style="display: inline-block;"></span>
+                    Tags
+                </h1>
+            </header>
+            <div id="tagsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                <div class="carousel-inner">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#tagsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#tagsCarousel" data-bs-slide="next">
+                    <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <div class="carousel-indicators">
+                    <!-- JS sẽ tự động render các indicator vào đây -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Random Page
+        const randomCarousel = document.querySelector('#randomCarousel');
+        const randomCarouselSetup = new bootstrap.Carousel(randomCarousel, {
+            interval: 3000,
+            ride: 'carousel',
+            pause: false,
+            wrap: true
+        });
+    </script>
+
+    <script>
+        // Page Manager
+        class PageManager {
+            constructor() {
+                this.currentPage = 'overview';
+                this.pages = {
+                    'overview': { title: '', subtitle: 'Browse' },
+                    'treding': { title: '', subtitle: 'Browse • Treding' },
+                    'random': { title: '', subtitle: 'Browse • Random' },
+                    'image': { title: '', subtitle: 'Browse • Image' },
+                    'season': { title: '', subtitle: 'Browse • Season' },
+                    'unlisted': { title: '', subtitle: 'Browse • Unlisted' },
+                    'tags': { title: '', subtitle: 'Browse • Tags' },
+                };
+                this.headerSubtitle = document.getElementById('headerSubtitle');
+            }
+
+            showPage(pageId) {
+                console.log('Attempting to show page:', pageId);
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('page-content--active');
+                });
+
+                // Show target page
+                const targetPage = document.getElementById(pageId + 'Page');
+                console.log('targetpage: ', targetPage);
+                if (targetPage) {
+                    targetPage.classList.add('page-content--active');
+                    this.currentPage = pageId;
+
+                    // Update header subtitle
+                    if (this.pages[pageId] && this.headerSubtitle) {
+                        this.headerSubtitle.textContent = this.pages[pageId].subtitle;
+                    }
+                }
+            }
+
+            initializePage(pageId) {
+            }
+        }
+
+
+        // sidebars Navigation Controller
+        class sidebarsController {
+            constructor() {
+                this.sidebars = document.getElementById('sidebars');
+                this.menuToggle = document.getElementById('menuToggle');
+                this.sidebarsOverlay = document.getElementById('sidebarsOverlay');
+                this.sidebarsLinks = document.querySelectorAll('.sidebars__link');
+                this.pageManager = new PageManager();
+
+                this.init();
+            }
+
+            init() {
+                if (this.menuToggle) {
+                    this.menuToggle.addEventListener('click', () => this.togglesidebars());
+                }
+
+                if (this.sidebarsOverlay) {
+                    this.sidebarsOverlay.addEventListener('click', () => this.closesidebars());
+                }
+
+                this.sidebarsLinks.forEach(link => {
+                    link.addEventListener('click', (e) => this.handleNavigation(e));
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        this.closesidebars();
+                    }
+                });
+            }
+
+            togglesidebars() {
+                this.sidebars.classList.toggle('sidebars--open');
+                if (this.sidebarsOverlay) {
+                    this.sidebarsOverlay.classList.toggle('sidebars-overlay--visible');
+                }
+                document.body.style.overflow = this.sidebars.classList.contains('sidebars--open') ? 'hidden' : '';
+            }
+
+            closesidebars() {
+                this.sidebars.classList.remove('sidebars--open');
+                if (this.sidebarsOverlay) {
+                    this.sidebarsOverlay.classList.remove('sidebars-overlay--visible');
+                }
+                document.body.style.overflow = '';
+            }
+
+            handleNavigation(e) {
+                const clickedLink = e.currentTarget;
+                const page = clickedLink.dataset.page;
+
+                // Handle logout
+                if (page === 'logout') {
+                    if (confirm('Are you sure you want to logout?')) {
+                        alert('Logout functionality would be implemented here');
+                    }
+                    return;
+                }
+
+                // Remove active class from all links
+                this.sidebarsLinks.forEach(link => {
+                    link.classList.remove('sidebars__link--active');
+                });
+
+                // Add active class to clicked link
+                clickedLink.classList.add('sidebars__link--active');
+
+                // Show the page
+                this.pageManager.showPage(page);
+
+                // Close sidebars on mobile after navigation
+                if (window.innerWidth <= 768) {
+                    this.closesidebars();
+                }
+            }
+        }
+
+        // Header Controller
+        class HeaderController {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+            }
+        }
+
+        // Initialize all controllers when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.sidebarsController = new sidebarsController();
+            window.headerController = new HeaderController();
+
+            // Add loading animation
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+
+            // Show overview page by default
+            window.sidebarsController.sidebarsLinks[0].classList.add('sidebars__link--active');
+            window.sidebarsController.pageManager.showPage('overview');
+        });
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const sidebars = document.getElementById('sidebars');
+                if (sidebars.classList.contains('sidebars--open')) {
+                    window.sidebarsController.closesidebars();
+                }
+            }
+        });
+
+        // Header icons functionality
+        document.querySelector('.fa-search').addEventListener('click', function () {
+            console.log('Search clicked');
+        });
+
+        document.querySelector('.fa-envelope').addEventListener('click', function () {
+            console.log('Messages clicked');
+        });
+
+        document.querySelector('.header__avatar').addEventListener('click', function () {
+            console.log('Avatar clicked - show user menu');
+        });
+
+    </script>
+
+    <script>
+        const dummyData = [
+            {
+                image: 'assets/img/anh-nen-may-tinh-4k-1.jpg',
+                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut',
+                tag: '3D'
+            },
+            { image: 'assets/img/anh-nen-may-tinh-4k-1.jpg', content: 'Lorem lorem', tag: 'ANAL' },
+            { image: '', content: '', tag: 'BDSM' },
+            { image: '', content: '', tag: '3D' },
+            { image: '', content: '', tag: '3D' },
+            {
+                image: 'assets/img/anh-nen-may-tinh-4k-1.jpg',
+                content: '',
+                tag: '3D'
+            },
+            { image: '', content: '', tag: 'ANAL' },
+            { image: '', content: '', tag: 'BDSM' },
+            { image: '', content: '', tag: '3D' },
+            { image: '', content: '', tag: '3D' },
+        ];
+
+        const cardGrid = document.getElementById('cardGrid');
+
+        dummyData.forEach(data => {
+            const col = document.createElement('div');
+            col.className = 'col';
+
+            const card = document.createElement('div');
+            card.className = 'category__card card';
+
+            const imageWrapper = document.createElement('div');
+            imageWrapper.className = 'category__image-wrapper';
+
+            if (data.image) {
+                const img = document.createElement('img');
+                img.src = data.image;
+                img.alt = 'Card image';
+                img.className = 'category__image';
+                imageWrapper.appendChild(img);
+            } else {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'category__image d-flex align-items-center justify-content-center text-white';
+                placeholder.style.backgroundColor = '#444';
+                placeholder.style.height = '200px';
+                placeholder.textContent = 'IMAGE';
+                imageWrapper.appendChild(placeholder);
+            }
+
+            if (data.content) {
+                const overlay = document.createElement('div');
+                overlay.className = 'category__overlay';
+                overlay.textContent = data.content;
+                imageWrapper.appendChild(overlay);
+            }
+
+            card.appendChild(imageWrapper);
+
+            const footer = document.createElement('div');
+            footer.className = 'category__footer';
+            footer.textContent = data.tag;
+            card.appendChild(footer);
+
+            col.appendChild(card);
+            cardGrid.appendChild(col);
+        });
+
+        // Anime Brand List
+        const animeBrands = [
+            { name: 'ANIME', count: 3657 },
+            { name: '3D', count: 123 },
+            { name: 'HENTAI', count: 987 },
+            { name: 'BDSM', count: 456 },
+            { name: 'FANTASY', count: 321 },
+            { name: 'ROMANCE', count: 678 },
+            { name: 'YURI', count: 222 },
+            { name: 'TRAP', count: 189 },
+            { name: 'FEMDOM', count: 341 },
+            { name: 'NETORARE', count: 97 },
+            { name: 'MONSTER', count: 812 },
+            { name: 'FURRY', count: 543 },
+            { name: 'INCEST', count: 121 },
+            { name: 'TENTACLE', count: 69 },
+            { name: 'NURSE', count: 155 }
+        ];
+
+        const animeBrandList = document.getElementById('animeBrandList');
+
+        animeBrands.forEach((brand, index) => {
+            const col = document.createElement('div');
+            col.className = 'col';
+
+            const btn = document.createElement('button');
+            btn.className = `anime-brand-list__item btn ${index === 0 ? 'anime-brand-list__item--active' : ''}`;
+            btn.innerHTML = `<span class="anime-brand-list__name">${brand.name}</span> <span class="anime-brand-list__count">(${brand.count.toLocaleString()})</span>`;
+
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.anime-brand-list__item').forEach(el => el.classList.remove('anime-brand-list__item--active'));
+                btn.classList.add('anime-brand-list__item--active');
+            });
+
+            col.appendChild(btn);
+            animeBrandList.appendChild(col);
+        });
+
+        // Treding Page
+        const dummyItems = [
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Abandon: 100 Nuki Shinai",
+                views: "1,875,898",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Amazing Ghost Adventure",
+                views: "987,543",
+                category: "weekly",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Love and Betrayal",
+                views: "543,123",
+                category: "monthly",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Island Secrets",
+                views: "2,134,111",
+                category: "yearly",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Outer Universe",
+                views: "832,229",
+                category: "semiannually",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "More Daily Drama",
+                views: "456,999",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            },
+            {
+                title: "Back to School",
+                views: "667,120",
+                category: "daily",
+                image: "assets/img/anh-nen-may-tinh-4k-1.jpg"
+            }
+        ];
+
+        const trendingList = document.getElementById("trendingList");
+        const buttons = document.querySelectorAll(".trending__filter");
+
+        function renderItems(category) {
+            trendingList.innerHTML = "";
+            const filtered = dummyItems.filter(item => item.category === category);
+            filtered.forEach(item => {
+                const col = document.createElement("div");
+                col.className = "trending__col";
+                col.innerHTML = `
+              <div class="trending__item">
+                <img src="${item.image}" alt="${item.title}" class="trending__thumb" />
+                <div class="trending__info">
+                  <div class="trending__title">${item.title}</div>
+                  <div class="trending__views">
+                    <i class="fa fa-eye"></i> ${item.views}
+                  </div>
+                </div>
+              </div>
+            `;
+                trendingList.appendChild(col);
+            });
+        }
+
+        // Default view
+        renderItems("daily");
+
+        // Handle filter buttons
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                buttons.forEach(b => {
+                    b.classList.remove("btn-danger");
+                    b.classList.add("btn-outline-light");
+                });
+                btn.classList.add("btn-danger");
+                btn.classList.remove("btn-outline-light");
+
+                const category = btn.textContent.trim().toLowerCase().replace("-", "").replace(" ", "");
+                renderItems(category);
+            });
+        });
+
+        //Season Page
+        const seasonCarouselIds = ['seasonSpringCarousel', 'seasonSummerCarousel', 'seasonFallCarousel', 'seasonWinterCarousel'];
+        seasonCarouselIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                new bootstrap.Carousel(el, {
+                    interval: 3000,
+                    ride: 'carousel',
+                    pause: false,
+                    wrap: true
+                });
+            }
+        });
+
+        const seasonItems = [
+            { title: "Spring 2023", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 1", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 2", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 3", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 4", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 5", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 6", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 7", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 8", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 2", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 3", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 4", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 5", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 3", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 4", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 5", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 6", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 7", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 8", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 9", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 10", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 11", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 4", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 5", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 6", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 7", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 8", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 1", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 2", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 3", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 4", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 5", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 6", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "spring", views: "1,875,898" },
+            { title: "Spring 2023 7", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "summer", views: "1,875,898" },
+            { title: "Spring 2023 8", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "summer", views: "1,875,898" },
+            { title: "Spring 2023 9", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "summer", views: "1,875,898" },
+            { title: "Spring 2023 10", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "fall", views: "1,875,898" },
+            { title: "Spring 2023 11", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "fall", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "fall", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "fall", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+            { title: "Spring 2023 12", image: "assets/img/anh-nen-may-tinh-4k-1.jpg", season: "winter", views: "1,875,898" },
+        ];
+
+        /**
+         * Render carousel cho từng mùa
+         * @param {string} season - tên mùa (spring, summer, fall, winter)
+         * @param {Array} items - danh sách item của mùa đó
+         * @param {number} cardsPerSlide - số card mỗi slide
+         */
+        function renderSeasonCarousel(season, items, cardsPerSlide = 5) {
+            const carouselInner = document.querySelector(`#seasonPage #season${capitalize(season)}Carousel .carousel-inner`);
+            const indicators = document.querySelector(`#seasonPage #season${capitalize(season)}Carousel .carousel-indicators`);
+            if (!carouselInner) return;
+
+            carouselInner.innerHTML = '';
+            if (indicators) indicators.innerHTML = '';
+
+            const totalSlides = Math.ceil(items.length / cardsPerSlide);
+
+            for (let i = 0; i < totalSlides; i++) {
+                const slideItems = items.slice(i * cardsPerSlide, (i + 1) * cardsPerSlide);
+                while (slideItems.length < cardsPerSlide) {
+                    slideItems.push(null);
+                }
+
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item' + (i === 0 ? ' active' : '');
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'carousel__item-wrapper d-flex justify-content-center';
+
+                slideItems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card-custom mx-2 flex-grow-1';
+                    if (item) {
+                        card.innerHTML = `
+                        <div class="trending__item">
+                            <img src="${item.image}" alt="${item.title}" class="trending__thumb" />
+                            <div class="trending__info">
+                                <div class="trending__title">${item.title}</div>
+                                <div class="trending__views">
+                                    <i class="fa fa-eye"></i> ${item.views || ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    }
+                    else {
+                        // card.classList.add('card-custom--empty');
+                        // card.style.background = 'transparent';
+                        // card.style.boxShadow = 'none';
+                        // card.innerHTML = '';
+                    }
+                    wrapper.appendChild(card);
+                });
+
+                carouselItem.appendChild(wrapper);
+                carouselInner.appendChild(carouselItem);
+
+                if (indicators) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.setAttribute('data-bs-target', `#season${capitalize(season)}Carousel`);
+                    btn.setAttribute('data-bs-slide-to', i.toString());
+                    btn.className = (i === 0 ? 'active' : '');
+                    btn.setAttribute('aria-label', `Slide ${i + 1}`);
+                    if (i === 0) btn.setAttribute('aria-current', 'true');
+                    indicators.appendChild(btn);
+                }
+            }
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function getCardsPerSlide() {
+    return window.innerWidth < 576 ? 2 : 5;
+}
+
+function renderAllSeasonCarousels() {
+    const seasons = ['spring', 'summer', 'fall', 'winter'];
+    seasons.forEach(season => {
+        const items = seasonItems.filter(item => item.season === season);
+        renderSeasonCarousel(season, items, getCardsPerSlide());
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    renderAllSeasonCarousels();
+});
+
+// Re-render khi resize để responsive số card/slide
+let resizeTimeout;
+window.addEventListener('resize', function () {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(renderAllSeasonCarousels, 200);
+});
+
+    </script>
+
+    <!-- Script Unlisted -->
+    <script>
+        // Dummy data
+        const allMovies = [
+            { title: "100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu 1", views: 1875898 },
+            { title: "Attack on Titan: The Final Season", views: 1254600 },
+            { title: "Demon Slayer: Kimetsu no Yaiba", views: 902300 },
+            { title: "Jujutsu Kaisen", views: 870000 },
+            { title: "One Piece", views: 3200000 },
+            { title: "Naruto Shippuden", views: 2850000 },
+            { title: "Chainsaw Man", views: 1123000 },
+            { title: "My Hero Academia", views: 950400 },
+            { title: "Spy x Family", views: 1198000 },
+            { title: "Black Clover", views: 890000 },
+            { title: "Bleach: Thousand-Year Blood War", views: 1345000 },
+            { title: "Tokyo Revengers", views: 770000 },
+            { title: "Mob Psycho 100", views: 680000 },
+            { title: "Vinland Saga", views: 570000 },
+            { title: "Dr. Stone", views: 610000 },
+            { title: "Erased", views: 490000 },
+            { title: "Steins;Gate", views: 1130000 },
+            { title: "Death Note", views: 2450000 },
+            { title: "Fullmetal Alchemist: Brotherhood", views: 2750000 },
+            { title: "Blue Lock", views: 950000 },
+            { title: "Solo Leveling", views: 1080000 },
+            { title: "Re:Zero", views: 880000 },
+            { title: "No Game No Life", views: 810000 },
+            { title: "The Promised Neverland", views: 700000 },
+            { title: "Toradora!", views: 730000 },
+            { title: "Clannad: After Story", views: 540000 },
+            { title: "Angel Beats!", views: 620000 },
+            { title: "Your Lie in April", views: 1230000 },
+            { title: "Kaguya-sama: Love is War", views: 1120000 },
+            { title: "Horimiya", views: 980000 },
+            { title: "The Quintessential Quintuplets", views: 750000 },
+            { title: "Rent-A-Girlfriend", views: 690000 },
+            { title: "Bunny Girl Senpai", views: 710000 },
+            { title: "A Silent Voice", views: 1680000 },
+            { title: "Weathering With You", views: 1520000 },
+            { title: "Suzume no Tojimari", views: 1600000 },
+            { title: "I Want to Eat Your Pancreas", views: 1420000 },
+            { title: "The Garden of Words", views: 800000 },
+            { title: "5 Centimeters per Second", views: 670000 },
+            { title: "Howl’s Moving Castle", views: 2200000 }
+        ];
+
+        const moviesPerPage = 15;
+        let currentPage = 1;
+
+        function renderMovies(page = 1) {
+            currentPage = page;
+            const start = (currentPage - 1) * moviesPerPage;
+            const end = start + moviesPerPage;
+            const pageMovies = allMovies.slice(start, end);
+            const container = document.getElementById("movie-list");
+            container.innerHTML = "";
+
+            pageMovies.forEach(movie => {
+                const col = document.createElement("div");
+                col.className = "gallery__grid-item";
+                col.innerHTML = `
+      <div class="card gallery__card h-100">
+        <div class="gallery__image bg-secondary"></div>
+        <div class="card-body gallery__body">
+          <p class="gallery__title">Abandon:<br>${movie.title}</p>
+          <div class="gallery__views">
+            <i class="bi bi-eye"></i> ${movie.views.toLocaleString()}
+          </div>
+        </div>
+      </div>
+    `;
+                container.appendChild(col);
+            });
+
+            updatePaginationUI();
+        }
+
+        function updatePaginationUI() {
+            const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+            document.getElementById("page-info").textContent = `${currentPage}/${totalPages}`;
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderMovies(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderMovies(currentPage);
+            }
+        }
+
+        function jumpToPage(page) {
+            const pageNum = parseInt(page);
+            const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+            if (pageNum >= 1 && pageNum <= totalPages) {
+                currentPage = pageNum;
+                renderMovies(currentPage);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMovies();
+        });
+    </script>
+
+    <!-- Script Browse Tags -->
+    <script>
+        const listTagsMovies = [
+            { title: "100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu 1", views: 1875898 },
+            { title: "Attack on Titan: The Final Season", views: 1254600 },
+            { title: "Demon Slayer: Kimetsu no Yaiba", views: 902300 },
+            { title: "Jujutsu Kaisen", views: 870000 },
+            { title: "One Piece", views: 3200000 },
+            { title: "Naruto Shippuden", views: 2850000 },
+            { title: "Chainsaw Man", views: 1123000 },
+            { title: "My Hero Academia", views: 950400 },
+            { title: "Spy x Family", views: 1198000 },
+            { title: "Black Clover", views: 890000 },
+            { title: "Bleach: Thousand-Year Blood War", views: 1345000 },
+            { title: "Tokyo Revengers", views: 770000 },
+            { title: "Mob Psycho 100", views: 680000 },
+            { title: "Vinland Saga", views: 570000 },
+            { title: "Dr. Stone", views: 610000 },
+            { title: "Erased", views: 490000 },
+            { title: "Steins;Gate", views: 1130000 },
+            { title: "Death Note", views: 2450000 },
+            { title: "Fullmetal Alchemist: Brotherhood", views: 2750000 },
+            { title: "Blue Lock", views: 950000 },
+            { title: "Solo Leveling", views: 1080000 },
+            { title: "Re:Zero", views: 880000 },
+            { title: "No Game No Life", views: 810000 },
+            { title: "The Promised Neverland", views: 700000 },
+            { title: "Toradora!", views: 730000 },
+            { title: "Clannad: After Story", views: 540000 },
+            { title: "Angel Beats!", views: 620000 },
+            { title: "Your Lie in April", views: 1230000 },
+            { title: "Kaguya-sama: Love is War", views: 1120000 },
+            { title: "Horimiya", views: 980000 },
+            { title: "The Quintessential Quintuplets", views: 750000 },
+            { title: "Rent-A-Girlfriend", views: 690000 },
+            { title: "Bunny Girl Senpai", views: 710000 },
+            { title: "A Silent Voice", views: 1680000 },
+            { title: "Weathering With You", views: 1520000 },
+            { title: "Suzume no Tojimari", views: 1600000 },
+            { title: "I Want to Eat Your Pancreas", views: 1420000 },
+            { title: "The Garden of Words", views: 800000 },
+            { title: "5 Centimeters per Second", views: 670000 },
+            { title: "Howl’s Moving Castle", views: 2200000 }
+        ];
+
+        function renderTagsCarousel(season, items, cardsPerSlide = 10) {
+            const carouselInner = document.querySelector(`#tagsPage #tagsCarousel .carousel-inner`);
+            const indicators = document.querySelector(`#tagsPage #tagsCarousel .carousel-indicators`);
+            if (!carouselInner) return;
+
+            carouselInner.innerHTML = '';
+            if (indicators) indicators.innerHTML = '';
+
+            const totalSlides = Math.ceil(items.length / cardsPerSlide);
+
+            for (let i = 0; i < totalSlides; i++) {
+                const slideItems = items.slice(i * cardsPerSlide, (i + 1) * cardsPerSlide);
+                while (slideItems.length < cardsPerSlide) {
+                    slideItems.push(null);
+                }
+
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item' + (i === 0 ? ' active' : '');
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'carousel__item-wrapper d-grid';
+                wrapper.style.gridTemplateColumns = 'repeat(5, 1fr)';
+                wrapper.style.gridTemplateRows = 'repeat(2, 1fr)';
+                wrapper.style.gap = '7px';
+
+                slideItems.forEach((item, idx) => {
+                    const card = document.createElement('div');
+                    card.className = 'card-custom mx-2 flex-grow-1';
+                    if (item) {
+                        card.innerHTML = `
+                    <div class="trending__item">
+                        <img src="${item.image}" alt="${item.title}" class="trending__thumb" />
+                        <div class="trending__info">
+                            <div class="trending__title">${item.title}</div>
+                            <div class="trending__views">
+                                <i class="fa fa-eye"></i> ${item.views || ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                    } else {
+                        card.classList.add('card-custom--empty');
+                        card.style.background = 'transparent';
+                        card.style.boxShadow = 'none';
+                        card.innerHTML = '';
+                    }
+                    wrapper.appendChild(card);
+                });
+
+                carouselItem.appendChild(wrapper);
+                carouselInner.appendChild(carouselItem);
+
+                if (indicators) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.setAttribute('data-bs-target', `#tagsCarousel`);
+                    btn.setAttribute('data-bs-slide-to', i.toString());
+                    btn.className = (i === 0 ? 'active' : '');
+                    btn.setAttribute('aria-label', `Slide ${i + 1}`);
+                    if (i === 0) btn.setAttribute('aria-current', 'true');
+                    indicators.appendChild(btn);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = listTagsMovies.map(movie => ({
+                title: movie.title,
+                image: 'assets/img/anh-nen-may-tinh-4k-1.jpg',
+                views: movie.views.toLocaleString()
+            }));
+            renderTagsCarousel('tags', items, 10);
+        });
+
+        // Setup Carousel for Tags Page
+        const tagsCarousel = document.querySelector('#tagsPage #tagsCarousel');
+        if (tagsCarousel) {
+            new bootstrap.Carousel(tagsCarousel, {
+                interval: 3000,
+                ride: 'carousel',
+                pause: false,
+                wrap: true
+            });
+        }
+
+    </script>
+
+    <!-- Sidebar mobile -->
+     <!-- Script Sidebar mobile -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.sidebars-mobile__link');
+    const nav = document.getElementById('sidebarsMobile');
+    const main = document.querySelector('.main-contents');
+    const pageContents = document.querySelectorAll('.page-content');
+
+    const pageContentPlaceholders = {};
+    pageContents.forEach(page => {
+        const placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        page.parentNode.insertBefore(placeholder, page.nextSibling);
+        pageContentPlaceholders[page.id] = placeholder;
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', function () {
+        links.forEach(l => l.classList.remove('sidebars-mobile__link--active'));
+        this.classList.add('sidebars-mobile__link--active');
+        pageContents.forEach(page => {
+            page.classList.remove('page-content--active');
+            const placeholder = pageContentPlaceholders[page.id];
+            if (placeholder && placeholder.parentNode) {
+            placeholder.parentNode.insertBefore(page, placeholder.nextSibling);
+            }
+        });
+
+        const pageId = this.dataset.page + 'Page';
+        const page = document.getElementById(pageId);
+        if (page) {
+            const li = this.parentElement;
+            li.parentNode.insertBefore(page, li.nextSibling);
+            page.classList.add('page-content--active');
+        }
+        });
+    });
+    });
+</script>
+
+<!-- js filter trending mobile-->
+ <script>
+// Giả sử dummyItems đã có như bạn gửi ở trên
+
+document.addEventListener('DOMContentLoaded', function () {
+  const filterBtns = document.querySelectorAll('.trending__filter-mobile');
+  const contents = document.querySelectorAll('.trending__content-mobile');
+
+  // Hàm render trending cho từng category
+  function renderTrendingContent(category) {
+    const container = document.querySelector(`.trending__content-mobile[data-category="${category}"]`);
+    if (!container) return;
+    const filtered = dummyItems.filter(item => item.category === category);
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="text-center text-muted">No trending items.</div>';
+      return;
+    }
+    container.innerHTML = filtered.map(item => `
+      <div class="trending__item-mobile mb-3 p-3 rounded bg-dark text-white d-flex align-items-center">
+        <img src="${item.image}" alt="${item.title}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;margin-right:1rem;">
+        <div>
+          <div class="fw-bold">${item.title}</div>
+          <div class="small"><i class="fa fa-eye"></i> ${item.views}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render tất cả nội dung (ẩn hết trừ daily)
+  ['daily','weekly','monthly','yearly','semiannually'].forEach((cat, idx) => {
+    renderTrendingContent(cat);
+    const contentDiv = document.querySelector(`.trending__content-mobile[data-category="${cat}"]`);
+    contentDiv.style.display = idx === 0 ? 'block' : 'none';
+  });
+
+  // Xử lý click filter
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(b => b.classList.remove('trending__filter-mobile--active'));
+      this.classList.add('trending__filter-mobile--active');
+      const cat = this.dataset.category;
+      contents.forEach(content => {
+        content.style.display = (content.dataset.category === cat) ? 'block' : 'none';
+      });
+    });
+  });
+});
+</script>
+</body>
+
+</html>

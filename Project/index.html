@@ -7,6 +7,589 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+<!-- css for modal report -->
+    <style>
+        @media (max-width: 575.98px) {
+            .manga-report .modal-dialog {
+                max-width: 98vw;
+                margin: 0.5rem auto;
+            }
+    
+            .manga-report .modal-body {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                align-items: stretch !important;
+                padding: 0.5rem 0.5rem 0 0.5rem !important;
+            }
+    
+            .manga-report__thumbnail {
+                width: 100% !important;
+                height: 180px !important;
+                margin-bottom: 0.5rem;
+                border-radius: 6px;
+            }
+    
+            .manga-report__form {
+                width: 100% !important;
+                min-width: 0;
+            }
+    
+            .manga-report .modal-dialog,
+            .manga-report .modal-content {
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+    
+            .manga-report .modal-body {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                max-height: 100%;
+                overflow-y: auto;
+            }
+        }
+    </style>
+
+    <!-- contribute -->
+    <style>
+        @media (max-width: 575.98px) {
+            .contribute-sidebar__item {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+                border-radius: 0;
+                margin-bottom: 0.3rem;
+                background: transparent;
+                color: #fff;
+                border: 1px solid #fff;
+            }
+    
+            .contribute-sidebar__item--active,
+            .contribute-sidebar__item:focus {
+                background: #fff;
+                color: #000;
+            }
+    
+            .collapse {
+                margin-bottom: 1rem;
+                background: transparent;
+                border-radius: 6px;
+                padding: 1rem 0.5rem;
+            }
+        }
+    
+        .contribute-mobile .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+    
+        .contribute-mobile .table-bordered {
+            border-collapse: collapse;
+            width: 100%;
+            background: transparent;
+        }
+    
+        .contribute-mobile .table-bordered>tbody {
+            display: table-row-group;
+            position: relative;
+        }
+    
+        .contribute-mobile .table-bordered>tbody::after {
+            content: '';
+            display: block;
+            height: 20px;
+        }
+    
+        .contribute-mobile .table-bordered>tbody>tr {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+        }
+    
+        .contribute-mobile .table-bordered>tbody>tr>td,
+        .contribute-mobile .table-bordered>thead>tr>th {
+            border: none !important;
+            background: transparent;
+            vertical-align: middle;
+            padding: 14px 18px;
+            color: #fff;
+            font-size: .5rem;
+        }
+    
+        .contribute-mobile .table-bordered>thead>tr {
+            background: none;
+            border: none;
+            font-size: .5rem;
+        }
+    
+        .contribute-mobile .table-bordered>thead>tr>th {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none !important;
+            background: transparent;
+            padding: 12px 18px;
+        }
+    </style>
+
+     <!-- Contribute UPLOAD -->
+
+    <style>
+        @media (max-width: 575.98px) {
+            .contribute-upload-mobile .upload-form__row {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.25rem;
+                margin-bottom: 1rem;
+            }
+    
+            .contribute-upload-mobile .upload-form__label {
+                margin-bottom: 0.25rem;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+            }
+    
+            .contribute-upload-mobile .upload-form__input,
+            .contribute-upload-mobile .upload-form__select,
+            .contribute-upload-mobile .upload-form__textarea {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 1rem;
+            }
+    
+            .contribute-upload-mobile .upload-form__tag-btn {
+                width: fit-content;
+                align-self: flex-start;
+            }
+        }
+    </style>
+
+     <!-- My contribution -->
+    <style>
+        @media (max-width: 575.98px) {
+            .my-contributions-mobile .table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0 1rem;
+                background: transparent;
+            }
+
+            .my-contributions-mobile .table thead {
+                display: none;
+            }
+
+            .my-contributions-mobile .table tbody tr {
+                display: block;
+                background: #181c22;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(255, 255, 255, 0.08);
+                margin-bottom: 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 1rem;
+            }
+
+            .my-contributions-mobile .table tbody td {
+                display: block;
+                width: 100%;
+                color: #fff;
+                font-size: 0.98rem;
+                padding: 0.3rem 0;
+                border: none;
+                word-break: break-word;
+                background: transparent;
+            }
+
+            .my-contributions-mobile .table tbody td::before {
+                content: attr(data-label) ": ";
+                font-weight: 600;
+                color: #dc3545;
+                display: inline-block;
+                min-width: 110px;
+                margin-right: 0.5em;
+            }
+
+            .contribute-mobile .table-bordered>thead>tr>th {
+                font-size: .5rem;
+            }
+
+        }
+    </style>
+    <!-- addnew tag -->
+    <style>
+        @media (max-width: 575.98px) {
+            .add-new-tag-mobile .add-new-tag-form__row {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__label {
+                margin-bottom: 0.25rem;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__input,
+            .add-new-tag-mobile .add-new-tag-form__select,
+            .add-new-tag-mobile .add-new-tag-form__textarea {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 1rem;
+                background: transparent;
+                color: #fff;
+                border: 1px solid #aaa;
+                border-radius: 2px;
+                padding: 0.5rem 0.7rem;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__textarea {
+                min-height: 90px;
+                resize: vertical;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1.2rem;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__btn {
+                padding: 0.4rem 1.2rem;
+                font-size: 1rem;
+                border-radius: 3px;
+                border: 1px solid #fff;
+                background: transparent;
+                color: #fff;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .add-new-tag-mobile .add-new-tag-form__btn--submit {
+                background: #b02a47;
+                color: #fff;
+                border: none;
+            }
+        }
+    </style>
+
+    <!-- hidden previous, next button -->
+     <style>
+        @media (max-width: 480px) {
+            .carousel__nav--prev, .carousel__nav--next {
+                display: none !important;
+            }
+        }
+
+     </style>
+
+     <!-- modal search -->
+    <style>
+        .search-modal {
+            background: rgba(20, 30, 40, 0.98);
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden !important;
+        }
+    
+        .search-modal.search-modal--active {
+            display: flex;
+        }
+    
+        .search-modal__content {
+            background: #232c34;
+            border-radius: 4px;
+            padding: 2rem 2.5rem 1.5rem 2.5rem;
+            min-width: 320px;
+            max-width: 1100px;
+            width: 98vw;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            position: relative;
+            max-height: 98vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .search-modal__close {
+            position: absolute;
+            top: -4;
+            right: 0.2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+    
+        .search-modal__filter-btn {
+            padding: 0.18rem 0.7rem !important;
+            font-size: 0.88rem !important;
+            min-height: 28px !important;
+            line-height: 1.1 !important;
+        }
+    
+        .search-modal__header {
+            margin-bottom: .75rem;
+        }
+    
+        .search-modal__search-bar {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 3px;
+            border: 1px solid #fff;
+            background: #232c34;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+        }
+    
+        .search-modal__filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: .75rem;
+        }
+    
+        .search-modal__filter-btn {
+            background: transparent;
+            color: #fff;
+            border: 1.2px solid #fff;
+            border-radius: 0;
+            padding: 0.32rem 1.1rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+            outline: none;
+            min-width: 70px;
+        }
+    
+        .search-modal__filter-btn--active,
+        .search-modal__filter-btn:focus {
+            background: #a11341;
+            color: #fff;
+            border-color: #a11341;
+            border-radius: 0;
+        }
+    
+        .search-modal__section {
+            background: #3a414a;
+            border-radius: 4px;
+            padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+    
+        .search-modal__section-title {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+    
+        .search-modal__section-subtitle {
+            color: #bbb;
+            font-size: 0.93rem;
+            margin-bottom: 1rem;
+        }
+    
+        .search-modal__tags {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0.3rem;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+    
+        .search-modal__tag {
+            background: transparent;
+            color: #fff;
+            border: 1.2px solid #fff;
+            border-radius: 0;
+            padding: 0.18rem 0.1rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            cursor: pointer;
+            min-width: 0;
+            min-height: 26px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    
+        .search-modal__tag--active {
+            background: #a11341;
+            color: #fff;
+            border-color: #a11341;
+        }
+    
+        .search-modal__section>.search-modal__reset-btn,
+        .search-modal__section>.search-modal__reset {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: transparent;
+            color: #fff;
+            border: 1.2px solid #fff;
+            border-radius: 0;
+            padding: 0.18rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+    
+        .search-modal__section>.search-modal__reset-btn:hover,
+        .search-modal__section>.search-modal__reset:hover {
+            background: #a11341;
+            color: #fff;
+            border-color: #a11341;
+        }
+    
+        .search-modal__broad-matches {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #3a414a;
+            border-radius: 4px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+    
+        .search-modal__broad-matches-text {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+    
+        .search-modal__broad-matches-subtitle {
+            color: #bbb;
+            font-size: 0.92rem;
+        }
+    
+        .search-modal__actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: .75rem;
+        }
+    
+        .search-modal__btn {
+            background: transparent;
+            color: #fff;
+            border: 1.2px solid #fff;
+            border-radius: 0;
+            padding: 0.32rem 1.1rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            outline: none;
+            min-width: 70px;
+        }
+    
+        .search-modal__btn--primary,
+        .search-modal__btn:hover,
+        .search-modal__btn:focus {
+            background: #b02a47;
+            color: #fff;
+            border-color: #b02a47;
+        }
+    
+        @media (max-width: 575.98px) {
+            .search-modal__content {
+                max-width: 95vw !important;
+                width: 95vw !important;
+                min-width: 0 !important;
+                height: 100vh !important;
+                min-height: 100vh !important;
+                border-radius: 10px !important;
+                padding: 1rem 0.5rem !important;
+                box-shadow: none !important;
+                position: fixed !important;
+                top: 50%;
+                left: 46%;
+                transform: translate(-50%, -50%);
+            }
+    
+            .search-modal {
+                align-items: center !important;
+                justify-content: center !important;
+            }
+    
+            .search-modal__section,
+            .search-modal__broad-matches {
+                padding: 1rem 0.5rem;
+            }
+    
+            .search-modal__tags {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.3rem;
+            }
+    
+            .search-modal__tag {
+                font-size: 0.5rem;
+                padding: 0.15rem 0.1rem;
+                min-height: 28px;
+            }
+    
+            .search-modal__filter-btn,
+            .search-modal__btn {
+                font-size: 0.9rem;
+                padding: 0.32rem 0.7rem;
+                min-width: 60px;
+            }
+    
+            .search-modal__header {
+                display: none !important;
+            }
+    
+            .search-modal__content {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .search-modal__broad-matches {
+                order: 1;
+            }
+    
+            .search-modal__section {
+                order: 2;
+            }
+    
+            .search-modal__tags {
+                order: 3;
+            }
+    
+            .search-modal__filters {
+                order: 4;
+            }
+    
+            .search-modal__actions {
+                order: 5;
+            }
+    
+            .search-modal__filters {
+                display: none;
+            }
+    
+            .search-modal__actions {
+                display: none;
+            }
+    
+            .search-modal__close {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar Overlay -->
@@ -39,6 +622,12 @@
                         <a href="#" class="sidebar__nav-link">
                             <i class="fas fa-list sidebar__nav-icon"></i>
                             <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-image sidebar__nav-icon"></i>
+                            <span>Image</span>
                         </a>
                     </li>
                     <li class="sidebar__nav-item">
@@ -170,7 +759,7 @@
             <div class="d-flex align-items-center">
                 <!-- Search Icon -->
                 <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
-                
+
                 <!-- Toggle button for mobile -->
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <i class="fas fa-ellipsis-v text-light"></i>
@@ -183,7 +772,7 @@
                             <a class="nav-link navbar__btn" href="login.html">SIGN IN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar__btn" href="sign in.html">CREATE ACCOUNT</a>
+                            <a class="nav-link navbar__btn" href="signin.html">CREATE ACCOUNT</a>
                         </li>
                     </ul>
                 </div>
@@ -202,7 +791,6 @@
             </div>
         </div>
     </section>
-
    
     <!-- New Releases Section -->
     <section class="section section--bordered">
@@ -965,7 +1553,7 @@
                             <div class="image-gallery__grid">
                                 <div class="image-gallery__grid-item">
                                     <div class="image-gallery__grid-placeholder">
-                                        <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                        <span>Grid 1</span>
                                     </div>
                                 </div>
                                 <div class="image-gallery__grid-item">
@@ -1011,7 +1599,7 @@
                             <div class="image-gallery__grid">
                                 <div class="image-gallery__grid-item">
                                     <div class="image-gallery__grid-placeholder">
-                                        <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                        <span>Grid 1</span>
                                     </div>
                                 </div>
                                 <div class="image-gallery__grid-item">
@@ -1057,6 +1645,918 @@
         </div>
     </section>
 
+    <!-- Manga detail Section -->
+    <section class="section section--bordered">
+        <div class="container py-4 manga-detail">
+            <h1 class="manga-detail__title">Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1 <span
+                    class="fs-6">(English)</span>
+                <i class="far fa-heart manga-detail__heart-outline" ></i></h1>
+
+
+            <div class="manga-detail__tags mb-3">
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">THREESOME</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">COSPLAY</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">THREESOME</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">COSPLAY</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">THREESOME</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">COSPLAY</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">THREESOME</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">THREESOME</button>
+                <button class="btn btn-outline-light btn-sm me-1 manga-detail__tag">COSPLAY</button>
+            </div>
+    
+            <!-- Only mobile -->
+            <div class="row">
+                <div class="d-flex d-sm-none flex-wrap justify-content-between align-items-center mb-2 text-white">
+                    <div>Ranked <span class="text-highlight">#1394</span></div>
+                    <div>Popularity <span class="text-highlight">#1323</span></div>
+                    <div>Update on <span class="text-highlight">#1323</span></div>
+                </div>
+                <div class="d-flex d-sm-none justify-content-between align-items-center mb-3 manga-detail__actions w-100">
+                    <!-- Moon Ticket block -->
+                    <div class="d-flex flex-column text-white">
+                        <small class="fw-semibold">Moon Ticket</small>
+                        <span class="fw-bold fs-5">+ 14,687 pts</span>
+                        <small class="text-white">875 Moon Ticket</small>
+                    </div>
+    
+                    <!-- Promote button -->
+                    <button class="btn btn-outline-light btn-sm text-nowrap">Promote This Manga!</button>
+                </div>
+    
+            </div>
+    
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="manga-detail__thumbnail bg-secondary" style="height: 380px;"></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="d-none d-sm-flex flex-wrap align-items-center mb-2 text-white">
+                        <div class="me-4">Ranked <span class="text-highlight">#1394</span></div>
+                        <div class="me-4">Popularity <span class="text-highlight">#1323</span></div>
+                        <div class="me-4">Update on <span class="text-highlight">#1323</span></div>
+                    </div>
+    
+                    <div class="d-none d-sm-flex align-items-center gap-2 mb-3 manga-detail__actions">
+                        <div class="manga-detail__moon-ticket text-nowrap d-flex align-items-center text-white">
+                            Moon Ticket
+                            <span class="manga-detail__divider">|</span>
+                            <span class="d-flex flex-column align-items-start">
+                                <span class="fw-bold text-white">+ 14,687 pts</span>
+                                <small class="text-white" style="line-height:1;">(87% Moon Ticket)</small>
+                            </span>
+                        </div>
+                        <span class="manga-detail__divider">|</span>
+                        <button class="btn btn-outline-light btn-sm">Promote This Manga!</button>
+                        <span class="manga-detail__divider">|</span>
+                        <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#reportModal">Report</button>
+                    </div>
+    
+                    <ul class="d-none d-sm-flex nav nav-tabs mb-3 manga-detail__tabs" id="mangaDetailTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab"
+                                data-bs-target="#overview" type="button" role="tab">Overview</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="toc-tab" data-bs-toggle="tab" data-bs-target="#toc" type="button"
+                                role="tab">Table of Contents</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="similar-tab" data-bs-toggle="tab" data-bs-target="#similar"
+                                type="button" role="tab">Similar Series</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                type="button" role="tab">Reviews</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats"
+                                type="button" role="tab">Statistics</button>
+                        </li>
+                    </ul>
+    
+                    <div class="tab-content d-none d-sm-flex" id="mangaDetailTabsContent">
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                            <p class="manga-detail__description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet
+                                dolore magna aliquam erat volutpat...
+                            </p>
+                            <ul class="list-unstyled manga-detail__meta">
+                                <li><strong>Artist:</strong> John Doe</li>
+                                <li><strong>Parody:</strong> John Doe</li>
+                                <li><strong>Category:</strong> Original</li>
+                                <li><strong>Scanlator:</strong> John Doe</li>
+                                <li><strong>Uploader:</strong> John Doe</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="toc" role="tabpanel">
+                            <ul>
+                                <li>Chapter 1: The Mysterious Classroom</li>
+                                <li>Chapter 2: Unexpected Encounter</li>
+                                <li>Chapter 3: Secrets Revealed</li>
+                                <li>Chapter 4: The Final Test</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="similar" role="tabpanel">
+                            <ul>
+                                <li>Another Mysterious Manga</li>
+                                <li>Classroom of the Elite</li>
+                                <li>Secret School Life</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div>
+                                <strong>User123:</strong> Amazing story and art!<br>
+                                <small>★★★★★</small>
+                            </div>
+                            <div class="mt-2">
+                                <strong>MangaFan:</strong> Enjoyed every chapter.<br>
+                                <small>★★★★☆</small>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="stats" role="tabpanel">
+                            <ul>
+                                <li><strong>Views:</strong> 1,875,898</li>
+                                <li><strong>Favorites:</strong> 111,545</li>
+                                <li><strong>Pages:</strong> 100</li>
+                                <li><strong>Rating:</strong> 4.7/5 (99 ratings)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="d-flex flex-column align-items-center align-items-sm-start mt-4 manga-detail__actions">
+                <div class="d-flex justify-content-center justify-content-sm-start mb-2">
+                    <button class="btn btn-outline-light me-2 px-4">READ ONLINE</button>
+                    <div class="manga-detail__dropdown position-relative">
+                        <button class="btn btn-danger px-4 manga-detail__dropdown-toggle" id="addToBtn">
+                            ADD TO
+                        </button>
+                        <div class="manga-detail__dropdown-menu position-absolute d-none" id="addToMenu">
+                            <button class="btn btn-outline-light w-100 mb-1">PUBLIC</button>
+                            <button class="btn btn-outline-light w-100 mb-1">PRIVATE</button>
+                            <button class="btn btn-outline-light w-100">UNLISTED</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center d-block d-sm-none mb-2">
+                    <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                        Report
+                    </button>
+                </div>
+            </div>
+
+    
+            <div class="d-none d-sm-flex manga-detail__rating mt-4 d-flex align-items-center text-highlight">
+                <div class="text-danger me-2 fs-4">★★★★★</div>
+                <span class="badge me-2">4.7</span>
+                <small>(99 ratings)</small>
+            </div>
+    
+            <!-- Tab mobile -->
+            <!-- Accordion Tabs for Mobile -->
+            <div class="d-flex d-sm-none flex-column gap-2 mt-5" id="mobileAccordionTabs">
+                <button class="btn btn-outline-light text-start section__title" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#overviewPanel" aria-expanded="true">Overview</button>
+                <div class="collapse show" id="overviewPanel" data-bs-parent="#mobileAccordionTabs">
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="manga-detail__description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet
+                                dolore magna aliquam erat volutpat...
+                            </p>
+                            <ul class="list-unstyled manga-detail__meta">
+                                <li><strong>Artist:</strong> John Doe</li>
+                                <li><strong>Parody:</strong> John Doe</li>
+                                <li><strong>Category:</strong> Original</li>
+                                <li><strong>Scanlator:</strong> John Doe</li>
+                                <li><strong>Uploader:</strong> John Doe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="btn btn-outline-light text-start section__title" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#tocPanel">Table of Contents</button>
+                <div class="collapse" id="tocPanel" data-bs-parent="#mobileAccordionTabs">
+                    <div class="accordion-body">
+                        <div class="accordion-content manga-detail__description">
+                            <ul>
+                                <li>Chapter 1: The Mysterious Classroom</li>
+                                <li>Chapter 2: Unexpected Encounter</li>
+                                <li>Chapter 3: Secrets Revealed</li>
+                                <li>Chapter 4: The Final Test</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="btn btn-outline-light text-start section__title" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#similarPanel">Similar Series</button>
+                <div class="collapse" id="similarPanel" data-bs-parent="#mobileAccordionTabs">
+                    <div class="accordion-body">
+                        <div class="accordion-content manga-detail__description">
+                            <ul>
+                                <li>Another Mysterious Manga</li>
+                                <li>Classroom of the Elite</li>
+                                <li>Secret School Life</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="btn btn-outline-light text-start section__title" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#reviewsPanel">Reviews</button>
+                <div class="collapse" id="reviewsPanel" data-bs-parent="#mobileAccordionTabs">
+                    <div class="accordion-body">
+                        <div class="accordion-content manga-detail__description">
+                            <div>
+                                <strong>User123:</strong> Amazing story and art!<br>
+                                <small>★★★★★</small>
+                            </div>
+                            <div class="mt-2">
+                                <strong>MangaFan:</strong> Enjoyed every chapter.<br>
+                                <small>★★★★☆</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="btn btn-outline-light text-start section__title section__title" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#statsPanel">Statistics</button>
+                <div class="collapse" id="statsPanel" data-bs-parent="#mobileAccordionTabs">
+                    <div class="accordion-body">
+                        <div class="accordion-content manga-detail__description">
+                            <ul>
+                                <li><strong>Views:</strong> 1,875,898</li>
+                                <li><strong>Favorites:</strong> 111,545</li>
+                                <li><strong>Pages:</strong> 100</li>
+                                <li><strong>Rating:</strong> 4.7/5 (99 ratings)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abandon 100 Section-->
+    <section class="section section--bordered d-none d-sm-block">
+        <div class="manga-reader__page-counter d-flex justify-content-center align-items-center mb-2">
+            <span class="me-1 manga-reader__page-label">Page</span>
+            <input type="text" class="form-control form-control-sm text-center manga-reader__page-input" value="01">
+            <span class="ms-1 manga-reader__page-total">of 194</span>
+        </div>
+    
+        <div class="container text-center py-4 manga-reader">
+            <h1 class="manga-reader__title mb-4">Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1</h1>
+    
+            <div class="manga-reader__view-mode mb-3">
+                <span class="me-2 text-white">View mode:</span>
+                <button class="btn btn-outline-light btn-sm manga-reader__btn">Single Page</button>
+                <button class="btn btn-outline-light btn-sm manga-reader__btn">Western Page</button>
+                <button class="btn btn-danger btn-sm manga-reader__btn">Manga Page</button>
+            </div>
+    
+            <div class="manga-reader__pages d-flex justify-content-center flex-wrap">
+                <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Manga Page" class="img-fluid manga-reader__image">
+            </div>
+    
+            <div class="manga-reader__nav mt-4 d-flex justify-content-between gap-3">
+                <div>
+                    <button class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Browse
+                    </button>
+                    <button class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Gallery
+                    </button>
+                </div>
+                <div>
+                    <button class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Previous
+                    </button>
+                    <button class="btn btn-outline-light btn-sm">
+                        Next <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+    
+            </div>
+    </section>
+
+    <!-- Mobile -->
+    <section class="section section--bordered d-block d-sm-none">
+        <div class="container text-center py-3 manga-reader">
+            <h1 class="manga-reader__title mb-1" style="font-size:1.1rem;">Abandon: 100 Nuki Shinai to Derarenai Kushigi na
+                Kyoushitsu 1</h1>
+            <div class="text-danger small mb-2">(English)</div>
+            <div class="d-flex justify-content-center gap-2 mb-3">
+                <button class="btn btn-outline-light btn-sm px-3">Browse</button>
+                <button class="btn btn-outline-light btn-sm px-3">Gallery</button>
+            </div>
+            <div class="manga-reader__pages mb-3">
+                <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Manga Page" class="img-fluid manga-reader__image"
+                    style="width:100%;max-width:100vw;">
+            </div>
+            <div class="manga-reader__page-counter d-flex justify-content-center align-items-center mb-2">
+                <span class="me-1 manga-reader__page-label">Page</span>
+                <input type="text" class="form-control form-control-sm text-center manga-reader__page-input" value="01"
+                    style="width:50px;">
+                <span class="ms-1 manga-reader__page-total">of 194</span>
+            </div>
+            <div class="d-flex justify-content-center gap-2 mb-2">
+                <button class="btn btn-outline-light btn-sm px-3">&lt; Previous</button>
+                <button class="btn btn-outline-light btn-sm px-3">Next &gt;</button>
+            </div>
+            <div class="text-white mb-1">View mode:</div>
+            <div class="d-flex justify-content-center gap-2 mb-3">
+                <button class="btn btn-danger btn-sm manga-reader__btn">Single Page</button>
+                <button class="btn btn-outline-light btn-sm manga-reader__btn">Western Page</button>
+                <button class="btn btn-outline-light btn-sm manga-reader__btn">Manga Page</button>
+            </div>
+            <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-outline-light btn-sm px-3">Browse</button>
+                <button class="btn btn-outline-light btn-sm px-3">Gallery</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section class="section section--bordered d-none d-sm-block">
+        <div class="contribute-layout">
+            <!-- Sidebar -->
+            <aside class="contribute-sidebar">
+                <button class="contribute-sidebar__item contribute-sidebar__item--active" data-tab="pending">Pending
+                    Contributions</button>
+                <button class="contribute-sidebar__item" data-tab="upload">Upload</button>
+                <button class="contribute-sidebar__item" data-tab="my">My Contributions</button>
+                <button class="contribute-sidebar__item" data-tab="tag">Add New Tag</button>
+            </aside>
+    
+            <!-- Content -->
+            <main class="contribute-content">
+                <!-- Pending Contributions -->
+                <div class="tab-content active" id="pending">
+                    <h2 class="section__title">Pending Contributions</h2>
+                    <div class="table-responsive mt-4">
+                        <table class="table table-dark table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Submitted by</th>
+                                    <th>Submitted on</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+    
+                            <tbody>
+                                <tr>
+                                    <td>Upload</td>
+                                    <td>Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1 (English)</td>
+                                    <td>Kanny</td>
+                                    <td>Apr 14, 2022 at 22:10</td>
+                                    <td>Pending review</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>Upload</td>
+                                    <td>Another Contribution Title</td>
+                                    <td>Kanny</td>
+                                    <td>Apr 15, 2022 at 10:45</td>
+                                    <td>Pending review</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>Upload</td>
+                                    <td>Third Contribution Entry</td>
+                                    <td>Kanny</td>
+                                    <td>Apr 16, 2022 at 08:20</td>
+                                    <td>Pending review</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                <!-- Upload -->
+                <div class="tab-content" id="upload">
+                    <h2 class="section__title">Upload</h2>
+                    <section class="upload-section">
+                        <p class="upload__note">
+                            You can upload here. Read the <a href="#" class="upload__rules">rules</a> before you upload.<br>
+                            Please make sure you are not submitting a gallery that already exists!<br>
+                            Your upload will be checked for being a duplicate before submitting, to check without
+                            submitting, use the
+                            Check button.
+                        </p>
+                        <form class="upload-form">
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Title:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Alternative Title:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Artist:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Circle:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Parody:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Contents/Tag:</label>
+                                <button class="upload-form__tag-btn" type="button">Add Tag</button>
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Charater:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Collection:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Scanlator:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Convention:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Language:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Category:</label>
+                                <select class="upload-form__select">
+                                    <option>Doujin</option>
+                                    <option>Manga</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Description:</label>
+                                <textarea class="upload-form__textarea"></textarea>
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Source:</label>
+                                <input type="text" class="upload-form__input" />
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label">Note:</label>
+                                <textarea class="upload-form__textarea"></textarea>
+                            </div>
+    
+                            <div class="upload-form__row">
+                                <label class="upload-form__label"></label>
+                                <div class="upload-form__dropzone">
+                                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/image.png" alt="upload icon" />
+                                    <p>Drop / Select Files to Upload<br><small>Accepted formats: .zip</small></p>
+                                    <input type="file" class="upload-form__file-input" />
+                                </div>
+                            </div>
+    
+                            <div class="upload-form__actions">
+                                <button type="button" class="upload-form__btn upload-form__btn--check">Check</button>
+                                <button type="reset" class="upload-form__btn upload-form__btn--reset">Reset</button>
+                                <button type="submit" class="upload-form__btn upload-form__btn--submit">Submit
+                                    Upload</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+    
+                <!-- My Contributions -->
+                <div class="tab-content" id="my">
+                    <h2 class="section__title">My Contributions</h2>
+                    <section class="upload-section my-contributions">
+                        <div class="my-contributions__filters">
+                            <div class="my-contributions__filter-group">
+                                <span>Sort by Type:</span>
+                                <a href="#" class="my-contributions__filter my-contributions__filter--active">All</a>
+                                <a href="#" class="my-contributions__filter">Gallery</a>
+                                <a href="#" class="my-contributions__filter">New Tag</a>
+                                <a href="#" class="my-contributions__filter">Edit Tag</a>
+                                <a href="#" class="my-contributions__filter">Edit Gallery</a>
+                            </div>
+    
+                            <div class="my-contributions__filter-group">
+                                <span>Sort by Status:</span>
+                                <a href="#" class="my-contributions__filter my-contributions__filter--active">All</a>
+                                <a href="#" class="my-contributions__filter">Approved</a>
+                                <a href="#" class="my-contributions__filter">Rejected</a>
+                                <a href="#" class="my-contributions__filter">Pending</a>
+                                <a href="#" class="my-contributions__filter">Invalid</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive mt-4">
+                            <table class="table table-dark table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Title</th>
+                                        <th>Submitted by</th>
+                                        <th>Submitted on</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr>
+                                        <td>Upload</td>
+                                        <td>Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1 (English)</td>
+                                        <td>Kanny</td>
+                                        <td>Apr 14, 2022 at 22:10</td>
+                                        <td>Pending review</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Upload</td>
+                                        <td>Another Contribution Title</td>
+                                        <td>Kanny</td>
+                                        <td>Apr 15, 2022 at 10:45</td>
+                                        <td>Pending review</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Upload</td>
+                                        <td>Third Contribution Entry</td>
+                                        <td>Kanny</td>
+                                        <td>Apr 16, 2022 at 08:20</td>
+                                        <td>Pending review</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+    
+                <!-- Add New Tag -->
+                <div class="tab-content addNew-Tag" id="tag">
+                    <h1 class="section__title">Add New Tag</h1>
+                    <section class="upload-section">
+                        <p class="upload-form__note">
+                            You can suggest a new tag to be added here. Please make sure you are not submitting a tag that
+                            already
+                            exists!<br>
+                            Your tag will be checked for being a duplicate before submitting, to check without submitting,
+                            use the Check
+                            button.<br>
+                        </p>
+    
+                        <form class="add-new-tag-form">
+                            <div class="add-new-tag-form__row">
+                                <label class="add-new-tag-form__label">Title</label>
+                                <input class="add-new-tag-form__input" type="text" />
+                            </div>
+    
+                            <div class="add-new-tag-form__row">
+                                <label class="add-new-tag-form__label">Alternative title</label>
+                                <input class="add-new-tag-form__input" type="text" />
+                            </div>
+    
+                            <div class="add-new-tag-form__row">
+                                <label class="add-new-tag-form__label">Type</label>
+                                <select class="add-new-tag-form__select">
+                                    <option>Circle</option>
+                                    <option>Square</option>
+                                    <option>Parody</option>
+                                </select>
+                            </div>
+    
+                            <div class="add-new-tag-form__row">
+                                <label class="add-new-tag-form__label">Description</label>
+                                <textarea class="add-new-tag-form__textarea"></textarea>
+                            </div>
+    
+                            <div class="add-new-tag-form__row">
+                                <label class="add-new-tag-form__label">Note</label>
+                                <textarea class="add-new-tag-form__textarea"></textarea>
+                            </div>
+    
+                            <div class="add-new-tag-form__actions">
+                                <button type="button" class="add-new-tag-form__btn">Check</button>
+                                <button type="submit" class="add-new-tag-form__btn add-new-tag-form__btn--submit">Submit New
+                                    Tag</button>
+                            </div>
+                        </form>
+    
+                    </section>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Mobile layout-->
+    <section class="section section--bordered d-block d-sm-none">
+        <div class="contribute-mobile">
+            <!-- Pending Contributions -->
+            <button class="contribute-sidebar__item w-100 text-start section__title" type="button" data-bs-toggle="collapse"
+                data-bs-target="#pendingTab" aria-expanded="true">
+                Pending Contributions
+            </button>
+            <div class="collapse show" id="pendingTab" data-bs-parent=".contribute-mobile">
+                <!-- Nội dung Pending Contributions -->
+                <div class="table-responsive mt-4">
+                    <table class="table table-dark table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Title</th>
+                                <th>Submitted by</th>
+                                <th>Submitted on</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Upload</td>
+                                <td>Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1 (English)</td>
+                                <td>Kanny</td>
+                                <td>Apr 14, 2022 at 22:10</td>
+                                <td>Pending review</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Upload</td>
+                                <td>Another Contribution Title</td>
+                                <td>Kanny</td>
+                                <td>Apr 15, 2022 at 10:45</td>
+                                <td>Pending review</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Upload</td>
+                                <td>Third Contribution Entry</td>
+                                <td>Kanny</td>
+                                <td>Apr 16, 2022 at 08:20</td>
+                                <td>Pending review</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Upload -->
+            <button class="contribute-sidebar__item w-100 text-start section__title" type="button" data-bs-toggle="collapse"
+                data-bs-target="#uploadTab">
+                Upload
+            </button>
+            <div class="collapse" id="uploadTab" data-bs-parent=".contribute-mobile">
+                <!-- Nội dung Upload -->
+                <section class="upload-section contribute-upload-mobile">
+                    <p class="upload__note">
+                        You can upload here. Read the <a href="#" class="upload__rules">rules</a> before you upload.<br>
+                        Please make sure you are not submitting a gallery that already exists!<br>
+                        Your upload will be checked for being a duplicate before submitting, to check without
+                        submitting, use the
+                        Check button.
+                    </p>
+                    <form class="upload-form">
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Title:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Alternative Title:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Artist:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Circle:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Parody:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Contents/Tag:</label>
+                            <button class="upload-form__tag-btn" type="button">Add Tag</button>
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Charater:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Collection:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Scanlator:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Convention:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Language:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Category:</label>
+                            <select class="upload-form__select">
+                                <option>Doujin</option>
+                                <option>Manga</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Description:</label>
+                            <textarea class="upload-form__textarea"></textarea>
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Source:</label>
+                            <input type="text" class="upload-form__input" />
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label">Note:</label>
+                            <textarea class="upload-form__textarea"></textarea>
+                        </div>
+
+                        <div class="upload-form__row">
+                            <label class="upload-form__label"></label>
+                            <div class="upload-form__dropzone">
+                                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/image.png" alt="upload icon" />
+                                <p>Drop / Select Files to Upload<br><small>Accepted formats: .zip</small></p>
+                                <input type="file" class="upload-form__file-input" />
+                            </div>
+                        </div>
+
+                        <div class="upload-form__actions">
+                            <button type="button" class="upload-form__btn upload-form__btn--check">Check</button>
+                            <button type="reset" class="upload-form__btn upload-form__btn--reset">Reset</button>
+                            <button type="submit" class="upload-form__btn upload-form__btn--submit">Submit
+                                Upload</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- My Contributions -->
+            <button class="contribute-sidebar__item w-100 text-start section__title" type="button" data-bs-toggle="collapse"
+                data-bs-target="#myTab">
+                My Contributions
+            </button>
+            <div class="collapse" id="myTab" data-bs-parent=".contribute-mobile">
+                <!-- Nội dung My Contributions -->
+                <section class="upload-section my-contributions">
+                    <div class="my-contributions__filters">
+                        <div class="my-contributions__filter-group">
+                            <span>Sort by Type:</span>
+                            <a href="#" class="my-contributions__filter my-contributions__filter--active">All</a>
+                            <a href="#" class="my-contributions__filter">Gallery</a>
+                            <a href="#" class="my-contributions__filter">New Tag</a>
+                            <a href="#" class="my-contributions__filter">Edit Tag</a>
+                            <a href="#" class="my-contributions__filter">Edit Gallery</a>
+                        </div>
+
+                        <div class="my-contributions__filter-group">
+                            <span>Sort by Status:</span>
+                            <a href="#" class="my-contributions__filter my-contributions__filter--active">All</a>
+                            <a href="#" class="my-contributions__filter">Approved</a>
+                            <a href="#" class="my-contributions__filter">Rejected</a>
+                            <a href="#" class="my-contributions__filter">Pending</a>
+                            <a href="#" class="my-contributions__filter">Invalid</a>
+                        </div>
+                    </div>
+                    <div class="my-contributions-mobile">
+                        <table class="table my-contributions-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Submitted by</th>
+                                    <th>Submitted on</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Type">Upload</td>
+                                    <td data-label="Title">Abandon: 100 Nuki Shinai to Derarenai Kushigi na Kyoushitsu 1
+                                        (English)</td>
+                                    <td data-label="Submitted by">Kanny</td>
+                                    <td data-label="Submitted on">Apr 14, 2022 at 22:10</td>
+                                    <td data-label="Status">Pending review</td>
+                                </tr>
+                                <!-- ... -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Add New Tag -->
+            <button class="contribute-sidebar__item w-100 text-start section__title" type="button" data-bs-toggle="collapse"
+                data-bs-target="#tagTab">
+                Add New Tag
+            </button>
+            <div class="collapse" id="tagTab" data-bs-parent=".contribute-mobile">
+                <!-- Nội dung Add New Tag -->
+                <section class="upload-section add-new-tag-mobile">
+                    <p class="upload-form__note">
+                        You can suggest a new tag to be added here. Please make sure you are not submitting a tag that
+                        already
+                        exists!<br>
+                        Your tag will be checked for being a duplicate before submitting, to check without submitting,
+                        use the Check
+                        button.<br>
+                    </p>
+
+                    <form class="add-new-tag-form">
+                        <div class="add-new-tag-form__row">
+                            <label class="add-new-tag-form__label">Title</label>
+                            <input class="add-new-tag-form__input" type="text" />
+                        </div>
+
+                        <div class="add-new-tag-form__row">
+                            <label class="add-new-tag-form__label">Alternative title</label>
+                            <input class="add-new-tag-form__input" type="text" />
+                        </div>
+
+                        <div class="add-new-tag-form__row">
+                            <label class="add-new-tag-form__label">Type</label>
+                            <select class="add-new-tag-form__select">
+                                <option>Circle</option>
+                                <option>Square</option>
+                                <option>Parody</option>
+                            </select>
+                        </div>
+
+                        <div class="add-new-tag-form__row">
+                            <label class="add-new-tag-form__label">Description</label>
+                            <textarea class="add-new-tag-form__textarea"></textarea>
+                        </div>
+
+                        <div class="add-new-tag-form__row">
+                            <label class="add-new-tag-form__label">Note</label>
+                            <textarea class="add-new-tag-form__textarea"></textarea>
+                        </div>
+
+                        <div class="add-new-tag-form__actions">
+                            <button type="button" class="add-new-tag-form__btn">Check</button>
+                            <button type="submit" class="add-new-tag-form__btn add-new-tag-form__btn--submit">Submit New
+                                Tag</button>
+                        </div>
+                    </form>
+
+                </section>
+            </div>
+        </div>
+    </section>
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
@@ -1090,8 +2590,6 @@
                     Fushigi na Kyoushitsu 1
                 </div>
             </div>
-
-          
         </div>
     </footer>
  <!-- Additional Footer Content Section -->
@@ -1164,7 +2662,7 @@
             <div class="search-modal__section">
                 <h3 class="search-modal__section-title">Include Tags</h3>
                 <p class="search-modal__section-subtitle">Find things that have all of these tags</p>
-                
+                <button class="search-modal__reset-btn" onclick="resetTags()" type="button">RESET</button>
                 <div class="search-modal__tags" id="tagsList">
                     <button class="search-modal__tag" onclick="toggleTag(this)">COSPLAY</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">ANIME</button>
@@ -1184,7 +2682,7 @@
                     <button class="search-modal__tag" onclick="toggleTag(this)">ROMANCE</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">COMEDY</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">DRAMA</button>
-                    <button class="search-modal__tag search-modal__tag--excluded" onclick="toggleTag(this)">INCEST</button>
+                    <button class="search-modal__tag" onclick="toggleTag(this)">INCEST</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">FANTASY</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">SCHOOL</button>
                     <button class="search-modal__tag" onclick="toggleTag(this)">OFFICE</button>
@@ -1231,10 +2729,216 @@
         </div>
     </div>
 
+    <!-- Modal report -->
+    <div class="modal fade manga-report" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content manga-report__content p-3">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white d-flex align-items-center">
+                        <span class="bg-danger rounded me-2" style="width: 10px; height: 10px;"></span>
+                        Report
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex gap-3 pt-3 align-items-stretch">
+                    <!-- Image Placeholder -->
+                    <div class="manga-report__thumbnail bg-secondary flex-shrink-0"></div>
+                    <!-- Form -->
+                    <form class="manga-report__form flex-fill text-white">
+                        <div class="row g-2">
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-title"
+                                    style="min-width: 80px;">Title:</label>
+                                <input type="text" id="report-title"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-artist"
+                                    style="min-width: 80px;">Artist:</label>
+                                <input type="text" id="report-artist"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-parody"
+                                    style="min-width: 80px;">Parody:</label>
+                                <input type="text" id="report-parody"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-tags"
+                                    style="min-width: 80px;">Tags:</label>
+                                <input type="text" id="report-tags"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-category"
+                                    style="min-width: 80px;">Category:</label>
+                                <select id="report-category"
+                                    class="form-select form-select-sm manga-report__input flex-grow-1">
+                                    <option>Doujinshi</option>
+                                </select>
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-character"
+                                    style="min-width: 80px;">Character:</label>
+                                <input type="text" id="report-character"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-language"
+                                    style="min-width: 80px;">Language:</label>
+                                <input type="text" id="report-language"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-scanlator"
+                                    style="min-width: 80px;">Scanlator:</label>
+                                <input type="text" id="report-scanlator"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-uploader"
+                                    style="min-width: 80px;">Uploader:</label>
+                                <input type="text" id="report-uploader"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                            <div class="col-12 d-flex align-items-center mb-1">
+                                <label class="form-label small mb-0 me-2 flex-shrink-0" for="report-pages"
+                                    style="min-width: 80px;">Pages:</label>
+                                <input type="text" id="report-pages"
+                                    class="form-control-plaintext manga-report__input form-control-sm flex-grow-1" />
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3 gap-2">
+                            <button type="button" id="openRequestModal"  class="btn btn-outline-light btn-sm">REQUEST</button>
+                            <button type="submit" class="btn btn-danger btn-sm">SEND</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Request -->
+     <div class="modal fade manga-request" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content manga-request__content p-3 text-white">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title d-flex align-items-center">
+                    <span class="bg-danger rounded me-2" style="width: 10px; height: 10px;"></span>
+                    Request
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="request-subject" class="form-label small">Subject</label>
+                        <input type="text" id="request-subject"
+                            class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="request-email" class="form-label small">Reply Email</label>
+                        <input type="email" id="request-email"
+                            class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="request-comment" class="form-label small">Comment</label>
+                        <textarea id="request-comment" rows="4"
+                            class="form-control text-white w-100"
+                            style="background-color: transparent; border: 1px solid #fff;"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn btn-danger btn-sm">SEND</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Script open modal request -->
+    <script>
+        document.getElementById('openRequestModal').addEventListener('click', function () {
+            const reportModal = bootstrap.Modal.getInstance(document.getElementById('reportModal'));
+            const requestModal = new bootstrap.Modal(document.getElementById('requestModal'));
+
+            reportModal.hide();
+            setTimeout(() => {
+                requestModal.show();
+            }, 300);
+        });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/main.js"></script>
-       
+
+    <script>
+        document.getElementById('addToBtn').addEventListener('click', function () {
+            const menu = document.getElementById('addToMenu');
+            menu.classList.toggle('d-none');
+        });
+
+        document.addEventListener('click', function (e) {
+            const button = document.getElementById('addToBtn');
+            const menu = document.getElementById('addToMenu');
+            if (!button.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add('d-none');
+            }
+        });
+    </script>
+
+<!-- Contribute -->
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".contribute-sidebar__item");
+    const contents = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+        buttons.forEach(btn => btn.classList.remove("contribute-sidebar__item--active"));
+        button.classList.add("contribute-sidebar__item--active");
+
+        contents.forEach(content => content.classList.remove("active"));
+
+        const tabId = button.getAttribute("data-tab");
+        const target = document.getElementById(tabId);
+        if (target) target.classList.add("active");
+            });
+        });
+    });
+
+ </script>
+
+
+<!-- Reposive Sidebar -->
+ <script>
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    const sidebarClose = document.getElementById("sidebarClose");
+
+    function openSidebar() {
+    sidebar.classList.add("sidebar--open");
+    sidebarOverlay.classList.add("sidebar__overlay--visible");
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove("sidebar--open");
+        sidebarOverlay.classList.remove("sidebar__overlay--visible");
+    }
+
+    hamburgerMenu.addEventListener("click", openSidebar);
+    sidebarClose.addEventListener("click", closeSidebar);
+    sidebarOverlay.addEventListener("click", closeSidebar);
+</script>
+
 </body>
 </html>

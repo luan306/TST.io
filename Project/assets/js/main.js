@@ -87,20 +87,22 @@
             const carousel = document.getElementById(carouselName + 'Carousel');
             const indicators = document.querySelectorAll(`#${carouselName}Indicators .carousel__indicator`);
             
+            if (!state || !carousel) return;
             // Update current slide
             state.currentSlide += direction;
             if (state.currentSlide >= state.totalSlides) state.currentSlide = 0;
             if (state.currentSlide < 0) state.currentSlide = state.totalSlides - 1;
-            
+
             // Update indicators
             indicators.forEach((indicator, index) => {
                 indicator.classList.toggle('carousel__indicator--active', index === state.currentSlide);
             });
-            
+
             // Move carousel
-            const translateX = -state.currentSlide * (300 + 16); // card width + gap
+            const translateX = -state.currentSlide * (300 + 16);
             carousel.style.transform = `translateX(${translateX}px)`;
         }
+
 
         function goToSlide(carouselName, slideIndex) {
             const state = carouselStates[carouselName];
@@ -111,22 +113,22 @@
         // Image gallery functionality
         function moveImageGallery(direction) {
             const gallery = document.getElementById('imageGallery');
+            if (!gallery) return;
+
             const indicators = document.querySelectorAll('#imageGalleryIndicators .carousel__indicator');
-            
-            // Update current slide
+
             currentImageSlide += direction;
             if (currentImageSlide >= totalImageSlides) currentImageSlide = 0;
             if (currentImageSlide < 0) currentImageSlide = totalImageSlides - 1;
-            
-            // Update indicators
+
             indicators.forEach((indicator, index) => {
                 indicator.classList.toggle('carousel__indicator--active', index === currentImageSlide);
             });
-            
-            // Move gallery
-            const translateX = -currentImageSlide * 100; // 100% per slide
+
+            const translateX = -currentImageSlide * 100;
             gallery.style.transform = `translateX(${translateX}%)`;
         }
+
 
         function goToImageSlide(slideIndex) {
             const difference = slideIndex - currentImageSlide;

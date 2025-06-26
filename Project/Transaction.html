@@ -8,7 +8,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
-    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <style>
         /* Reset and Base Styles */
         * {
@@ -111,8 +114,58 @@
             margin-top: 70px;
             min-height: calc(100vh - 70px);
         } */
+    </style>
 
-        
+    <!-- Modal collection -->
+     <style>
+        #collectionModal .modal-content {
+            background-color: #0a1822;
+            border-radius: 0;
+        }
+
+        #collectionModal .modal-content .btn-close {
+            display: none;
+        }
+
+        #collectionModal .modal-content input:first-of-type {
+            background-color: #0a1822;
+            border-top: none;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+        }
+     </style>
+
+     <!-- Mobile sidebar -->
+    <style>
+        @media (max-width: 576px) {
+            .sidebars-mobile {
+                display: block !important;
+                position: sticky;
+                top: 56px;
+                z-index: 1001;
+                background: #111827;
+                width: 100%;
+            }
+    
+            .sidebars {
+                display: none !important;
+            }
+    
+            .main-contents {
+                padding-top: 56px;
+            }
+        }
+    
+        @media (min-width: 577px) {
+            .sidebars-mobile {
+                display: none !important;
+            }
+    
+            .sidebars {
+                display: block !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -362,25 +415,26 @@
                 <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
                 <a class="navbar__brand" href="#">HENTAIBLAZE</a>
                 <nav class="header__breadcrumb">
-                        <span class="header__subtitle" id="headerSubtitle">User • Transaction</span>
+                        <span class="header__subtitle" id="headerSubtitle">User > Transaction</span>
                     </nav>
             </div>
             
             <!-- Right side items -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center gap-3">
                 <!-- Search Icon -->
-                <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
-                
+                <i class="fas fa-search navbar__icon" id="searchIcon"></i>
+            
                 <!-- Toggle button for mobile -->
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <i class="fas fa-ellipsis-v text-light"></i>
                 </button>
-                
+            
+                <i class="fas fa-envelope"></i>
+            
                 <!-- Navigation items -->
-                <div class="header__right">
-       
-                    <div class="header__icon">
-                        <i class="fas fa-envelope"></i>
+                <div class="header__right d-flex align-items-center gap-3 mb-0">
+                    <div class="header__icon position-relative">
+                        <i class="fa fa-commenting"></i>
                         <span class="header__notification-badge">1</span>
                     </div>
                     <div class="header__avatar"></div>
@@ -431,6 +485,23 @@
 
         <!-- Main Content -->
         <main class="main-contents">
+
+        <!-- Sidebar mobile -->
+            <nav class="d-block d-sm-none sidebars-mobile" id="sidebarsMobile">
+                <ul class="sidebars-mobile__menu">
+                    <li><button class="sidebars-mobile__link" data-page="overview">Account overview</button></li>
+                    <li><button class="sidebars-mobile__link sidebars-mobile__link--active" data-page="transaction">Transaction</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="list">List</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="tags">Tags</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="recommendations">Recommendations</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="notifications">Notifications</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="message">Message</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="preferences">Preferences</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="setting">Setting</button></li>
+                    <li><button class="sidebars-mobile__link" data-page="logout">Logout</button></li>
+                </ul>
+            </nav>
+
             <!-- Transaction Page (Default) -->
             <div class="page-content page-content--active" id="transactionPage">
                 
@@ -448,32 +519,29 @@
                     <div class="pricing-card pricing-card--free">
                         <div class="pricing-card__header">
                             <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__divider"></div>
                             <div class="pricing-card__icon">
                                 <i class="fas fa-piggy-bank"></i>
                             </div>
+                            <div class="pricing-card__divider"></div>
                         </div>
-                        
                         <div class="pricing-card__price">
                             <span class="pricing-card__currency">$</span>
                             <span class="pricing-card__amount">0</span>
                             <span class="pricing-card__period">/mo</span>
                         </div>
-                        
                         <div class="pricing-card__divider"></div>
-                        
                         <div class="pricing-card__status">
                             <div class="pricing-card__status-icon pricing-card__status-icon--excluded">
                                 <i class="fas fa-times"></i>
                             </div>
                         </div>
-                        
                         <p class="pricing-card__description">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
                         </p>
-                        
                         <button class="pricing-card__button">BUY NOW</button>
                     </div>
-
+                
                     <!-- Basic Plan -->
                     <div class="pricing-card">
                         <div class="pricing-card__header">
@@ -482,87 +550,71 @@
                                 <i class="fas fa-money-bag"></i>
                             </div>
                         </div>
-                        
                         <div class="pricing-card__price">
                             <span class="pricing-card__currency">$</span>
                             <span class="pricing-card__amount">19</span>
                             <span class="pricing-card__period">/mo</span>
                         </div>
-                        
                         <div class="pricing-card__divider"></div>
-                        
                         <div class="pricing-card__status">
                             <div class="pricing-card__status-icon pricing-card__status-icon--included">
                                 <i class="fas fa-check"></i>
                             </div>
                         </div>
-                        
                         <p class="pricing-card__description">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
                         </p>
-                        
                         <button class="pricing-card__button">BUY NOW</button>
                     </div>
-
+                
                     <!-- Premium Plan (Featured) -->
                     <div class="pricing-card pricing-card--featured">
                         <div class="pricing-card__badges">BEST</div>
-                        
                         <div class="pricing-card__header">
-                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__plan">PREMIUM</div>
                             <div class="pricing-card__icon">
                                 <i class="fas fa-crown"></i>
                             </div>
                         </div>
-                        
                         <div class="pricing-card__price">
                             <span class="pricing-card__currency">$</span>
                             <span class="pricing-card__amount">28</span>
                             <span class="pricing-card__period">/mo</span>
                         </div>
-                        
                         <div class="pricing-card__divider"></div>
-                        
                         <div class="pricing-card__status">
                             <div class="pricing-card__status-icon pricing-card__status-icon--included">
                                 <i class="fas fa-check"></i>
                             </div>
                         </div>
-                        
                         <p class="pricing-card__description">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
                         </p>
-                        
                         <button class="pricing-card__button">BUY NOW</button>
                     </div>
-
+                
                     <!-- Pro Plan -->
                     <div class="pricing-card">
                         <div class="pricing-card__header">
-                            <div class="pricing-card__plan">BASIC</div>
+                            <div class="pricing-card__plan">PRO</div>
                             <div class="pricing-card__icon">
                                 <i class="fas fa-gem"></i>
                             </div>
                         </div>
-                        
                         <div class="pricing-card__price">
                             <span class="pricing-card__currency">$</span>
                             <span class="pricing-card__amount">39</span>
                             <span class="pricing-card__period">/mo</span>
                         </div>
-                        
                         <div class="pricing-card__divider"></div>
-                        
                         <div class="pricing-card__status">
                             <div class="pricing-card__status-icon pricing-card__status-icon--included">
                                 <i class="fas fa-check"></i>
                             </div>
                         </div>
-                        
                         <p class="pricing-card__description">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit. Phasellus vestibulum molestie quis dictum molestie.
                         </p>
-                        
                         <button class="pricing-card__button">BUY NOW</button>
                     </div>
                 </section>
@@ -584,6 +636,11 @@
                     <div class="chart-containers">
                         <canvas id="paymentChart" class="chart-canvas"></canvas>
                     </div>
+                    <div class="text-center my-4">
+                        <button class="btn btn-outline-light rounded-0" id="showMoreTransaction">
+                            Show More
+                        </button>
+                    </div>
                 </section>
 
                 <!-- Transaction List -->
@@ -591,11 +648,119 @@
                     <div class="transaction-lists__header">
                         <h2 class="transaction-lists__title">Recent Transactions</h2>
                     </div>
-                    
                     <div id="transactionContainer">
                         <div class="loading-spinner">
                             <div class="spinner"></div>
                         </div>
+                    </div>
+                </section>
+
+                <!-- Scheduler -->
+                <section class="scheduler">
+                    <p class="scheduler__subtitle">Scheduler</p>
+                    <div class="scheduler__date-range">
+                      <div id="dateRange" class="scheduler__calendar"></div>
+                      <div class="scheduler__label">
+                        <span class="scheduler__label-box"></span>
+                        Member date
+                      </div>
+                      
+                    </div>
+                </section>
+
+                 <!-- Credit -->
+                <section class="credit-section container">
+                    <p class="credit-section__subtitle">Credit</p>
+                    <button class="credit-section__add-btn btn btn-outline-light btn-sm">ADD CARD</button>
+                    <div class="row g-4">
+                        <!-- Card 1 -->
+                        <div class="col-md-6">
+                            <div class="credit-card">
+                                <div class="credit-card__info">
+                                    <div class="credit-card__icon">
+                                    <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="credit-card__details">
+                                    <div class="credit-card__name">John Doe</div>
+                                    <div class="credit-card__number">1234 5678 1234 9999</div>
+                                    </div>
+                                </div>
+                                <div class="credit-card__meta text-end">
+                                    <div class="credit-card__price mb-2">$ 3,678</div>
+                                    <div class="credit-card__sound">
+                                    <i class="fas fa-volume-up"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Card 2 -->
+                        <div class="col-md-6">
+                            <div class="credit-card">
+                                <div class="credit-card__info">
+                                    <div class="credit-card__icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="credit-card__details">
+                                        <div class="credit-card__name">Jane Smith</div>
+                                        <div class="credit-card__number">4321 8765 4321 1111</div>
+                                    </div>
+                                </div>
+                                <div class="credit-card__meta text-end">
+                                    <div class="credit-card__price mb-2">$ 1,240</div>
+                                    <div class="credit-card__sound">
+                                        <i class="fas fa-volume-up"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                      <!-- Card 3 -->
+                        <div class="col-md-6">
+                            <div class="credit-card">
+                                <div class="credit-card__info">
+                                    <div class="credit-card__icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="credit-card__details">
+                                        <div class="credit-card__name">Alice Nguyen</div>
+                                        <div class="credit-card__number">9999 8888 7777 6666</div>
+                                    </div>
+                                </div>
+                                <div class="credit-card__meta text-end">
+                                    <div class="credit-card__price mb-2">$ 5,920</div>
+                                    <div class="credit-card__sound">
+                                        <i class="fas fa-volume-up"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Card 4 -->
+                        <div class="col-md-6">
+                            <div class="credit-card">
+                                <div class="credit-card__info">
+                                    <div class="credit-card__icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="credit-card__details">
+                                        <div class="credit-card__name">Mike Lee</div>
+                                        <div class="credit-card__number">5555 6666 7777 8888</div>
+                                    </div>
+                                </div>
+                                <div class="credit-card__meta text-end">
+                                    <div class="credit-card__price mb-2">$ 2,100</div>
+                                    <div class="credit-card__sound">
+                                        <i class="fas fa-volume-up"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center my-4">
+                        <button class="btn btn-outline-light" id="addCredit">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </section>
             </div>
@@ -697,40 +862,201 @@
                 </div>
             </section>
 
-
             </div>
 
             <!-- Other Pages Placeholder -->
             <div class="page-content" id="listPage">
-                <header class="page-header">
+                <!-- Public -->
+                <header class="d-flex justify-content-between align-items-center px-3 py-2">
                     <h1 class="page-header__title">
                         <span class="page-header__indicator"></span>
-                        Public Account
+                        Public
                     </h1>
+                    <button class="btn btn-outline-light rounded-0" data-bs-toggle="modal" data-bs-target="#collectionModal">New Collection</button>
                 </header>
-                       <!-- Main Content -->
-        
-          
-            </div>
 
+
+                <!-- Main Content -->
+                <section class="carousel-section">
+                    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                        <div class="carousel-inner" id="carouselInner"></div>
+                
+                        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                            <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                            <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                
+                        <div class="carousel-indicators" id="carouselIndicators"></div>
+                    </div>
+                </section>
+
+                <!-- Private -->
+                <header class="d-flex justify-content-between align-items-center px-3 py-2">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Private
+                    </h1>
+                    <button class="btn btn-outline-light rounded-0" data-bs-toggle="modal" data-bs-target="#collectionModal">New Collection</button>
+                </header>
+                <!-- Private Content -->
+                <section class="carousel-section">
+                    <div id="privateCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                        <div class="carousel-inner"></div>
+                
+                        <button class="carousel-control-prev" type="button" data-bs-target="#privateCarousel" data-bs-slide="prev">
+                            <span class="carousel-control__icon" aria-hidden="true">&lt;</span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#privateCarousel" data-bs-slide="next">
+                            <span class="carousel-control__icon" aria-hidden="true">&gt;</span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                
+                        <div class="carousel-indicators"></div>
+                    </div>
+                </section>
+            </div>
             <div class="page-content" id="tagsPage">
+                <!-- Whislisted Tag -->
                 <header class="page-header">
                     <h1 class="page-header__title">
                         <span class="page-header__indicator"></span>
-                        Tags Management
+                        Your Whistlisted Tag
                     </h1>
                 </header>
-                <p>Tags page content would go here...</p>
+                <div class="cosplay-container">
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                </div>
+
+                <!-- Blacklisted Tag -->
+                <header class="page-header">
+                    <h1 class="page-header__title">
+                        <span class="page-header__indicator"></span>
+                        Your Blacklisted Tag
+                    </h1>
+                </header>
+                <div class="cosplay-container">
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay active">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                    <button class="btn btn-cosplay">COSPLAY</button>
+                </div>
             </div>
 
             <div class="page-content" id="recommendationsPage">
-                <header class="page-header">
-                    <h1 class="page-header__title">
-                        <span class="page-header__indicator"></span>
-                        Recommendations
+                <header class="page-header d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="page-header__title d-flex align-items-center mb-0">
+                      <span class="page-header__indicator me-2" style="display: inline-block;"></span>
+                      Recommendations
                     </h1>
-                </header>
-                <p>Recommendations page content would go here...</p>
+                  
+                    <div class="gallery__sort">
+                      <select class="form-select form-select-sm bg-dark text-white border-secondary" id="sortSelect" style="width: 150px;">
+                        <option value="most-view">Most view</option>
+                        <option value="least-view">Least view</option>
+                        <option value="a-z">A → Z</option>
+                        <option value="z-a">Z → A</option>
+                      </select>
+                    </div>
+                  </header>                  
+                <div class="recommendations">
+                    <!-- Render film -->
+                    <div class="row g-4 gallery" id="movie-list"></div>
+                
+                    <!-- Pagination -->
+                    <div class="d-flex justify-content-between align-items-center mt-4 gallery__pagination">
+                    <button class="btn btn-outline-light gallery__btn" onclick="prevPage()">PREV PAGE</button>
+                    <div class="gallery__page-info" id="page-info">1/10</div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span>Jump to</span>
+                        <input type="number" class="form-control form-control-sm gallery__input" id="jumpPage" placeholder="Page #" onchange="jumpToPage(this.value)">
+                    </div>
+                    <button class="btn btn-outline-light gallery__btn" onclick="nextPage()">NEXT PAGE</button>
+                    </div>
+                </div>
             </div>
 
             <div class="page-content" id="notificationsPage">
@@ -740,9 +1066,79 @@
                         Notifications
                     </h1>
                 </header>
-                <p>Notifications page content would go here...</p>
+                <section class="notifications">
+                    <div class="notification-list">
+                      <!-- Notification item -->
+                      <div class="notification">
+                        <div class="notification__card notification__card--inset-left d-flex align-items-center justify-content-between p-3 mb-3">
+                          <div class="notification__content d-flex align-items-center">
+                            <div class="notification__avatar bg-white rounded-circle me-3"></div>
+                            <div class="notification__text">
+                              <div><strong>John Doe</strong> reacted to your comment</div>
+                              <div class="text-secondary small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                              <div class="text-secondary small mt-1">10 mins ago</div>
+                            </div>
+                          </div>
+                          <div class="notification__icon bg-secondary rounded" style="width: 40px; height: 40px;"></div>
+                        </div>
+                      </div>
+                
+                      <!-- Repeat 4 more times -->
+                      <div class="notification">
+                        <div class="notification__card notification__card--inset-left d-flex align-items-center justify-content-between p-3 mb-3">
+                          <div class="notification__content d-flex align-items-center">
+                            <div class="notification__avatar bg-white rounded-circle me-3"></div>
+                            <div class="notification__text">
+                              <div><strong>John Doe</strong> reacted to your comment</div>
+                              <div class="text-secondary small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                              <div class="text-secondary small mt-1">10 mins ago</div>
+                            </div>
+                          </div>
+                          <div class="notification__icon bg-secondary rounded" style="width: 40px; height: 40px;"></div>
+                        </div>
+                      </div>
+                      <div class="notification">
+                        <div class="notification__card notification__card--inset-left d-flex align-items-center justify-content-between p-3 mb-3">
+                          <div class="notification__content d-flex align-items-center">
+                            <div class="notification__avatar bg-white rounded-circle me-3"></div>
+                            <div class="notification__text">
+                              <div><strong>John Doe</strong> reacted to your comment</div>
+                              <div class="text-secondary small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                              <div class="text-secondary small mt-1">10 mins ago</div>
+                            </div>
+                          </div>
+                          <div class="notification__icon bg-secondary rounded" style="width: 40px; height: 40px;"></div>
+                        </div>
+                      </div>
+                      <div class="notification">
+                        <div class="notification__card notification__card--inset-left d-flex align-items-center justify-content-between p-3 mb-3">
+                          <div class="notification__content d-flex align-items-center">
+                            <div class="notification__avatar bg-white rounded-circle me-3"></div>
+                            <div class="notification__text">
+                              <div><strong>John Doe</strong> reacted to your comment</div>
+                              <div class="text-secondary small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                              <div class="text-secondary small mt-1">10 mins ago</div>
+                            </div>
+                          </div>
+                          <div class="notification__icon bg-secondary rounded" style="width: 40px; height: 40px;"></div>
+                        </div>
+                      </div>
+                      <div class="notification">
+                        <div class="notification__card notification__card--inset-left d-flex align-items-center justify-content-between p-3 mb-3">
+                          <div class="notification__content d-flex align-items-center">
+                            <div class="notification__avatar bg-white rounded-circle me-3"></div>
+                            <div class="notification__text">
+                              <div><strong>John Doe</strong> reacted to your comment</div>
+                              <div class="text-secondary small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                              <div class="text-secondary small mt-1">10 mins ago</div>
+                            </div>
+                          </div>
+                          <div class="notification__icon bg-secondary rounded" style="width: 40px; height: 40px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                </section>
             </div>
-
             <div class="page-content" id="messagePage">
                 <header class="page-header">
                     <h1 class="page-header__title">
@@ -750,7 +1146,39 @@
                         Messages
                     </h1>
                 </header>
-                <p>Messages page content would go here...</p>
+                <section class="message">
+                    <table class="message-table">
+                        <thead>
+                          <tr class="message-table__row">
+                            <th class="message-table__cell message-table__cell--header">Conversation title</th>
+                            <th class="message-table__cell message-table__cell--header">Reply</th>
+                            <th class="message-table__cell message-table__cell--header">Last message</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="message-table__row">
+                            <td class="message-table__cell">Read a story</td>
+                            <td class="message-table__cell message-table__cell--sender">Anonymous</td>
+                            <td class="message-table__cell message-table__cell--content">lorem ipsum</td>
+                          </tr>
+                          <tr class="message-table__row">
+                            <td class="message-table__cell">Read a story</td>
+                            <td class="message-table__cell message-table__cell--sender">Anonymous</td>
+                            <td class="message-table__cell message-table__cell--content">lorem ipsum</td>
+                          </tr>
+                          <tr class="message-table__row">
+                            <td class="message-table__cell">Read a story</td>
+                            <td class="message-table__cell message-table__cell--sender">Anonymous</td>
+                            <td class="message-table__cell message-table__cell--content">lorem ipsum</td>
+                          </tr>
+                          <tr class="message-table__row">
+                            <td class="message-table__cell">Read a story</td>
+                            <td class="message-table__cell message-table__cell--sender">Anonymous</td>
+                            <td class="message-table__cell message-table__cell--content">lorem ipsum</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </section>
             </div>
 
             <div class="page-content" id="preferencesPage">
@@ -760,7 +1188,73 @@
                         Preferences
                     </h1>
                 </header>
-                <p>Preferences page content would go here...</p>
+                <section class="preferences-list">
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox" checked>
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox" checked>
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Enable Infinite Scroll</div>
+                            <div class="preference-item__description">Display more results when you reach the bottom of the page while
+                                browsing.</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox" checked>
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Enable Hotkeys</div>
+                            <div class="preference-item__description">Go to the next or previous page using arrow keys or WASD and a few
+                                more handy shortcuts.</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox">
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox">
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox">
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox">
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                
+                    <label class="preference-item">
+                        <input type="checkbox" class="preference-item__checkbox">
+                        <div class="preference-item__content">
+                            <div class="preference-item__title">Use Dark Theme</div>
+                            <div class="preference-item__description">Afraid of the light?</div>
+                        </div>
+                    </label>
+                </section>
             </div>
 
             <div class="page-content" id="settingPage">
@@ -770,33 +1264,267 @@
                         Settings
                     </h1>
                 </header>
-                <p>Settings page content would go here...</p>
+                <section>
+                    <div class="row">
+                        <!-- Change Password -->
+                        <div class="col-md-6 mb-4">
+                            <div class="settings__section">
+                                <h2 class="settings__section-title">Change your password</h2>
+                                <form class="settings__form">
+                                    <div class="mb-3">
+                                        <label for="current-password" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="current-password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="new-password" class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="new-password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirm-password" class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-control" id="confirm-password">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label">Current Email Address</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                    <div class="text-end text-center text-sm-end">
+                                        <button type="submit" class="btn settings__btn">Change password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                
+                        <!-- Change Display Name -->
+                        <div class="col-md-6">
+                            <div class="settings__section">
+                                <h2 class="settings__section-title">Change your display name</h2>
+                                <form class="settings__form">
+                                    <div class="mb-3">
+                                        <label for="display-name" class="form-label">Your name:</label>
+                                        <input type="text" class="form-control" id="display-name">
+                                    </div>
+                                    <p class="settings__note small">
+                                        Your name is currently Anonymous228633, once you set your name you'll become unable to re-set it
+                                        again.
+                                    </p>
+                                    <div class="text-end text-center text-sm-end">
+                                        <button type="submit" class="btn settings__btn">Save change</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Modal collection -->
+            <div class="modal fade" id="collectionModal" tabindex="-1" aria-labelledby="collectionModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content text-white border-light">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title d-flex align-items-center section__title" id="collectionModalLabel">
+                                Create a new collection
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-4">
+                                    <label class="form-label text-white">Name:</label>
+                                    <input type="text" class="form-control text-white border-light rounded-0">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label text-white">Thumbnail Picture:</label>
+                                    <label for="thumbnailInput" class="d-block border border-light p-5 text-center rounded-0"
+                                        style="cursor: pointer;">
+                                        <i class="fa-solid fa-image" style="font-size: 2rem;"></i><br>
+                                        <small>Drop / Select Files to Upload<br>Accepted format: .jpeg</small>
+                                        <input type="file" id="thumbnailInput" class="d-none" accept=".jpeg,.jpg">
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-outline-light rounded-0" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-outline-light rounded-0">Creat</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Script render recommand film -->
+    <script>
+          // Dummy data
+          const allMovies = [
+            { title: "100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu 1", views: 1875898 },
+            { title: "Attack on Titan: The Final Season", views: 1254600 },
+            { title: "Demon Slayer: Kimetsu no Yaiba", views: 902300 },
+            { title: "Jujutsu Kaisen", views: 870000 },
+            { title: "One Piece", views: 3200000 },
+            { title: "Naruto Shippuden", views: 2850000 },
+            { title: "Chainsaw Man", views: 1123000 },
+            { title: "My Hero Academia", views: 950400 },
+            { title: "Spy x Family", views: 1198000 },
+            { title: "Black Clover", views: 890000 },
+            { title: "Bleach: Thousand-Year Blood War", views: 1345000 },
+            { title: "Tokyo Revengers", views: 770000 },
+            { title: "Mob Psycho 100", views: 680000 },
+            { title: "Vinland Saga", views: 570000 },
+            { title: "Dr. Stone", views: 610000 },
+            { title: "Erased", views: 490000 },
+            { title: "Steins;Gate", views: 1130000 },
+            { title: "Death Note", views: 2450000 },
+            { title: "Fullmetal Alchemist: Brotherhood", views: 2750000 },
+            { title: "Blue Lock", views: 950000 },
+            { title: "Solo Leveling", views: 1080000 },
+            { title: "Re:Zero", views: 880000 },
+            { title: "No Game No Life", views: 810000 },
+            { title: "The Promised Neverland", views: 700000 },
+            { title: "Toradora!", views: 730000 },
+            { title: "Clannad: After Story", views: 540000 },
+            { title: "Angel Beats!", views: 620000 },
+            { title: "Your Lie in April", views: 1230000 },
+            { title: "Kaguya-sama: Love is War", views: 1120000 },
+            { title: "Horimiya", views: 980000 },
+            { title: "The Quintessential Quintuplets", views: 750000 },
+            { title: "Rent-A-Girlfriend", views: 690000 },
+            { title: "Bunny Girl Senpai", views: 710000 },
+            { title: "A Silent Voice", views: 1680000 },
+            { title: "Weathering With You", views: 1520000 },
+            { title: "Suzume no Tojimari", views: 1600000 },
+            { title: "I Want to Eat Your Pancreas", views: 1420000 },
+            { title: "The Garden of Words", views: 800000 },
+            { title: "5 Centimeters per Second", views: 670000 },
+            { title: "Howl’s Moving Castle", views: 2200000 }
+        ];
+        
+        const moviesPerPage = 8;
+        let currentPage = 1;
+        
+        function renderMovies(page = 1) {
+          const start = (page - 1) * moviesPerPage;
+          const end = start + moviesPerPage;
+          const pageMovies = allMovies.slice(start, end);
+          const container = document.getElementById("movie-list");
+          container.innerHTML = "";
+        
+          pageMovies.forEach(movie => {
+            const col = document.createElement("div");
+            col.className = "col-6 col-md-3";
+            col.innerHTML = `
+              <div class="card gallery__card">
+                <div class="gallery__image bg-secondary"></div>
+                <div class="card-body gallery__body">
+                  <p class="gallery__title">Abandon:<br>${movie.title}</p>
+                  <div class="gallery__views">
+                    <i class="bi bi-eye"></i> ${movie.views.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+            `;
+            container.appendChild(col);
+          });
+        
+          updatePaginationUI();
+        }
+        
+        function updatePaginationUI() {
+          const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+          document.getElementById("page-info").textContent = `${currentPage}/${totalPages}`;
+        }
+        
+        function nextPage() {
+          const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderMovies(currentPage);
+          }
+        }
+        
+        function prevPage() {
+          if (currentPage > 1) {
+            currentPage--;
+            renderMovies(currentPage);
+          }
+        }
+        
+        function jumpToPage(page) {
+          const pageNum = parseInt(page);
+          const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+          if (pageNum >= 1 && pageNum <= totalPages) {
+            currentPage = pageNum;
+            renderMovies(currentPage);
+          }
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+          renderMovies();
+        });
+    </script>
+        
+    <script>
+        // carousel setup
+        const myCarousel = document.querySelector('#mainCarousel');
+        const carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 3000,
+            ride: 'carousel',
+            pause: false,
+            wrap: true
+        });
+
+        const privateCarousel = document.querySelector('#privateCarousel');
+        const privateCarouselSetup = new bootstrap.Carousel(privateCarousel, {
+            interval: 3000,
+            ride: 'carousel',
+            pause: false,
+            wrap: true
+        });
+
+        flatpickr("#dateRange", {
+          mode: "range",
+          dateFormat: "d/m/Y",
+          minDate: "01/03/2022",
+          maxDate: new Date(),
+          inline: true,
+          defaultDate: ["2022-03-01", "2022-03-22"],
+          onReady: function(selectedDates, dateStr, instance) {
+            instance.jumpToDate(new Date(2022, 2, 1));
+          },
+          onChange: function(selectedDates, dateStr, instance) {
+            if (selectedDates.length === 2) {
+              const startDate = selectedDates[0];
+              const endDate = selectedDates[1];
+              console.log("Phạm vi ngày:", dateStr);
+            }
+          }
+        });
+      </script>
     <script>
         // Page Manager
         class PageManager {
             constructor() {
                 this.currentPage = 'transaction';
                 this.pages = {
-                    'overview': { title: 'Overview Your Payment', subtitle: 'User • Overview' },
-                    'transaction': { title: 'Price table', subtitle: 'User • Transaction' },
-                    'list': { title: 'List Management', subtitle: 'User • List' },
-                    'tags': { title: 'Tags Management', subtitle: 'User • Tags' },
-                    'recommendations': { title: 'Recommendations', subtitle: 'User • Recommendations' },
-                    'notifications': { title: 'Notifications', subtitle: 'User • Notifications' },
-                    'message': { title: 'Messages', subtitle: 'User • Messages' },
-                    'preferences': { title: 'Preferences', subtitle: 'User • Preferences' },
-                    'setting': { title: 'Settings', subtitle: 'User • Settings' }
+                    'overview': { title: 'Overview Your Payment', subtitle: 'User > Overview' },
+                    'transaction': { title: 'Price table', subtitle: 'User > Transaction' },
+                    'list': { title: 'List Management', subtitle: 'User > List' },
+                    'tags': { title: 'Tags Management', subtitle: 'User > Tags' },
+                    'recommendations': { title: 'Recommendations', subtitle: 'User > Recommendations' },
+                    'notifications': { title: 'Notifications', subtitle: 'User > Notifications' },
+                    'message': { title: 'Messages', subtitle: 'User > Messages' },
+                    'preferences': { title: 'Preferences', subtitle: 'User > Preferences' },
+                    'setting': { title: 'Settings', subtitle: 'User > Settings' }
                 };
                 this.headerSubtitle = document.getElementById('headerSubtitle');
             }
             
             showPage(pageId) {
+                console.log('Attempting to show page:', pageId);
                 // Hide all pages
                 document.querySelectorAll('.page-content').forEach(page => {
                     page.classList.remove('page-content--active');
@@ -804,6 +1532,7 @@
                 
                 // Show target page
                 const targetPage = document.getElementById(pageId + 'Page');
+                console.log('targetpage: ',targetPage);
                 if (targetPage) {
                     targetPage.classList.add('page-content--active');
                     this.currentPage = pageId;
@@ -1370,6 +2099,129 @@
         });
 
     </script>
+
+<!-- Script Sidebar mobile -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.sidebars-mobile__link');
+    const nav = document.getElementById('sidebarsMobile');
+    const main = document.querySelector('.main-contents');
+    const pageContents = document.querySelectorAll('.page-content');
+
+    const pageContentPlaceholders = {};
+    pageContents.forEach(page => {
+        const placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        page.parentNode.insertBefore(placeholder, page.nextSibling);
+        pageContentPlaceholders[page.id] = placeholder;
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', function () {
+        links.forEach(l => l.classList.remove('sidebars-mobile__link--active'));
+        this.classList.add('sidebars-mobile__link--active');
+        pageContents.forEach(page => {
+            page.classList.remove('page-content--active');
+            const placeholder = pageContentPlaceholders[page.id];
+            if (placeholder && placeholder.parentNode) {
+            placeholder.parentNode.insertBefore(page, placeholder.nextSibling);
+            }
+        });
+
+        const pageId = this.dataset.page + 'Page';
+        const page = document.getElementById(pageId);
+        if (page) {
+            const li = this.parentElement;
+            li.parentNode.insertBefore(page, li.nextSibling);
+            page.classList.add('page-content--active');
+        }
+        });
+    });
+    });
+</script>
+<!-- Public Carousel List -->
+<script>
+function generateCarouselItems(carouselId, items) {
+  const carousel = document.getElementById(carouselId);
+  const carouselInner = carousel.querySelector('.carousel-inner');
+  const indicators = carousel.querySelector('.carousel-indicators');
+  carouselInner.innerHTML = '';
+  indicators.innerHTML = '';
+
+  const isMobile = window.innerWidth <= 576;
+  const itemsPerSlide = isMobile ? 4 : 3; // 2 dòng x 2 card (mobile), 3 card (desktop)
+
+  for (let i = 0; i < items.length; i += itemsPerSlide) {
+    const slideItems = items.slice(i, i + itemsPerSlide);
+    const carouselItem = document.createElement('div');
+    carouselItem.classList.add('carousel-item');
+    if (i === 0) carouselItem.classList.add('active');
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'carousel__item-wrapper';
+
+    slideItems.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+      card.innerHTML = `
+        <img src="${item.img}" class="carousel-card__image" alt="${item.title}">
+        <div class="carousel-card__body">
+          <h5 class="carousel-card__title">${item.title}</h5>
+          <p class="carousel-card__text">${item.text}</p>
+          <p class="carousel-card__views"><i class="fa-solid fa-eye"></i> ${item.views}</p>
+        </div>
+      `;
+      wrapper.appendChild(card);
+    });
+
+    carouselItem.appendChild(wrapper);
+    carouselInner.appendChild(carouselItem);
+
+    const indicatorBtn = document.createElement('button');
+    indicatorBtn.type = 'button';
+    indicatorBtn.setAttribute('data-bs-target', `#${carouselId}`);
+    indicatorBtn.setAttribute('data-bs-slide-to', `${i / itemsPerSlide}`);
+    if (i === 0) {
+      indicatorBtn.className = 'active';
+      indicatorBtn.setAttribute('aria-current', 'true');
+    }
+    indicatorBtn.setAttribute('aria-label', `Slide ${i / itemsPerSlide + 1}`);
+    indicators.appendChild(indicatorBtn);
+  }
+}
+
+// Dummy Data (có thể thay bằng dữ liệu động sau)
+const publicItems = [
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 1', text: 'Text 1', views: '1,000' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 2', text: 'Text 2', views: '2,000' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 3', text: 'Text 3', views: '3,000' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 4', text: 'Text 4', views: '4,000' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 5', text: 'Text 5', views: '5,000' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Abandon 6', text: 'Text 6', views: '6,000' },
+];
+
+const privateItems = [
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 1', text: 'Private text 1', views: '123' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 2', text: 'Private text 2', views: '456' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 3', text: 'Private text 3', views: '789' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 4', text: 'Private text 4', views: '111' },
+  { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 5', text: 'Private text 5', views: '222' },
+];
+
+function renderAllCarousels() {
+  generateCarouselItems('mainCarousel', publicItems);
+  generateCarouselItems('privateCarousel', privateItems);
+}
+
+window.addEventListener('load', renderAllCarousels);
+window.addEventListener('resize', () => {
+  clearTimeout(window.__carouselResizeTimeout);
+  window.__carouselResizeTimeout = setTimeout(renderAllCarousels, 200);
+});
+</script>
+
+
+
     <script src="assets/js/main.js"></script>
 </body>
 </html>
