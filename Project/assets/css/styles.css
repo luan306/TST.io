@@ -66,7 +66,7 @@ body {
         }
         /* Navbar Block */
         .navbar {
-            background-color: #35393c;
+            background-color: #0f171f;
             /* border-bottom: 1px solid #5a6578; */
             padding: 0.75rem 0;
         }
@@ -76,6 +76,7 @@ body {
             font-weight: 600;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
+            text-decoration: none;
         }
         
         .navbar__nav .nav-link {
@@ -128,7 +129,7 @@ body {
             left: -300px;
             width: 300px;
             height: 100vh;
-            background-color: #2d3748;
+            background-color: #0a1822;
             z-index: 1001;
             transition: left 0.3s ease;
             overflow-y: auto;
@@ -470,6 +471,7 @@ body {
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            text-decoration: none;
         }
 
         @media (max-width: 768px) {
@@ -989,7 +991,7 @@ body {
             justify-content: center;
             padding: 2rem;
         }
-
+        
         .search-modal--active {
             display: flex;
         }
@@ -1003,6 +1005,7 @@ body {
             overflow-y: auto;
             padding: 2rem;
             position: relative;
+
         }
 
         .search-modal__header {
@@ -1030,6 +1033,7 @@ body {
             gap: 0.5rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
+            justify-content: space-between;
         }
 
         .search-modal__filter-btn {
@@ -1438,24 +1442,39 @@ body {
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 1.1rem;
+            border: 1px solid #b02846;
+        }
+        .text-pink {
+            color: #a11341 !important;
         }
 
+        .btn-white {
+            background-color: #fff;
+            border: 1px solid #a11341;
+        }
+
+        .btn-white:hover {
+            background-color: #a11341;
+            color: #fff !important;
+        }
+
+
         .login-form__social-btn--facebook {
-            background-color: #1877f2;
+            background-color: #b02846;
             color: #ffffff;
         }
 
         .login-form__social-btn--facebook:hover {
-            background-color: #166fe5;
+            background-color: #b02846;
         }
 
         .login-form__social-btn--telegram {
-            background-color: #0088cc;
+            background-color: #b02846;
             color: #ffffff;
         }
 
         .login-form__social-btn--telegram:hover {
-            background-color: #0077b5;
+            background-color: #b02846;
         }
 
         .login-form__social-btn--instagram {
@@ -1557,16 +1576,20 @@ body {
         }
 
         /* sidebars Block */
-        .sidebar {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 260px;
-  height: 100vh;
-  background-color: #2d3748;
-  z-index: 1050;
-  transition: left 0.3s ease;
-  overflow-y: auto;
+.sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100vh;
+            background-color: #0a1822;
+            z-index: 1050;
+            transition: left 0.3s ease;
+            overflow-y: scroll;      
+            scrollbar-width: none;   
+}
+.sidebar::-webkit-scrollbar {
+    display: none;          
 }
 
 /* === Khi mở === */
@@ -2710,45 +2733,78 @@ body {
         .badges {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background-color: #4a5568;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .badges:hover {
-            background-color: #5a6578;
+            background: transparent;
+            border: none;
+            padding: 0;
+            min-width: 0;
         }
 
         .badges__icon {
-            width: 40px;
-            height: 40px;
-            background-color: #a11341;
-            border-radius: 4px;
+            width: 64px;
+            height: 64px;
+            background: #a11341;
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: bold;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 600;
+            border-radius: 0;
+            position: relative;
+            box-sizing: border-box;
+            margin-right: -1px;
+            border: 1.5px solid #a11341;
+            border-right: none;
+            z-index: 1;
+            line-height: 1.1;
+            padding-bottom: 6px;
+        }
+
+        .badges__icon::before {
+            content: "lv.";
+            position: absolute;
+            top: 30px;
+            left: 8px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            width: auto;
+            display: block;
+            text-align: left;
+            margin: 0;
+            padding: 0;
         }
 
         .badges__info {
             flex: 1;
+            min-width: 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #a11341;
+            border-radius: 0 2px 2px 0;
+            background: transparent;
+            padding: 0 24px;
+            box-sizing: border-box;
+            z-index: 0;
+            margin-left: 0;
         }
 
         .badges__title {
-            color: #ffffff;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: .75rem;
+            color: #cbd5e1;
             margin: 0;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .badges__subtitle {
-            color: #a0aec0;
-            font-size: 0.75rem;
-            margin: 0;
+            display: none;
         }
 
         /* Statistics Block */
@@ -3059,6 +3115,7 @@ body {
         }
 
         .gallery__mood-btn {
+            text-decoration: none  ;
             background-color: #4a5568;
             color: #ffffff;
             border: none;
@@ -3078,7 +3135,16 @@ body {
             display: flex;
             align-items: center;
         }
-
+       .gallery__nav {
+    display: flex;
+    align-items: center;     /* Căn giữa icon theo chiều dọc */
+    justify-content: center; /* Căn giữa icon theo chiều ngang (nếu cần) */
+    width: 40px;
+    height: 100%;
+    font-size: 1.5rem;
+    color: #a11341;
+    text-decoration: none;
+}
         .gallery__grid {
             display: flex;
             gap: 1rem;
@@ -3169,31 +3235,27 @@ body {
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .header__subtitle {
-                display: none;
-            }
-            
-            .profile__header {
+       @media (max-width: 768px) {
+            .profile .profile__header {
+                display: flex;
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 text-align: center;
                 gap: 1rem;
+                width: 100%;
             }
-            
-            .profile__actions {
-                margin-left: 0;
+            .profile .profile__info {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .gallery__grid {
-                padding: 0 2rem;
-            }
-            
-            .gallery__item {
-                min-width: 150px;
-            }
-            
-            .gallery__image {
-                height: 200px;
+            .profile .profile__actions {
+                margin-left: 0 !important;
+                justify-content: center;
+                width: 100%;
+                margin-top: 10px;
             }
         }
 
@@ -4583,7 +4645,6 @@ body {
         /* Modal Report */
         .manga-report__content {
             background-color: #0f1b2b;
-            border: 1px solid #fff;
         }
 
         .manga-report__input {
@@ -4658,7 +4719,6 @@ body {
         /* Modal Request */
         .manga-request__content {
             background-color: #0f1b2b;
-            border: 1px solid #fff;
             color: #fff;
         }
 

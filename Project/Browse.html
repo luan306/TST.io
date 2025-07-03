@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<style>
+<!-- <style>
     @media (max-width: 767.98px) {
   .sidebars {
     display: none !important;
@@ -84,53 +84,227 @@
     display: none !important;
   }
 }
-</style>
+</style> -->
 
 <!-- filter trending mobile -->
- <style>
+<style>
     @media (max-width: 575.98px) {
-    .trending__filters-mobile {
-        display: flex;
-        flex-direction: column;
-        gap: 0.7rem;
-        margin-bottom: 1.5rem;
-    }
-    .trending__filter-mobile {
-        width: 100%;
-        background: #16202a;
-        color: #e2e8f0;
-        border: 1.5px solid #374151;
-        border-radius: 6px;
-        padding: 0.9rem 1.2rem;
-        font-size: 1rem;
-        font-weight: 500;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-        outline: none;
-        cursor: pointer;
-        white-space: normal;
-        word-break: break-word;
-    }
-    .trending__filter-mobile:not(.trending__filter-mobile--active):hover {
-        background: #1e293b;
-        border-color: #64748b;
-        color: #fff;
-    }
-    .trending__filter-mobile--active {
-        background: #232f3e;
-        border: 2px solid #e53e3e;
-        color: #e53e3e;
-        box-shadow: 0 2px 8px rgba(229,62,62,0.08);
-        z-index: 1;
-    }
-    }
- </style>
+        .trending__filters-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
 
+        .trending__filter-mobile {
+            width: 100%;
+            background: #a11341;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.9rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            padding-right: 2.2rem;
+        }
+
+        .trending__filter-mobile:not(.trending__filter-mobile--active) {
+            background: #16202a;
+            color: #e2e8f0;
+            border: 1.5px solid #374151;
+        }
+
+        .trending__filter-mobile:not(.trending__filter-mobile--active):hover {
+            background: #223046;
+            color: #fff;
+            border-color: #a11341;
+        }
+
+        .trending__filter-mobile::after {
+            content: '\f054';
+            /* FontAwesome: chevron-right */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 1rem;
+            color: #a0aec0;
+            position: absolute;
+            right: 1.1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: color 0.2s;
+            pointer-events: none;
+            display: inline-block;
+        }
+
+        .trending__filter-mobile--active::after {
+            content: '\f078';
+            /* FontAwesome: chevron-down */
+            color: #fff;
+        }
+
+        .trending__filter-mobile:focus::after,
+        .trending__filter-mobile:hover::after {
+            color: #fff;
+        }
+    }
+</style>
 <body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar__overlay" id="sidebarOverlay"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <i class="fas fa-bars sidebar__menu-icon" id="sidebarClose"></i>
+            <span class="sidebar__logo">HENTAIBLAZE</span>
+        </div>
+        
+        <div class="sidebar__content">
+            <!-- Main Navigation -->
+            <nav class="sidebar__section">
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link sidebar__nav-link--active">
+                            <i class="fas fa-home sidebar__nav-icon"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-fire sidebar__nav-icon"></i>
+                            <span>Trending</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-list sidebar__nav-icon"></i>
+                            <span>List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                            <i class="fas fa-search sidebar__nav-icon"></i>
+                            <span>Search</span>
+                        </button>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-compass sidebar__nav-icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-plus sidebar__nav-icon"></i>
+                            <span>Contribute</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Resources Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Resources</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-history sidebar__nav-icon"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-clock sidebar__nav-icon"></i>
+                            <span>Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-heart sidebar__nav-icon"></i>
+                            <span>Liked Videos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-play sidebar__nav-icon"></i>
+                            <span>Playlist</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Account</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-user sidebar__nav-icon"></i>
+                            <span>My Channel</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-cog sidebar__nav-icon"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-download sidebar__nav-icon"></i>
+                            <span>Download Apps</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-exchange-alt sidebar__nav-icon"></i>
+                            <span>Switch Account</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-sign-in-alt sidebar__nav-icon"></i>
+                            <span>Sign In</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect Section -->
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Connect</h3>
+                <ul class="sidebar__nav">
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-envelope sidebar__nav-icon"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-newspaper sidebar__nav-icon"></i>
+                            <span>What's New</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__nav-item">
+                        <a href="#" class="sidebar__nav-link">
+                            <i class="fas fa-city sidebar__nav-icon"></i>
+                            <span>HentaiBlaze Town</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-3">
@@ -173,53 +347,52 @@
         <nav class="sidebars__nav">
             <ul class="sidebars__menu">
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="overview">Overview</button>
+                    <a href="#" class="sidebars__link" data-page="overview">Overview</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="treding">Treding</button>
+                    <a href="#" class="sidebars__link" data-page="treding">Treding</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link sidebars__link--active" data-page="random">Random</button>
+                    <a href="#" class="sidebars__link" data-page="random">Random</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="image">Image</button>
+                    <a href="#" class="sidebars__link" data-page="image">Image</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="season">Season</button>
+                    <a href="#" class="sidebars__link" data-page="season">Season</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="unlisted">Unlisted</button>
+                    <a href="#" class="sidebars__link" data-page="unlisted">Unlisted</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="tags">Tags</button>
+                    <a href="#" class="sidebars__link" data-page="tags">Tags</a>
                 </li>
                 <li class="sidebars__item">
-                    <button class="sidebars__link" data-page="logout">Logout</button>
+                    <a href="#" class="sidebars__link" data-page="logout">Logout</a>
                 </li>
             </ul>
         </nav>
     </aside>
     <main class="main-contents">
          <!-- Sidebar Mobile (chỉ hiện trên mobile) -->
-        <nav class="sidebars-mobile" id="sidebarsMobile">
+        <nav class="sidebars-mobile d-block d-sm-none" id="sidebarsMobile">
             <ul class="sidebars-mobile__menu">
-                <li><button class="sidebars-mobile__link" data-page="overview">Overview</button></li>
-                <li><button class="sidebars-mobile__link" data-page="treding">Treding</button></li>
-                <li><button class="sidebars-mobile__link sidebars-mobile__link--active" data-page="random">Random</button></li>
-                <li><button class="sidebars-mobile__link" data-page="image">Image</button></li>
-                <li><button class="sidebars-mobile__link" data-page="season">Season</button></li>
-                <li><button class="sidebars-mobile__link" data-page="unlisted">Unlisted</button></li>
-                <li><button class="sidebars-mobile__link" data-page="tags">Tags</button></li>
-                <li><button class="sidebars-mobile__link" data-page="logout">Logout</button></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="overview">Overview</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="treding">Treding</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="random">Random</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="image">Image</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="season">Season</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="unlisted">Unlisted</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="tags">Tags</a></li>
+                <li><a href="#" class="sidebars-mobile__link" data-page="logout">Logout</a></li>
             </ul>
         </nav>
         <div class="page-content page-content--active" id="overviewPage">
             <section class="overview">
                 <div class="row g-4 justify-content-center">
                     <div class="col-6 col-md-3">
-                        <div class="card-custom">
-                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
-                                alt="Card Image" />
+                        <a href="link-to-detail.html" class="card-custom" style="display: block; text-decoration: none;">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image" alt="Card Image" />
                             <div class="card-custom__overlay">
                                 <div class="card-custom__content">
                                     <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
@@ -227,12 +400,11 @@
                                     <div class="card-custom__text">Find videos by season</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-6 col-md-3">
-                        <div class="card-custom">
-                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
-                                alt="Card Image" />
+                        <a href="link-to-detail.html" class="card-custom" style="display: block; text-decoration: none;">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image" alt="Card Image" />
                             <div class="card-custom__overlay">
                                 <div class="card-custom__content">
                                     <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
@@ -240,12 +412,12 @@
                                     <div class="card-custom__text">Find videos by season</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card-custom">
-                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
-                                alt="Card Image" />
+
+                       <div class="col-6 col-md-3">
+                        <a href="link-to-detail.html" class="card-custom" style="display: block; text-decoration: none;">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image" alt="Card Image" />
                             <div class="card-custom__overlay">
                                 <div class="card-custom__content">
                                     <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
@@ -253,12 +425,11 @@
                                     <div class="card-custom__text">Find videos by season</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="card-custom">
-                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image"
-                                alt="Card Image" />
+                       <div class="col-6 col-md-3">
+                        <a href="link-to-detail.html" class="card-custom" style="display: block; text-decoration: none;">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__image" alt="Card Image" />
                             <div class="card-custom__overlay">
                                 <div class="card-custom__content">
                                     <div class="card-custom__icon"><i class="fa-solid fa-rocket"></i></div>
@@ -266,7 +437,7 @@
                                     <div class="card-custom__text">Find videos by season</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <header class="page-header">
@@ -294,7 +465,7 @@
             <section class="trending container py-4">
                 <!-- Filter nút cho PC -->
                 <div class="trending__filters d-none d-sm-flex gap-2 justify-content-center flex-wrap">
-                    <button class="btn btn-danger trending__filter">Daily</button>
+                    <button class="btn trending__filter active">Daily</button>
                     <button class="btn btn-outline-light trending__filter">Weekly</button>
                     <button class="btn btn-outline-light trending__filter">Monthly</button>
                     <button class="btn btn-outline-light trending__filter">Yearly</button>
@@ -338,25 +509,25 @@
                         <div class="carousel-item active">
                             <div class="carousel__item-wrapper">
                                 <!-- Card 1 -->
-                                <div class="card-custom">
-                                    <div class="card-custom__thumbnail">
-                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img"
-                                            alt="Background">
+                                <a href="link-to-detail.html" class="card-custom" style="display: block; text-decoration: none; color: inherit;">
+                                <div class="card-custom__thumbnail">
+                                    <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" class="card-custom__thumbnail-img" alt="Background">
+                                </div>
+                                <div class="card-custom__body">
+                                    <div class="card-custom__top">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
+                                        <div class="card-custom__stats">
+                                            <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
+                                            <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
+                                        </div>
                                     </div>
-                                    <div class="card-custom__body">
-                                        <div class="card-custom__top">
-                                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Poster" class="card-custom__poster">
-                                            <div class="card-custom__stats">
-                                                <div class="card-custom__view"><i class="fa fa-eye"></i> 1,875,898</div>
-                                                <div class="card-custom__like"><i class="fa fa-heart"></i> 1,875,898</div>
-                                            </div>
-                                        </div>
-                                        <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 1</h6>
-                                        <div class="card-custom__stats-mobile d-flex d-sm-none">
-                                            <div><i class="fa fa-eye"></i> 1,875,898</div>
-                                        </div>
+                                    <h6 class="card-custom__title">Abandon:<br>100 Nuki Shinai 1</h6>
+                                    <div class="card-custom__stats-mobile d-flex d-sm-none">
+                                        <div><i class="fa fa-eye"></i> 1,875,898</div>
                                     </div>
                                 </div>
+                            </a>
+
                                 <!-- Card 2 -->
                                 <div class="card-custom">
                                     <div class="card-custom__thumbnail">
@@ -593,7 +764,7 @@
         <div class="page-content" id="imagePage">
             <div class="image-page container py-5">
                 <!-- Filter Tags -->
-                <div class="image-page__filters mb-4 d-none d-flex flex-wrap">
+                <div class="image-page__filters mb-4 d-none d-sm-flex flex-wrap">
                     <div class="image-page__filter form-check">
                         <input class="form-check-input" type="checkbox" id="tag-kcompany-1">
                         <label class="form-check-label" for="tag-kcompany-1">#KCompany</label>
@@ -1288,11 +1459,14 @@
         buttons.forEach(btn => {
             btn.addEventListener("click", () => {
                 buttons.forEach(b => {
-                    b.classList.remove("btn-danger");
+                    b.classList.remove("active");
+                    b.style.backgroundColor = "";
+                    b.style.color = "";
                     b.classList.add("btn-outline-light");
                 });
-                btn.classList.add("btn-danger");
-                btn.classList.remove("btn-outline-light");
+                btn.classList.add("active");
+                btn.style.backgroundColor = "#a11341";
+                btn.style.color = "white";
 
                 const category = btn.textContent.trim().toLowerCase().replace("-", "").replace(" ", "");
                 renderItems(category);
@@ -1793,6 +1967,39 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+<!-- Reposive Sidebar -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebarOverlay");
+        const hamburgerMenu = document.getElementById("hamburgerMenu");
+        const sidebarClose = document.getElementById("sidebarClose");
+
+        console.log("DOMContentLoaded event fired:", sidebar);
+
+        function openSidebar() {
+            sidebar.classList.add("sidebar--open");
+            sidebarOverlay.classList.add("sidebar__overlay--visible");
+        }
+
+        function closeSidebar() {
+            console.log("closeSidebar called");
+            sidebar.classList.remove("sidebar--open");
+            sidebarOverlay.classList.remove("sidebar__overlay--visible");
+            if (hamburgerMenu) {
+                hamburgerMenu.classList.remove("is-active");
+            }
+        }
+
+        if (hamburgerMenu) hamburgerMenu.addEventListener("click", openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+    });
+</script>
+
+<script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

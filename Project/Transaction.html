@@ -450,34 +450,34 @@
             <nav class="sidebars__nav">
                 <ul class="sidebars__menu">
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="overview">Account overview</button>
+                        <a href="#" class="sidebars__link" data-page="overview">Account overview</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link sidebars__link--active" data-page="transaction">Transaction</button>
+                        <a href="#" class="sidebars__link" data-page="transaction">Transaction</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="list">List</button>
+                        <a href="#" class="sidebars__link" data-page="list">List</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="tags">Tags</button>
+                        <a href="#" class="sidebars__link" data-page="tags">Tags</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="recommendations">Recommendations</button>
+                        <a href="#" class="sidebars__link" data-page="recommendations">Recommendations</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="notifications">Notifications</button>
+                        <a href="#" class="sidebars__link" data-page="notifications">Notifications</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="message">Message</button>
+                        <a href="#" class="sidebars__link" data-page="message">Message</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="preferences">Preferences</button>
+                        <a href="#" class="sidebars__link" data-page="preferences">Preferences</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="setting">Setting</button>
+                        <a href="#" class="sidebars__link" data-page="setting">Setting</a>
                     </li>
                     <li class="sidebars__item">
-                        <button class="sidebars__link" data-page="logout">Logout</button>
+                        <a href="#" class="sidebars__link" data-page="logout">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -489,16 +489,16 @@
         <!-- Sidebar mobile -->
             <nav class="d-block d-sm-none sidebars-mobile" id="sidebarsMobile">
                 <ul class="sidebars-mobile__menu">
-                    <li><button class="sidebars-mobile__link" data-page="overview">Account overview</button></li>
-                    <li><button class="sidebars-mobile__link sidebars-mobile__link--active" data-page="transaction">Transaction</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="list">List</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="tags">Tags</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="recommendations">Recommendations</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="notifications">Notifications</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="message">Message</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="preferences">Preferences</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="setting">Setting</button></li>
-                    <li><button class="sidebars-mobile__link" data-page="logout">Logout</button></li>
+                    <li><a href="#" class="sidebars-mobile__link sidebars-mobile__link--active" data-page="overview">Account overview</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="transaction">Transaction</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="list">List</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="tags">Tags</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="recommendations">Recommendations</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="notifications">Notifications</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="message">Message</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="preferences">Preferences</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="setting">Setting</a></li>
+                    <li><a href="#" class="sidebars-mobile__link" data-page="logout">Logout</a></li>
                 </ul>
             </nav>
 
@@ -1818,7 +1818,7 @@
             handleCardHover(e) {
                 const card = e.currentTarget;
                 if (!card.classList.contains('pricing-card--featured')) {
-                    card.style.borderColor = '#b83280';
+                    card.style.borderColor = '#a11341';
                 }
             }
             
@@ -1835,7 +1835,7 @@
             constructor() {
                 this.sidebars = document.getElementById('sidebars');
                 this.menuToggle = document.getElementById('menuToggle');
-                this.sidebarsOverlay = document.getElementById('sidebarsOverlay');
+                this.sidebarsOverlay = document.getElementById('sidebarOverlay');
                 this.sidebarsLinks = document.querySelectorAll('.sidebars__link');
                 this.pageManager = new PageManager();
                 
@@ -1864,13 +1864,13 @@
             
             togglesidebars() {
                 this.sidebars.classList.toggle('sidebars--open');
-                this.sidebarsOverlay.classList.toggle('sidebars-overlay--visible');
+                this.sidebarsOverlay.classList.toggle('sidebar__overlay--visible');
                 document.body.style.overflow = this.sidebars.classList.contains('sidebars--open') ? 'hidden' : '';
             }
             
             closesidebars() {
                 this.sidebars.classList.remove('sidebars--open');
-                this.sidebarsOverlay.classList.remove('sidebars-overlay--visible');
+                this.sidebarsOverlay.classList.remove('sidebar__overlay--visible');
                 document.body.style.overflow = '';
             }
             
@@ -2208,19 +2208,39 @@ const privateItems = [
   { img: 'assets/img/anh-nen-may-tinh-4k-1.jpg', title: 'Private 5', text: 'Private text 5', views: '222' },
 ];
 
-function renderAllCarousels() {
-  generateCarouselItems('mainCarousel', publicItems);
-  generateCarouselItems('privateCarousel', privateItems);
-}
+    function renderAllCarousels() {
+        generateCarouselItems('mainCarousel', publicItems);
+        generateCarouselItems('privateCarousel', privateItems);
+        }
 
-window.addEventListener('load', renderAllCarousels);
-window.addEventListener('resize', () => {
-  clearTimeout(window.__carouselResizeTimeout);
-  window.__carouselResizeTimeout = setTimeout(renderAllCarousels, 200);
-});
-</script>
+        window.addEventListener('load', renderAllCarousels);
+        window.addEventListener('resize', () => {
+        clearTimeout(window.__carouselResizeTimeout);
+        window.__carouselResizeTimeout = setTimeout(renderAllCarousels, 200);
+        });
+    </script>
 
+    <!-- Reposive Sidebar -->
+    <script>
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebarOverlay");
+        const hamburgerMenu = document.getElementById("hamburgerMenu");
+        const sidebarClose = document.getElementById("sidebarClose");
 
+        function openSidebar() {
+        sidebar.classList.add("sidebar--open");
+        sidebarOverlay.classList.add("sidebar__overlay--visible");
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove("sidebar--open");
+            sidebarOverlay.classList.remove("sidebar__overlay--visible");
+        }
+
+        hamburgerMenu.addEventListener("click", openSidebar);
+        sidebarClose.addEventListener("click", closeSidebar);
+        sidebarOverlay.addEventListener("click", closeSidebar);
+    </script>
 
     <script src="assets/js/main.js"></script>
 </body>

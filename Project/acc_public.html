@@ -8,6 +8,125 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     
+    <style>
+        .achievements__grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem 1rem;
+            margin-top: 24px;
+        }
+    
+        .achievement {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+            min-width: 0;
+            box-shadow: none;
+            margin-bottom: 0;
+            transition: transform 0.2s;
+        }
+    
+        .achievement:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+        }
+    
+        .achievement__badge {
+            width: 64px;
+            height: 64px;
+            background: #a11341;
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            position: relative;
+            box-sizing: border-box;
+            margin-right: -1px;
+            border: 1.5px solid #a11341;
+            border-right: none;
+            z-index: 1;
+            line-height: 1.1;
+            padding-bottom: 6px;
+        }
+    
+        .achievement__badge::before {
+            content: "lv.";
+            position: absolute;
+            top: 30px;
+            left: 8px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            width: auto;
+            display: block;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .achievement__label {
+            flex: 1;
+            min-width: 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #a11341;
+            border-radius: 0 2px 2px 0;
+            background: transparent;
+            padding: 0 24px;
+            box-sizing: border-box;
+            z-index: 0;
+            margin-left: 0;
+            font-size: 1rem;
+            color: #cbd5e1;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            justify-content: center;
+        }
+    
+        @media (max-width: 992px) {
+            .achievements__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        @media (max-width: 576px) {
+            .achievements__grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+    
+            .achievement {
+                min-width: 0;
+                width: 100%;
+                justify-content: flex-start;
+                padding: 0;
+            }
+    
+            .achievement__badge {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+            }
+    
+            .achievement__label {
+                font-size: 0.85rem;
+                padding: 0 12px;
+                height: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -44,10 +163,10 @@
                         </a>
                     </li>
                     <li class="sidebar__nav-item">
-                        <button class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar();">
+                        <a href="#" class="sidebar__nav-link" onclick="openSearchModal(); closeSidebar(); return false;">
                             <i class="fas fa-search sidebar__nav-icon"></i>
                             <span>Search</span>
-                        </button>
+                        </a>
                     </li>
                     <li class="sidebar__nav-item">
                         <a href="#" class="sidebar__nav-link">
@@ -309,66 +428,46 @@
 
             <!-- Achievements Grid -->
             <section class="achievements">
-                <div class="row g-2">
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Blast Reader</span>
-                        </div>
+                <div class="achievements__grid">
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Blast Reader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Hardcore Reader</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Hardcore Reader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Innocent Reader</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Innocent Reader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Pervert Reader</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Pervert Reader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Immoral Reader</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Immoral Reader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Uploader</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Uploader</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Tagger</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Tagger</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Tagger</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Tagger</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Tagger</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Tagger</span>
                     </div>
-                    <div class="col-6 col-md-2">
-                        <div class="achievement">
-                            <div class="achievement__badge">1</div>
-                            <span class="achievement__label">Tagger</span>
-                        </div>
+                    <div class="achievement">
+                        <div class="achievement__badge">1</div>
+                        <span class="achievement__label">Tagger</span>
                     </div>
                 </div>
             </section>
@@ -393,7 +492,7 @@
                 </div>
 
                 <!-- Recent Comments -->
-                <div class="col-md-6">
+                <div class="col-md-6 mt-3 mt-md-0">
                     <section class="content-section">
                         <h2 class="content-section__title">Recent comments</h2>
                         <div class="comment-list">
@@ -413,13 +512,16 @@
                         <span class="gallery__indicator"></span>
                         Public
                     </h2>
-                    <button class="gallery__mood-btn">Mood viewer</button>
+                    <a href="#" class="gallery__mood-btn">
+                        Mood viewer <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
                 </div>
+
                 
                 <div class="gallery__container">
-                    <button class="gallery__nav gallery__nav--prev" id="prevBtn">
+                    <a href="#" class="gallery__nav gallery__nav--prev" id="prevBtn" return false>
                         <i class="fas fa-chevron-left"></i>
-                    </button>
+                    </a>
                     
                     <div class="gallery__grid" id="galleryGrid">
                         <div class="gallery__item">
@@ -495,9 +597,9 @@
                         </div>
                     </div>
                     
-                    <button class="gallery__nav gallery__nav--next" id="nextBtn">
+                    <a href="#" class="gallery__nav gallery__nav--next" id="nextBtn">
                         <i class="fas fa-chevron-right"></i>
-                    </button>
+                    </a>
                 </div>
             </section>
         </div>
@@ -513,15 +615,16 @@
                 this.prevBtn = document.getElementById('prevBtn');
                 this.nextBtn = document.getElementById('nextBtn');
                 this.scrollAmount = 220; // Width of one item plus gap
-                
+
                 this.init();
             }
-            
+
             init() {
                 if (this.prevBtn && this.nextBtn && this.galleryGrid) {
-                    this.prevBtn.addEventListener('click', () => this.scrollPrev());
-                    this.nextBtn.addEventListener('click', () => this.scrollNext());
-                    
+                    // Prevent default for <a href="#"> to avoid scroll-to-top
+                    this.prevBtn.addEventListener('click', (e) => { e.preventDefault(); this.scrollPrev(); });
+                    this.nextBtn.addEventListener('click', (e) => { e.preventDefault(); this.scrollNext(); });
+
                     // Update button states on scroll
                     this.galleryGrid.addEventListener('scroll', () => this.updateButtonStates());
                     this.updateButtonStates();

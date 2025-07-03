@@ -206,7 +206,7 @@
             .my-contributions-mobile .table tbody td::before {
                 content: attr(data-label) ": ";
                 font-weight: 600;
-                color: #dc3545;
+                color: #a11341;
                 display: inline-block;
                 min-width: 110px;
                 margin-right: 0.5em;
@@ -321,8 +321,8 @@
     
         .search-modal__close {
             position: absolute;
-            top: -4;
-            right: 0.2rem;
+            top: 0;
+            right: 1.2rem;
             background: none;
             border: none;
             color: #fff;
@@ -590,6 +590,7 @@
             }
         }
     </style>
+
 </head>
 <body>
     <!-- Sidebar Overlay -->
@@ -747,35 +748,38 @@
     </aside>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid px-3">
-            <!-- Hamburger Menu -->
+    <nav class="navbar">
+        <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
+            <!-- Left side -->
             <div class="d-flex align-items-center">
                 <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
                 <a class="navbar__brand" href="#">HENTAIBLAZE</a>
             </div>
-            
-            <!-- Right side items -->
-            <div class="d-flex align-items-center">
-                <!-- Search Icon -->
+    
+            <!-- Right side -->
+            <div class="d-flex align-items-center ms-auto">
                 <i class="fas fa-search navbar__icon me-3" id="searchIcon"></i>
+                <ul class="navbar__nav navbar-nav d-none d-md-flex flex-row align-items-center m-0 gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link navbar__btn btn btn-sm px-3" href="login.html">SIGN IN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar__btn btn btn-sm px-3" href="signin.html">CREATE ACCOUNT</a>
+                    </li>
+                </ul>
 
-                <!-- Toggle button for mobile -->
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <i class="fas fa-ellipsis-v text-light"></i>
-                </button>
-                
-                <!-- Navigation items -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar__nav navbar-nav ms-auto">
-                        <li class="nav-item me-2">
-                            <a class="nav-link navbar__btn" href="login.html">SIGN IN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link navbar__btn" href="signin.html">CREATE ACCOUNT</a>
-                        </li>
-                    </ul>
-                </div>
+                 <ul class="navbar__nav navbar-nav d-flex flex-row align-items-center m-0 gap-2 d-flex d-md-none">
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="login.html">
+                            <i class="fas fa-user"></i> <!-- icon for sign in -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-2" href="signin.html">
+                            <i class="fas fa-user-plus"></i> <!-- icon for create account -->
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -807,8 +811,10 @@
                 
                 <div class="carousel__track" id="newReleasesCarousel">
                     <!-- Card 1 -->
-                    <div class="card">
-                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
                             <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
@@ -832,143 +838,150 @@
                         </div>
                         <div class="card__overlay">
                             <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
-                                <div class="card__overlay-meta">
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
-                                    <span>1,875,898</span>
-                                </div>
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                                    <span>111.545</span>
-                                </div>
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
-                                    <span>100 pages</span>
-                                </div>
-                            </div>
-                            <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 2 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
-                        <div class="card__content">
-                            <h3 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                            <div class="card__meta">
-                                <div class="card__meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>18:30</span>
-                                </div>
-                                <div class="card__meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>89,234</span>
-                                </div>
-                            </div>
-                            <div class="card__rating">
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                            </div>
-                            <p class="card__stats">Uploaded 2 days ago</p>
-                        </div>
-                        <div class="card__overlay">
-                            <h3 class="card__overlay-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
                             <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
+
+                    
+                    <!-- Card 2 -->
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24:52</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>123,456</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 1 day ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
+                                    <span>1,875,898</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
+                                    <span>111.545</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
+                                    <span>100 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
+                            </div>
+                        </div>
+                    </a>
                     
                     <!-- Card 3 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>32:15</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>156,789</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star--empty"></i>
+                                <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 3 days ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 4 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>27:45</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>98,765</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -978,33 +991,33 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 1 week ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('newReleases', 1)">
@@ -1036,18 +1049,20 @@
                 
                 <div class="carousel__track" id="trendingCarousel">
                     <!-- Card 1 -->
-                    <div class="card">
-                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Trending Content 1: Popular Series Episode</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>22:30</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>500,123</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1055,49 +1070,51 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Trending #1</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Trending Content 1: Popular Series Episode</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 2 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Trending Content 2: Hot New Release</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>19:45</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>345,678</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1107,97 +1124,49 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Trending #2</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Trending Content 2: Hot New Release</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 3 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                   <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Trending Content 3: Fan Favorite Series</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>25:12</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>289,456</span>
-                                </div>
-                            </div>
-                            <div class="card__rating">
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
-                            </div>
-                            <p class="card__stats">Trending #3</p>
-                        </div>
-                        <div class="card__overlay">
-                            <h3 class="card__overlay-title">Trending Content 3: Fan Favorite Series</h3>
-                                <div class="card__overlay-meta">
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
-                                    <span>1,875,898</span>
-                                </div>
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                                    <span>111.545</span>
-                                </div>
-                                <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
-                                    <span>100 pages</span>
-                                </div>
-                            </div>
-                            <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 4 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
-                        <div class="card__content">
-                            <h3 class="card__title">Trending Content 4: Rising Star Series</h3>
-                            <div class="card__meta">
-                                <div class="card__meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>21:33</span>
-                                </div>
-                                <div class="card__meta-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>198,234</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1207,33 +1176,85 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Trending #4</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Trending Content 4: Rising Star Series</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                    
+                    <!-- Card 4 -->
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__meta">
+                                <div class="card__meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24:52</span>
+                                </div>
+                                <div class="card__meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>123,456</span>
+                                </div>
+                            </div>
+                            <div class="card__rating">
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
+                            </div>
+                            <p class="card__stats">Uploaded 1 day ago</p>
+                        </div>
+                        <div class="card__overlay">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
+                                    <span>1,875,898</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
+                                    <span>111.545</span>
+                                </div>
+                                <div class="card__overlay-meta-item">
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
+                                    <span>100 pages</span>
+                                </div>
+                            </div>
+                            <div class="card__overlay-rating">
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 
                 <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('trending', 1)">
@@ -1265,18 +1286,20 @@
                 
                 <div class="carousel__track" id="recentUploadsCarousel">
                     <!-- Card 1 -->
-                    <div class="card">
-                        <div class="card__image"><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Recent Upload 1: Fresh Content Just Added</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>15:20</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>12,345</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1286,47 +1309,49 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 2 hours ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Recent Upload 1: Fresh Content Just Added</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 2 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Recent Upload 2: Latest Episode Release</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>28:45</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>8,976</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1334,99 +1359,103 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star"></i>
+                                <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 5 hours ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Recent Upload 2: Latest Episode Release</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 3 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                   <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Recent Upload 3: Brand New Series Premiere</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>23:10</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>15,432</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star"></i>
-                                <i class="fas fa-star card__star--empty"></i>
+                                <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 8 hours ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Recent Upload 3: Brand New Series Premiere</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     
                     <!-- Card 4 -->
-                    <div class="card">
-                        <div class="card__image">16:9 Placeholder</div>
+                    <a href="your-link.html" class="card">
+                        <div class="card__image">
+                            <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="">
+                        </div>
                         <div class="card__content">
-                            <h3 class="card__title">Recent Upload 4: Special Edition Content</h3>
+                            <h3 class="card__title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
                             <div class="card__meta">
                                 <div class="card__meta-item">
                                     <i class="fas fa-clock"></i>
-                                    <span>31:55</span>
+                                    <span>24:52</span>
                                 </div>
                                 <div class="card__meta-item">
                                     <i class="fas fa-eye"></i>
-                                    <span>6,789</span>
+                                    <span>123,456</span>
                                 </div>
                             </div>
                             <div class="card__rating">
@@ -1436,33 +1465,33 @@
                                 <i class="fas fa-star card__star"></i>
                                 <i class="fas fa-star card__star--empty"></i>
                             </div>
-                            <p class="card__stats">Uploaded 12 hours ago</p>
+                            <p class="card__stats">Uploaded 1 day ago</p>
                         </div>
                         <div class="card__overlay">
-                            <h3 class="card__overlay-title">Recent Upload 4: Special Edition Content</h3>
-                                <div class="card__overlay-meta">
+                            <h3 class="card__overlay-title">Abandon: 100 Nuki Shinai to Dorarenal Fushigi na Kyoushitsu 1</h3>
+                            <div class="card__overlay-meta">
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-eye"></i></div>
                                     <span>1,875,898</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-heart"></i></div>
                                     <span>111.545</span>
                                 </div>
                                 <div class="card__overlay-meta-item">
-                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="card__overlay-meta-icon"><i class="fa fa-file-text"></i></div>
                                     <span>100 pages</span>
                                 </div>
                             </div>
                             <div class="card__overlay-rating">
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star"><i class="fa fa-star" aria-hidden="true"></i></span>
-                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star"><i class="fa fa-star"></i></span>
+                                <span class="card__overlay-star card__overlay-star--empty"><i class="fa fa-star"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 
                 <button class="carousel__nav carousel__nav--next" onclick="moveCarousel('recentUploads', 1)">
@@ -1497,43 +1526,43 @@
                     <div class="image-gallery__slide">
                         <div class="image-gallery__layout">
                             <div class="image-gallery__featured">
-                                <div class="image-gallery__featured-placeholder">
-                                    <span>Featured Image</span>
-                                </div>
+                                <a href="link-to-detail.html" class="image-gallery__featured-placeholder">
+                                    <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
+                                </a>
                                 <div class="image-gallery__credit">
-                                    Credit: Artist Name - Featured Gallery Set 1
+                                    Credit: Artist Name - Featured Gallery Set 2
                                 </div>
                             </div>
                             <div class="image-gallery__grid">
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 1</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 2</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 3</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 4</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 5</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 6</span>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1543,43 +1572,43 @@
                     <div class="image-gallery__slide">
                         <div class="image-gallery__layout">
                             <div class="image-gallery__featured">
-                                <div class="image-gallery__featured-placeholder">
+                                <a href="link-to-detail.html" class="image-gallery__featured-placeholder">
                                     <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
-                                </div>
+                                </a>
                                 <div class="image-gallery__credit">
                                     Credit: Artist Name - Featured Gallery Set 2
                                 </div>
                             </div>
                             <div class="image-gallery__grid">
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 1</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 2</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 3</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 4</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 5</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 6</span>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1589,43 +1618,43 @@
                     <div class="image-gallery__slide">
                         <div class="image-gallery__layout">
                             <div class="image-gallery__featured">
-                                <div class="image-gallery__featured-placeholder">
+                                <a href="link-to-detail.html" class="image-gallery__featured-placeholder">
                                     <span><img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt=""></span>
-                                </div>
+                                </a>
                                 <div class="image-gallery__credit">
-                                    Credit: Artist Name - Featured Gallery Set 3
+                                    Credit: Artist Name - Featured Gallery Set 2
                                 </div>
                             </div>
                             <div class="image-gallery__grid">
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 1</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 2</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                     <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 3</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 4</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                    <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 5</span>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="image-gallery__grid-item">
-                                    <div class="image-gallery__grid-placeholder">
+                                      <a href="link-grid1.html" class="image-gallery__grid-placeholder">
                                         <span>Grid 6</span>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1812,7 +1841,7 @@
 
     
             <div class="d-none d-sm-flex manga-detail__rating mt-4 d-flex align-items-center text-highlight">
-                <div class="text-danger me-2 fs-4">★★★★★</div>
+                <div class="stars me-2 fs-4">★★★★★</div>
                 <span class="badge me-2">4.7</span>
                 <small>(99 ratings)</small>
             </div>
@@ -1920,7 +1949,7 @@
                 <span class="me-2 text-white">View mode:</span>
                 <button class="btn btn-outline-light btn-sm manga-reader__btn">Single Page</button>
                 <button class="btn btn-outline-light btn-sm manga-reader__btn">Western Page</button>
-                <button class="btn btn-danger btn-sm manga-reader__btn">Manga Page</button>
+                <button class="btn btn-sm manga-reader__btn">Manga Page</button>
             </div>
     
             <div class="manga-reader__pages d-flex justify-content-center flex-wrap">
@@ -2642,21 +2671,22 @@
     <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
         <div class="search-modal__content">
-            <button class="search-modal__close" onclick="closeSearchModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            
             <div class="search-modal__header">
                 <input type="text" class="search-modal__search-bar" placeholder="HENTAI" id="searchInput">
             </div>
             
             <div class="search-modal__filters">
-                <button class="search-modal__filter-btn search-modal__filter-btn--active">Tags</button>
-                <button class="search-modal__filter-btn">Gender</button>
-                <button class="search-modal__filter-btn">Gender</button>
-                <button class="search-modal__filter-btn">Blacklist</button>
-                <button class="search-modal__filter-btn" onclick="resetAllFilters()">Reset all</button>
-                <button class="search-modal__filter-btn">Sort</button>
+                <div class="serch-model__left">
+                    <button class="search-modal__filter-btn search-modal__filter-btn--active">Tags</button>
+                    <button class="search-modal__filter-btn">Gender</button>
+                    <button class="search-modal__filter-btn">Gender</button>
+                    <button class="search-modal__filter-btn">Blacklist</button>
+                </div>
+                <div class="search-model__right">
+                    <button class="search-modal__filter-btn" onclick="resetAllFilters()">Reset all</button>
+                    <button class="search-modal__filter-btn">Sort</button>
+                </div>
+
             </div>
             
             <div class="search-modal__section">
@@ -2822,45 +2852,136 @@
     </div>
 
     <!-- Modal Request -->
-     <div class="modal fade manga-request" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content manga-request__content p-3 text-white">
-            <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title d-flex align-items-center">
-                    <span class="bg-danger rounded me-2" style="width: 10px; height: 10px;"></span>
-                    Request
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-3">
-                <form>
-                    <div class="mb-3">
-                        <label for="request-subject" class="form-label small">Subject</label>
-                        <input type="text" id="request-subject"
-                            class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="request-email" class="form-label small">Reply Email</label>
-                        <input type="email" id="request-email"
-                            class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="request-comment" class="form-label small">Comment</label>
-                        <textarea id="request-comment" rows="4"
-                            class="form-control text-white w-100"
-                            style="background-color: transparent; border: 1px solid #fff;"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end gap-2">
-                        <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">CLOSE</button>
-                        <button type="submit" class="btn btn-danger btn-sm">SEND</button>
-                    </div>
-                </form>
+    <div class="modal fade manga-request" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content manga-request__content p-3 text-white">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title d-flex align-items-center">
+                        <span class="bg-danger rounded me-2" style="width: 10px; height: 10px;"></span>
+                        Request
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-3">
+                    <form>
+                        <div class="mb-3">
+                            <label for="request-subject" class="form-label small">Subject</label>
+                            <input type="text" id="request-subject"
+                                class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="request-email" class="form-label small">Reply Email</label>
+                            <input type="email" id="request-email"
+                                class="form-control-plaintext border-bottom manga-request__input-underline text-white w-100" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="request-comment" class="form-label small">Comment</label>
+                            <textarea id="request-comment" rows="4" class="form-control text-white w-100"
+                                style="background-color: transparent; border: 1px solid #fff;"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-outline-light btn-sm"
+                                data-bs-dismiss="modal">CLOSE</button>
+                            <button type="submit" class="btn btn-danger btn-sm">SEND</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Collection Modal -->
+    <div class="modal fade" id="collectionModal" tabindex="-1" aria-labelledby="collectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-4" style="background: #131e27; border-radius: 8px;">
+                <div class="modal-header border-0">
+                    <h2 class="section__title" id="collectionModalLabel">
+                        Add current collections:
+                    </h2>
+                    <button type="button" class="btn btn-outline-light ms-auto rounded-0" style="min-width:160px;">New
+                        Collection</button>
+                </div>
+                <div class="modal-body">
+                    <div id="collectionCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                                    <!-- 6 Collection Cards -->
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold">John's
+                                            list</div>
+                                    </div>
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold">John's
+                                            list</div>
+                                    </div>
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold">John's
+                                            list</div>
+                                    </div>
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold">John's
+                                            list</div>
+                                    </div>
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold" style="border-radius:0 0 4px 4px;">John's
+                                            list</div>
+                                    </div>
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold" style="border-radius:0 0 4px 4px;">John's
+                                            list</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+                                    <!-- 6 Collection Cards khác cho slide 2 -->
+                                    <div class="collection-card text-center" style="width:150px;">
+                                        <img src="assets/img/anh-nen-may-tinh-4k-1.jpg" alt="Collection" class="w-100"
+                                            style="aspect-ratio:1/1; object-fit:cover;">
+                                        <div class="collection__name bg-white py-2 fw-semibold" style="border-radius:0 0 4px 4px;">Another
+                                            list</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#collectionCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#collectionCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <!-- Dots -->
+                        <div class="carousel-indicators mt-4">
+                            <button type="button" data-bs-target="#collectionCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#collectionCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <!-- Thêm button nếu có thêm slide -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Script open modal request -->
     <script>
@@ -2875,12 +2996,38 @@
         });
     </script>
 
+    <!-- Script modal collection -->
+    <script>
+        document.getElementById('addToBtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            const menu = document.getElementById('addToMenu');
+            menu.classList.toggle('d-none');
+        });
+
+        document.addEventListener('click', function (e) {
+            const button = document.getElementById('addToBtn');
+            const menu = document.getElementById('addToMenu');
+            if (!button.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add('d-none');
+            }
+        });
+
+        ['PUBLIC', 'PRIVATE', 'UNLISTED'].forEach((type, idx) => {
+            document.querySelectorAll('#addToMenu button')[idx].addEventListener('click', function (e) {
+                e.stopPropagation();
+                document.getElementById('addToMenu').classList.add('d-none');
+                const collectionModal = new bootstrap.Modal(document.getElementById('collectionModal'));
+                collectionModal.show();
+            });
+        });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/main.js"></script>
 
-    <script>
+    <!-- <script>
         document.getElementById('addToBtn').addEventListener('click', function () {
             const menu = document.getElementById('addToMenu');
             menu.classList.toggle('d-none');
@@ -2893,7 +3040,7 @@
             menu.classList.add('d-none');
             }
         });
-    </script>
+    </script> -->
 
 <!-- Contribute -->
  <script>
@@ -2917,28 +3064,34 @@
 
  </script>
 
-
 <!-- Reposive Sidebar -->
- <script>
-    const sidebar = document.getElementById("sidebar");
-    const sidebarOverlay = document.getElementById("sidebarOverlay");
-    const hamburgerMenu = document.getElementById("hamburgerMenu");
-    const sidebarClose = document.getElementById("sidebarClose");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebarOverlay");
+        const hamburgerMenu = document.getElementById("hamburgerMenu");
+        const sidebarClose = document.getElementById("sidebarClose");
 
-    function openSidebar() {
-    sidebar.classList.add("sidebar--open");
-    sidebarOverlay.classList.add("sidebar__overlay--visible");
-    }
+        function openSidebar() {
+            sidebar.classList.add("sidebar--open");
+            sidebarOverlay.classList.add("sidebar__overlay--visible");
+        }
 
-    function closeSidebar() {
-        sidebar.classList.remove("sidebar--open");
-        sidebarOverlay.classList.remove("sidebar__overlay--visible");
-    }
+        function closeSidebar() {
+            console.log("closeSidebar called");
+            sidebar.classList.remove("sidebar--open");
+            sidebarOverlay.classList.remove("sidebar__overlay--visible");
+            if (hamburgerMenu) {
+                hamburgerMenu.classList.remove("is-active");
+            }
+        }
 
-    hamburgerMenu.addEventListener("click", openSidebar);
-    sidebarClose.addEventListener("click", closeSidebar);
-    sidebarOverlay.addEventListener("click", closeSidebar);
+        if (hamburgerMenu) hamburgerMenu.addEventListener("click", openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+    });
 </script>
+
 
 </body>
 </html>

@@ -11,14 +11,16 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <style>
+        .sidebars__link--active,
+.sidebars__link:hover {
+    background-color: #cc2e4e;
+    color: #fff;
+}
         /* Sidebar */
         .ranking-sidebar {
             background-color: transparent;
             min-height: 100vh;
             padding-top: 1rem;
-        }
-        .text-danger{
-            color: #b02846 !important;
         }
 
         .ranking-sidebar__menu {
@@ -39,12 +41,26 @@
 
         .ranking-sidebar__item--active .ranking-sidebar__link,
         .ranking-sidebar__link:hover {
-            background-color: #b02846;
+            background-color: #cc2e4e;
             color: #fff;
+        }
+
+        .ranking-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            gap: 0.3rem;
         }
 
         .ranking-tabs .ranking-tab__button {
             border-radius: 0;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-right: 0 !important;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.7rem;
+            min-width: 90px;
         }
 
         .ranking-tabs .ranking-tab__button.active {
@@ -53,6 +69,14 @@
             font-weight: bold;
             border-color: #fff;
             border-radius: 0;
+        }
+
+        .ranking-card {
+            color: #fff;
+        }
+
+        .ranking-card__description {
+            color: #fff;
         }
 
         .ranking-card__image {
@@ -68,32 +92,184 @@
             margin-top: 0.5rem;
         }
 
-        .ranking-card__actions button {
-            width: 100px;
+        .ranking-card__actions {
+            width: 150px;
+        }
+
+        .ranking-card__actions .btn {
+            width: 100%;
+            border-radius: 4px;
+            border-radius: 0;
+        }
+
+        .ranking-card__actions .btn:first-child{
+            color: #a11341;
+        }
+
+        .ranking-card__tags {
+            color: #fff;
+        }
+
+        @media (max-width: 991.98px) {
+            .container-fluid {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .sidebars {
+                position: fixed;
+                left: -220px;
+                top: 0;
+                width: 200px;
+                height: 100vh;
+                background: #1a1a1a;
+                z-index: 1050;
+                transition: left 0.3s;
+                box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+            }
+            .sidebars.active {
+                left: 0;
+            }
+            .main-contents {
+                margin-left: 0 !important;
+                padding: 0.5rem 0.2rem;
+            }
+            .navbar__icon#hamburgerMenu {
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            
+        }
+
+        @media (max-width: 767.98px) {
+            .ranking-card .d-flex {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .ranking-card__image {
+                width: 80px !important;
+                height: 110px !important;
+                margin-bottom: 0.5rem;
+            }
+            .ranking-card__actions {
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+            .ranking-card__actions .btn {
+                font-size: 0.95rem;
+                padding: 0.3rem 0.5rem;
+            }
+            .ranking-card__position {
+                font-size: 1.5rem !important;
+                margin-bottom: 0.5rem;
+            }
+            .ranking-card__body {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            .ranking-tabs .ranking-tab__button {
+                font-size: 0.5rem;
+                padding: 0.22rem 0.45rem;
+                min-width: 80px;
+                margin-bottom: 0.3rem;
+            }
+            .header__breadcrumb {
+                font-size: 0.95rem;
+            }
+
+            
+        }
+
+        @media (max-width: 575.98px) {
+            .navbar__brand {
+                font-size: 1.1rem;
+            }
+            .ranking-card__title {
+                font-size: 1rem;
+            }
+            .ranking-card__description {
+                font-size: 0.95rem;
+            }
+            .ranking-card__tags,
+            .ranking-card__meta {
+                font-size: 0.85rem;
+            }
+            .ranking-tabs .ranking-tab__button {
+                font-size: 0.5rem;
+                padding: 0.2rem 0.5rem;
+                min-width: 70px;
+            }
+            
         }
     </style>
 </head>
 
-<body class="bg-dark text-white">
+<body>
+    <!-- Navigation Bar (copy from Transaction.html) -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-3">
+            <!-- Hamburger Menu -->
+            <div class="d-flex align-items-center">
+                <i class="fas fa-bars navbar__icon me-3" id="hamburgerMenu"></i>
+                <a class="navbar__brand" href="#">HENTAIBLAZE</a>
+                <nav class="header__breadcrumb">
+                    <span class="header__subtitle" id="headerSubtitle">Ranking > Yesterday</span>
+                </nav>
+            </div>
+            <!-- Right side items -->
+            <div class="d-flex align-items-center gap-3">
+                <!-- Search Icon -->
+                <i class="fas fa-search navbar__icon" id="searchIcon"></i>
+                <!-- Toggle button for mobile -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-ellipsis-v text-light"></i>
+                </button>
+                <i class="fas fa-envelope"></i>
+                <!-- Navigation items -->
+                <div class="header__right d-flex align-items-center gap-3 mb-0">
+                    <div class="header__icon position-relative">
+                        <i class="fa fa-commenting"></i>
+                        <span class="header__notification-badge">1</span>
+                    </div>
+                    <div class="header__avatar"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navigation Bar -->
     <div class="container-fluid">
-        <div class="row min-vh-100">
-
-            <!-- Sidebar -->
-            <nav class="col-md-2 bg-dark ranking-sidebar d-flex flex-column">
-                <ul class="ranking-sidebar__menu list-unstyled mt-3">
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POWER</a></li>
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POPULAR</a></li>
-                    <li class="ranking-sidebar__item ranking-sidebar__item--active"><a href="#"
-                            class="ranking-sidebar__link">UPLOAD</a></li>
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">UPLOAD</a></li>
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POPULAR</a></li>
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">UPLOAD</a></li>
-                    <li class="ranking-sidebar__item"><a href="#" class="ranking-sidebar__link">POWER</a></li>
+        <aside class="sidebars" id="sidebars">
+            <nav class="sidebars__nav">
+                <ul class="sidebars__menu">
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link sidebars__link--active" data-page="overview">POWER</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="transaction">POPULAR</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="list">UPLOAD</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="tags">UPLOAD</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="recommendations">POWER</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="notifications">POWER</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="message">POWER</a>
+                    </li>
+                    <li class="sidebars__item">
+                        <a href="#" class="sidebars__link" data-page="preferences">POWER</a>
+                    </li>
                 </ul>
             </nav>
-
-            <!-- Main content -->
-            <main class="col-md-10 p-4 ranking-main">
+        </aside>
+                    <!-- Main content -->
+            <main class="main-contents">
                 <!-- Tabs -->
                 <div class="ranking-tabs mb-3">
                     <button class="btn btn-outline-light btn-sm me-2 ranking-tab__button active"
@@ -116,26 +292,26 @@
                                 <div class="ranking-card__position text-danger fw-bold fs-2 me-3">1ST</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
+                                <div class="ranking-card__body flex-grow-1 mx-1">
                                     <div class="ranking-card__tags small mb-1">
                                         #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
                                     </div>
                                     <h5 class="ranking-card__title text-white">
                                         Abandon: 100 Nuki Shinai to Derarenai Fushigi
                                     </h5>
-                                    <p class="ranking-card__description small text-secondary">
+                                    <p class="ranking-card__description small">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                         incididunt ut
                                         labore et dolore magna aliqua. Ut enim ad minim veniam...
                                     </p>
-                                    <div class="ranking-card__meta text-muted small">
+                                    <div class="ranking-card__meta small">
                                         By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
                                         1,875,898
                                     </div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
-                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2 w-100">READ NOW</a>
+                                    <button class="btn btn-outline-light btn-sm d-block w-100">ADD</button>
                                 </div>
                             </div>
                             <hr class="bg-light mt-4" />
@@ -147,26 +323,26 @@
                                 <div class="ranking-card__position text-danger fw-bold fs-2 me-3">2ND</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
-                                    <div class="ranking-card__tags text-muted small mb-1">
+                                <div class="ranking-card__body flex-grow-1 mx-1">
+                                    <div class="ranking-card__tags small mb-1">
                                         #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
                                     </div>
                                     <h5 class="ranking-card__title text-white">
                                         Abandon: 100 Nuki Shinai to Derarenai Fushigi
                                     </h5>
-                                    <p class="ranking-card__description small text-secondary">
+                                    <p class="ranking-card__description small">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                         incididunt ut
                                         labore et dolore magna aliqua. Ut enim ad minim veniam...
                                     </p>
-                                    <div class="ranking-card__meta text-muted small">
+                                    <div class="ranking-card__meta  small">
                                         By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
                                         1,875,898
                                     </div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
-                                    <button class="btn btn-outline-light btn-sm d-block">ADD</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2 w-100">READ NOW</a>
+                                    <button class="btn btn-outline-light btn-sm d-block w-100">ADD</button>
                                 </div>
                             </div>
                             <hr class="bg-light mt-4" />
@@ -178,25 +354,25 @@
                                 <div class="ranking-card__position text-danger fw-bold fs-2 me-3">3RD</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
-                                    <div class="ranking-card__tags text-muted small mb-1">
+                                <div class="ranking-card__body flex-grow-1 mx-1">
+                                    <div class="ranking-card__tags  small mb-1">
                                         #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum #Lorem ipsum
                                     </div>
                                     <h5 class="ranking-card__title text-white">
                                         Abandon: 100 Nuki Shinai to Derarenai Fushigi
                                     </h5>
-                                    <p class="ranking-card__description small text-secondary">
+                                    <p class="ranking-card__description small">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                         incididunt ut
                                         labore et dolore magna aliqua. Ut enim ad minim veniam...
                                     </p>
-                                    <div class="ranking-card__meta text-muted small">
+                                    <div class="ranking-card__meta  small">
                                         By <span class="text-danger">John Doe</span> • <i class="bi bi-eye"></i>
                                         1,875,898
                                     </div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2">READ NOW</a>
                                     <button class="btn btn-outline-light btn-sm d-block">ADD</button>
                                 </div>
                             </div>
@@ -212,17 +388,18 @@
                                 <div class="ranking-card__position text-warning fw-bold fs-2 me-3">1ST</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
-                                    <div class="ranking-card__tags text-muted small mb-1">#Weekly #Action #Adventure
+                                <div class="ranking-card__body flex-grow-1 mx-1">
+                                    <div class="ranking-card__tags  small mb-1">#Weekly #Action #Adventure
                                     </div>
                                     <h5 class="ranking-card__title text-white">Title B</h5>
-                                    <p class="ranking-card__description small text-secondary">Description for weekly
-                                        ranking...</p>
-                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                    <p class="ranking-card__description small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut
+                                        labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
+                                    <div class="ranking-card__meta  small">By <span class="text-info">Author
                                             B</span> • <i class="bi bi-eye"></i> 654,321</div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2">READ NOW</a>
                                     <button class="btn btn-outline-light btn-sm d-block">ADD</button>
                                 </div>
                             </div>
@@ -237,16 +414,16 @@
                                 <div class="ranking-card__position text-success fw-bold fs-2 me-3">1ST</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
-                                    <div class="ranking-card__tags text-muted small mb-1">#Monthly #Romance</div>
+                                <div class="ranking-card__body flex-grow-1 mx-1">
+                                    <div class="ranking-card__tags  small mb-1">#Monthly #Romance</div>
                                     <h5 class="ranking-card__title text-white">Title C</h5>
-                                    <p class="ranking-card__description small text-secondary">Description for monthly
+                                    <p class="ranking-card__description small">Description for monthly
                                         ranking...</p>
-                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                    <div class="ranking-card__meta  small">By <span class="text-info">Author
                                             C</span> • <i class="bi bi-eye"></i> 987,654</div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2">READ NOW</a>
                                     <button class="btn btn-outline-light btn-sm d-block">ADD</button>
                                 </div>
                             </div>
@@ -261,16 +438,16 @@
                                 <div class="ranking-card__position text-primary fw-bold fs-2 me-3">1ST</div>
                                 <div class="ranking-card__image bg-light me-3" style="width: 100px; height: 140px;">
                                 </div>
-                                <div class="ranking-card__body flex-grow-1">
-                                    <div class="ranking-card__tags text-muted small mb-1">#Alltime #Classic</div>
+                                <div class="ranking-card__body flex-grow-1 mx-1">
+                                    <div class="ranking-card__tags  small mb-1">#Alltime #Classic</div>
                                     <h5 class="ranking-card__title text-white">Title D</h5>
-                                    <p class="ranking-card__description small text-secondary">Description for all time
+                                    <p class="ranking-card__description small">Description for all time
                                         ranking...</p>
-                                    <div class="ranking-card__meta text-muted small">By <span class="text-info">Author
+                                    <div class="ranking-card__meta  small">By <span class="text-info">Author
                                             D</span> • <i class="bi bi-eye"></i> 2,000,000</div>
                                 </div>
                                 <div class="ranking-card__actions ms-auto">
-                                    <button class="btn btn-light btn-sm mb-2">READ NOW</button>
+                                    <a href="#" class="btn btn-light btn-sm mb-2">READ NOW</a>
                                     <button class="btn btn-outline-light btn-sm d-block">ADD</button>
                                 </div>
                             </div>
@@ -279,7 +456,6 @@
                     </div>
                 </div>
             </main>
-        </div>
     </div>
 
     <!-- JavaScript Tab Switching -->
@@ -303,6 +479,34 @@
                 });
             });
         });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Xử lý active cho sidebar
+    const sidebarLinks = document.querySelectorAll('.sidebars__link');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            // Xóa active khỏi tất cả
+            sidebarLinks.forEach(l => l.classList.remove('sidebars__link--active'));
+            // Thêm active cho cái vừa bấm
+            this.classList.add('sidebars__link--active');
+        });
+    });
+});
+</script>
+    <script>
+    // Responsive sidebar toggle for mobile
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebar = document.getElementById('sidebars');
+        const hamburger = document.getElementById('hamburgerMenu');
+        document.addEventListener('click', function(e) {
+            if (e.target === hamburger) {
+                sidebar.classList.toggle('active');
+            } else if (!sidebar.contains(e.target) && sidebar.classList.contains('active') && e.target !== sidebar) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
     </script>
 </body>
 
