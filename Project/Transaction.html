@@ -167,6 +167,7 @@
             }
         }
     </style>
+
 </head>
 <body>
  
@@ -766,7 +767,7 @@
             </div>
 
             <!-- Overview Page -->
-            <div class="page-content" id="overviewPage">
+            <div class="page-content page-content--active" id="overviewPage">
                   <!-- Profile Header -->
             <div class="profile-headers">
                 <div class="profile-headers__info">
@@ -1414,21 +1415,24 @@
           container.innerHTML = "";
         
           pageMovies.forEach(movie => {
-            const col = document.createElement("div");
-            col.className = "col-6 col-md-3";
-            col.innerHTML = `
-              <div class="card gallery__card">
-                <div class="gallery__image bg-secondary"></div>
-                <div class="card-body gallery__body">
-                  <p class="gallery__title">Abandon:<br>${movie.title}</p>
-                  <div class="gallery__views">
-                    <i class="bi bi-eye"></i> ${movie.views.toLocaleString()}
-                  </div>
-                </div>
-              </div>
-            `;
-            container.appendChild(col);
-          });
+  const col = document.createElement("div");
+  col.className = "col-6 col-md-3";
+  col.innerHTML = `
+    <a href="${movie.link || '#'}" class="gallery__link">
+      <div class="card gallery__card">
+        <div class="gallery__image bg-secondary"></div>
+        <div class="card-body gallery__body">
+          <p class="gallery__title">Abandon:<br>${movie.title}</p>
+          <div class="gallery__views">
+            <i class="bi bi-eye"></i> ${movie.views.toLocaleString()}
+          </div>
+        </div>
+      </div>
+    </a>
+  `;
+  container.appendChild(col);
+});
+
         
           updatePaginationUI();
         }
@@ -2102,42 +2106,34 @@
 
 <!-- Script Sidebar mobile -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const links = document.querySelectorAll('.sidebars-mobile__link');
-    const nav = document.getElementById('sidebarsMobile');
-    const main = document.querySelector('.main-contents');
     const pageContents = document.querySelectorAll('.page-content');
 
-    const pageContentPlaceholders = {};
-    pageContents.forEach(page => {
-        const placeholder = document.createElement('div');
-        placeholder.style.display = 'none';
-        page.parentNode.insertBefore(placeholder, page.nextSibling);
-        pageContentPlaceholders[page.id] = placeholder;
-    });
-
     links.forEach(link => {
-        link.addEventListener('click', function () {
-        links.forEach(l => l.classList.remove('sidebars-mobile__link--active'));
-        this.classList.add('sidebars-mobile__link--active');
-        pageContents.forEach(page => {
-            page.classList.remove('page-content--active');
-            const placeholder = pageContentPlaceholders[page.id];
-            if (placeholder && placeholder.parentNode) {
-            placeholder.parentNode.insertBefore(page, placeholder.nextSibling);
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            links.forEach(l => l.classList.remove('sidebars-mobile__link--active'));
+            this.classList.add('sidebars-mobile__link--active');
+            pageContents.forEach(page => {
+                page.classList.remove('page-content--active');
+            });
+            const pageId = this.dataset.page + 'Page';
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('page-content--active');
             }
         });
+    });
 
-        const pageId = this.dataset.page + 'Page';
+    // Khi load trang, active tab đầu tiên nếu chưa có
+    if (links.length > 0 && !document.querySelector('.sidebars-mobile__link--active')) {
+        links[0].classList.add('sidebars-mobile__link--active');
+        const pageId = links[0].dataset.page + 'Page';
         const page = document.getElementById(pageId);
-        if (page) {
-            const li = this.parentElement;
-            li.parentNode.insertBefore(page, li.nextSibling);
-            page.classList.add('page-content--active');
-        }
-        });
-    });
-    });
+        if (page) page.classList.add('page-content--active');
+    }
+});
 </script>
 <!-- Public Carousel List -->
 <script>
@@ -2160,19 +2156,22 @@ function generateCarouselItems(carouselId, items) {
     const wrapper = document.createElement('div');
     wrapper.className = 'carousel__item-wrapper';
 
-    slideItems.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'carousel-card';
-      card.innerHTML = `
-        <img src="${item.img}" class="carousel-card__image" alt="${item.title}">
-        <div class="carousel-card__body">
-          <h5 class="carousel-card__title">${item.title}</h5>
-          <p class="carousel-card__text">${item.text}</p>
-          <p class="carousel-card__views"><i class="fa-solid fa-eye"></i> ${item.views}</p>
-        </div>
-      `;
-      wrapper.appendChild(card);
-    });
+   slideItems.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'carousel-card';
+  card.innerHTML = `
+    <a href="${item.link || '#'}" class="carousel-card__link">
+      <img src="${item.img}" class="carousel-card__image" alt="${item.title}">
+      <div class="carousel-card__body">
+        <h5 class="carousel-card__title">${item.title}</h5>
+        <p class="carousel-card__text">${item.text}</p>
+        <p class="carousel-card__views"><i class="fa-solid fa-eye"></i> ${item.views}</p>
+      </div>
+    </a>
+  `;
+  wrapper.appendChild(card);
+});
+
 
     carouselItem.appendChild(wrapper);
     carouselInner.appendChild(carouselItem);
@@ -2240,6 +2239,68 @@ const privateItems = [
         hamburgerMenu.addEventListener("click", openSidebar);
         sidebarClose.addEventListener("click", closeSidebar);
         sidebarOverlay.addEventListener("click", closeSidebar);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.sidebars-mobile__link');
+            const pageContents = document.querySelectorAll('.page-content');
+            const mainContents = document.querySelector('.main-contents');
+
+            // Lưu vị trí gốc của các page-content
+            const originalParents = {};
+            pageContents.forEach(page => {
+                originalParents[page.id] = page.parentNode;
+            });
+
+            function moveContentUnderActiveLink() {
+                if (window.innerWidth <= 576) {
+                    // Chỉ di chuyển khi ở mobile
+                    const activeLink = document.querySelector('.sidebars-mobile__link--active');
+                    if (activeLink) {
+                        const pageId = activeLink.dataset.page + 'Page';
+                        const page = document.getElementById(pageId);
+                        if (page && activeLink.parentElement.nextSibling !== page) {
+                            activeLink.parentElement.parentNode.insertBefore(page, activeLink.parentElement.nextSibling);
+                        }
+                    }
+                } else {
+                    // Trả lại vị trí gốc khi về desktop
+                    pageContents.forEach(page => {
+                        if (originalParents[page.id] && page.parentNode !== originalParents[page.id]) {
+                            originalParents[page.id].appendChild(page);
+                        }
+                    });
+                }
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    links.forEach(l => l.classList.remove('sidebars-mobile__link--active'));
+                    this.classList.add('sidebars-mobile__link--active');
+                    pageContents.forEach(page => {
+                        page.classList.remove('page-content--active');
+                    });
+                    const pageId = this.dataset.page + 'Page';
+                    const page = document.getElementById(pageId);
+                    if (page) {
+                        page.classList.add('page-content--active');
+                    }
+                    moveContentUnderActiveLink();
+                });
+            });
+
+            if (links.length > 0 && !document.querySelector('.sidebars-mobile__link--active')) {
+                links[0].classList.add('sidebars-mobile__link--active');
+                const pageId = links[0].dataset.page + 'Page';
+                const page = document.getElementById(pageId);
+                if (page) page.classList.add('page-content--active');
+            }
+
+            moveContentUnderActiveLink();
+            window.addEventListener('resize', moveContentUnderActiveLink);
+        });
     </script>
 
     <script src="assets/js/main.js"></script>

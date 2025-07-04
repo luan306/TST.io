@@ -67,7 +67,6 @@ body {
         /* Navbar Block */
         .navbar {
             background-color: #0f171f;
-            /* border-bottom: 1px solid #5a6578; */
             padding: 0.75rem 0;
         }
         
@@ -123,17 +122,17 @@ body {
         }
 
         /* Sidebar Block */
-        .sidebar {
+   .sidebar {
             position: fixed;
             top: 0;
             left: -300px;
             width: 300px;
             height: 100vh;
             background-color: #0a1822;
-            z-index: 1001;
+            z-index: 1050;
             transition: left 0.3s ease;
             overflow-y: auto;
-            border-right: 1px solid #4a5568;
+            border-right: 1px solid #0a1822;
         }
 
         .sidebar--active {
@@ -1576,18 +1575,7 @@ body {
         }
 
         /* sidebars Block */
-.sidebar {
-            position: fixed;
-            top: 0;
-            left: -260px;
-            width: 260px;
-            height: 100vh;
-            background-color: #0a1822;
-            z-index: 1050;
-            transition: left 0.3s ease;
-            overflow-y: scroll;      
-            scrollbar-width: none;   
-}
+
 .sidebar::-webkit-scrollbar {
     display: none;          
 }
@@ -1596,24 +1584,6 @@ body {
 .sidebar--open {
   left: 0;
 }
-
-/* === Overlay mặc định ẩn === */
-.sidebar__overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1040;
-}
-
-/* === Khi overlay hiển thị === */
-.sidebar__overlay--visible {
-  display: block;
-}
-
 
         .sidebars__nav {
             list-style: none;
@@ -1720,6 +1690,7 @@ body {
   }
   .sidebars-mobile__link {
     width: 100%;
+    text-decoration: none;
     min-width: 0;
     max-width: 100%;
     margin: 0;
@@ -3537,7 +3508,16 @@ body {
   font-size: 1rem;
   margin-bottom: 5px;
 }
-
+.carousel-card__link{
+    display: block; 
+    color: inherit; 
+    text-decoration: none;
+}
+.gallery__link{
+     text-decoration: none;
+  color: inherit;
+  display: block;
+}
 .carousel-card__views {
   font-size: 0.9rem;
   color: #72767d;
@@ -3937,7 +3917,19 @@ body {
         .card-custom__text {
             font-size: 0.875rem;
         }
-
+.card-custom__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.trending__link {
+  /* display: block; */
+  text-decoration: none;
+  color: inherit;
+}
+.category__image-link {
+  display: inline !important;
+}
         /* Browse overview - Category */
         .category__card {
             background-color: #2d2f36;
